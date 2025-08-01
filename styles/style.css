@@ -3,3 +3,13 @@
     margin: 0;
     scroll-behavior: smooth;
   }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  canvas {
+    background-color: black;
+  }
