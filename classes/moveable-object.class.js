@@ -1,11 +1,15 @@
 class MoveableObject {
-    x;
-    y;
+    x = 120;
+    y = 400;
     img;
 
-    constructor(){}
+    loadImage(path){
+        this.img = new Image(); //this.img = document.getElementById('image') <img id="image">
+    }
 
     moveRight(){
         console.log('Moving right');
     }
+
+    moveLeft(){}
 }
