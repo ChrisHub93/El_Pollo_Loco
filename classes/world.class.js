@@ -5,8 +5,7 @@ class World {
   backgroundObjects = [
     new BackgroundObject(
       "../assets/img/5_background/layers/3_third_layer/1.png",
-      0,
-      100
+      0
     ),
   ];
   ctx;
