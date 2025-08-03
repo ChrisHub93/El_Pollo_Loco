@@ -1,5 +1,6 @@
 let canvas;
 let world;
+let keyboard = new Keyboard();
 
 function initIndex() {
   canvas = document.getElementById("canvas");
@@ -7,3 +8,4 @@ function initIndex() {
 
   console.log("My Character is", world['character']);
 }
+
