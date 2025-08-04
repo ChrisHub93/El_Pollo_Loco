@@ -57,15 +57,15 @@ class World {
   addToMap(mO) {
     // Speiegeln des Characters
     if (mO.otherDirection){
-        this.ctx.save(); // der aktuelle status wird gespeichert
-        this.ctx.translate(mO.width, 0); // Die breite des Bildes nach rechts oder links verschieben
-        this.ctx.scale(-1, 1); // wird gespiegelt (auch die x Coordinate)
-        mO.x = mO.x * -1 // X Coordinate wird wieder richtig gemacht
+        this.ctx.save(); // der aktuelle status wird gespeichert (wie ein Screenshot)
+        this.ctx.translate(mO.width, 0); // Ursprung des Kontexts nach rechts verschieben (um Breite des Objekts)
+        this.ctx.scale(-1, 1); // Horizontale Spiegelung (Spiegelung an der y-Achse)
+        mO.x = mO.x * -1 // Die X-Koordinate wird angepasst, da nach dem Spiegeln negative Koordinaten nötig sind
     }
     this.ctx.drawImage(mO["img"], mO["x"], mO["y"], mO["width"], mO["height"]);
     if (mO.otherDirection){
-        mO.x = mO.x * -1
         this.ctx.restore();
+        mO.x = mO.x * -1
     }
   }
 }
