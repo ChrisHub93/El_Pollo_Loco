@@ -41,7 +41,7 @@ class World {
     this.addObjectsToMap(this.enemies);
     this.addToMap(this.character);
 
-    // draw() wird immer wieder aufgerufen.
+    // Dadurch draw() wird immer wieder aufgerufen ->
     let self = this;
     requestAnimationFrame(function () {
       self.draw();
@@ -55,13 +55,16 @@ class World {
   }
 
   addToMap(mO) {
+    // Speiegeln des Characters
     if (mO.otherDirection){
-        this.ctx.save();
-        this.ctx.translate(mO.img.width, 0);
-        this.ctx.scale(-1, 1);
+        this.ctx.save(); // der aktuelle status wird gespeichert
+        this.ctx.translate(mO.width, 0); // Die breite des Bildes nach rechts oder links verschieben
+        this.ctx.scale(-1, 1); // wird gespiegelt (auch die x Coordinate)
+        mO.x = mO.x * -1 // X Coordinate wird wieder richtig gemacht
     }
     this.ctx.drawImage(mO["img"], mO["x"], mO["y"], mO["width"], mO["height"]);
     if (mO.otherDirection){
+        mO.x = mO.x * -1
         this.ctx.restore();
     }
   }
