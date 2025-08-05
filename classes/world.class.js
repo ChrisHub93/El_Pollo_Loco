@@ -1,8 +1,8 @@
 class World {
   character = new Character();
-  enemies = level1.enemies;
-  clouds = level1.clouds;
-  backgroundObjects = level1.backgroundObjects;
+  enemies = level1["enemies"];
+  clouds = level1["clouds"];
+  backgroundObjects = level1["backgroundObjects"];
   ctx;
   canvas;
   keyboard;
@@ -47,7 +47,7 @@ class World {
     // Speiegeln des Characters
     if (mO.otherDirection) {
       this.ctx.save(); // der aktuelle status wird gespeichert (wie ein Screenshot)
-      this.ctx.translate(mO.width, 0); // Ursprung des Kontexts nach rechts verschieben (um Breite des Objekts)
+      this.ctx.translate(mO["width"], 0); // Ursprung des Kontexts nach rechts verschieben (um Breite des Objekts)
       this.ctx.scale(-1, 1); // Horizontale Spiegelung (Spiegelung an der y-Achse)
       mO.x = mO.x * -1; // Die X-Koordinate wird angepasst, da nach dem Spiegeln negative Koordinaten nötig sind
     }
