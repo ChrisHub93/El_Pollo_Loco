@@ -1,9 +1,10 @@
-// level1 ist jetzt ein Objekt. 
+// level1 ist jetzt ein Objekt.
 // übergeben wird: (enemies, clouds, backgroundObjects)
 const level1 = new Level(
-    [new Chicken(), new Chicken(), new Chicken()],
-    [new Cloud()],
-    [
+  [new Chicken(), new Chicken(), new Chicken(), new Endboss()],
+  [new Cloud()],
+  // prettier-ignore
+  [
         new BackgroundObject("../assets/img/5_background/layers/air.png", -720),
         new BackgroundObject("../assets/img/5_background/layers/3_third_layer/2.png", -720),
         new BackgroundObject("../assets/img/5_background/layers/2_second_layer/2.png", -720),
