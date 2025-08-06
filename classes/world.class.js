@@ -52,9 +52,9 @@ class World {
     this.ctx.drawImage(mO["img"], mO["x"], mO["y"], mO["width"], mO["height"]);
 
     this.ctx.beginPath();
-    this.ctx.lineWidth = '5';
-    this.ctx.strokeStyle = 'blue';
-    this.ctx.rect( mO["x"], mO["y"], mO["x"] + mO["width"] +this.camera_x, mO["y"] + mO["height"])
+    this.ctx.lineWidth = "5";
+    this.ctx.strokeStyle = "blue";
+    this.ctx.rect(mO["x"], mO["y"], mO["width"], mO["height"]);
     this.ctx.stroke();
 
     if (mO.otherDirection) {
