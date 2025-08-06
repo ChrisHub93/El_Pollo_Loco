@@ -28,7 +28,7 @@ class World {
     this.addToMap(this.character);
     this.ctx.translate(-this.camera_x, 0);
 
-    // Dadurch draw() wird immer wieder aufgerufen ->
+    // Dadurch wird draw() immer wieder aufgerufen ->
     let self = this;
     requestAnimationFrame(function () {
       self.draw();
