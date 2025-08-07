@@ -58,6 +58,14 @@ class MoveableObject {
     }
   }
 
+  // character.isColloding(chicken);
+  isColliding(mO){
+    return this.x + this.width > mO.x &&
+      this.y + this.height > mO.y &&
+      this.x < mO.x &&
+      this.y < mO.y + mO.height
+  }
+
   playAnimation(images) {
     let i = this.currentImage % images.length;
     let path = images[i];
