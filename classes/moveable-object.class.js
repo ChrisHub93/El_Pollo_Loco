@@ -37,16 +37,25 @@ class MoveableObject {
     });
   }
 
-  draw(ctx){
-    ctx.drawImage(this["img"], this["x"], this["y"], this["width"], this["height"]);
+  draw(ctx) {
+    ctx.drawImage(
+      this["img"],
+      this["x"],
+      this["y"],
+      this["width"],
+      this["height"]
+    );
   }
 
-  drawFrame(ctx){
-    ctx.beginPath();
-    ctx.lineWidth = "5";
-    ctx.strokeStyle = "blue";
-    ctx.rect(this["x"], this["y"], this["width"], this["height"]);
-    ctx.stroke();
+  drawFrame(ctx) {
+    // Wird nur bei den Classen Character, Chicken, oder Endboss ausgeführt.
+    if (this instanceof Character || this instanceof Chicken || this instanceof Endboss) {
+      ctx.lineWidth = "5";
+      ctx.strokeStyle = "blue";
+      ctx.rect(this["x"], this["y"], this["width"], this["height"]);
+      ctx.stroke();
+      ctx.beginPath();
+    }
   }
 
   playAnimation(images) {
