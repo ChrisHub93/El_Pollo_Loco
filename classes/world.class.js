@@ -44,22 +44,24 @@ class World {
   addToMap(mO) {
     // Speiegeln des Characters
     if (mO.otherDirection) {
-      this.ctx.save(); // der aktuelle status wird gespeichert (wie ein Screenshot)
-      this.ctx.translate(mO["width"], 0); // Ursprung des Kontexts nach rechts verschieben (um Breite des Objekts)
-      this.ctx.scale(-1, 1); // Horizontale Spiegelung (Spiegelung an der y-Achse)
-      mO.x = mO.x * -1; // Die X-Koordinate wird angepasst, da nach dem Spiegeln negative Koordinaten nötig sind
+      this.flipImage(mO);
     }
-    this.ctx.drawImage(mO["img"], mO["x"], mO["y"], mO["width"], mO["height"]);
-
-    this.ctx.beginPath();
-    this.ctx.lineWidth = "5";
-    this.ctx.strokeStyle = "blue";
-    this.ctx.rect(mO["x"], mO["y"], mO["width"], mO["height"]);
-    this.ctx.stroke();
-
+    mO.draw(this.ctx);
+    mO.drawFrame(this.ctx);
     if (mO.otherDirection) {
-      this.ctx.restore();
-      mO.x = mO.x * -1;
+      this.flipImageBack(mO);
     }
+  }
+
+  flipImage(mO) {
+    this.ctx.save(); // der aktuelle status wird gespeichert (wie ein Screenshot)
+    this.ctx.translate(mO["width"], 0); // Ursprung des Kontexts nach rechts verschieben (um Breite des Objekts)
+    this.ctx.scale(-1, 1); // Horizontale Spiegelung (Spiegelung an der y-Achse)
+    mO.x = mO.x * -1; // Die X-Koordinate wird angepasst, da nach dem Spiegeln negative Koordinaten nötig sind
+  }
+
+  flipImageBack(mO) {
+    this.ctx.restore();
+    mO.x = mO.x * -1;
   }
 }
