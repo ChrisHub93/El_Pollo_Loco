@@ -1,11 +1,4 @@
-class MoveableObject {
-  x = 120;
-  y = 280;
-  img;
-  height = 150;
-  width = 100;
-  imageCache = {};
-  currentImage = 0;
+class MoveableObject extends DrawableObject {
   speed = 0.15;
   otherDirection = false;
   speedY = 0;
@@ -24,29 +17,6 @@ class MoveableObject {
 
   isAboveGround() {
     return this.y < 147;
-  }
-
-  loadImage(path) {
-    this.img = new Image(); //this.img = document.getElementById('image') <img id="image" src>
-    this.img.src = path;
-  }
-
-  loadImages(arr) {
-    arr.forEach((path) => {
-      let img = new Image();
-      img.src = path;
-      this.imageCache[path] = img;
-    });
-  }
-
-  draw(ctx) {
-    ctx.drawImage(
-      this["img"],
-      this["x"],
-      this["y"],
-      this["width"],
-      this["height"]
-    );
   }
 
   drawFrame(ctx) {
@@ -84,18 +54,18 @@ class MoveableObject {
     );
   }
 
-  hit () {
+  hit() {
     this.energy -= 5;
     if (this.energy <= 0) {
       this.energy = 0;
-    } else{
+    } else {
       this.lastHit = new Date().getTime();
     }
-  } 
+  }
 
-  isHurt(){
-    let timePassed = new Date().getTime() - this.lastHit // Difference in ms
-    timePassed = timePassed / 1000 // Difference in s
+  isHurt() {
+    let timePassed = new Date().getTime() - this.lastHit; // Difference in ms
+    timePassed = timePassed / 1000; // Difference in s
     return timePassed < 1;
   }
 
