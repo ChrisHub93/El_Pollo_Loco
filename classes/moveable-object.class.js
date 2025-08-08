@@ -49,7 +49,11 @@ class MoveableObject {
 
   drawFrame(ctx) {
     // Wird nur bei den Classen Character, Chicken, oder Endboss ausgeführt.
-    if (this instanceof Character || this instanceof Chicken || this instanceof Endboss) {
+    if (
+      this instanceof Character ||
+      this instanceof Chicken ||
+      this instanceof Endboss
+    ) {
       ctx.lineWidth = "5";
       ctx.strokeStyle = "blue";
       ctx.rect(this["x"], this["y"], this["width"], this["height"]);
@@ -59,12 +63,32 @@ class MoveableObject {
   }
 
   // character.isColloding(chicken);
-  isColliding(mO){
-    return this.x + this.width > mO.x &&
-      this.y + this.height > mO.y &&
-      this.x < mO.x &&
-      this.y < mO.y + mO.height
+  // isColliding(mO) {
+  //   return (
+  //     this.x + this.width > mO.x &&
+  //     this.y + this.height > mO.y &&
+  //     this.x < mO.x + mO.width &&
+  //     this.y < mO.y + mO.height
+  //   );
+  // }
+
+  // isColliding function aus Video 12->
+  isColliding(mO) {
+    return (
+      this.x + this.width - this.offset.right > mO.x + mO.offset.left &&
+      this.y + this.height - this.offset.bottom > mO.y + mO.offset.top &&
+      this.x + this.offset.left < mO.x + mO.width - mO.offset.right &&
+      this.y + this.offset.top < mO.y + mO.height - mO.offset.bottom
+    );
   }
+
+  // kommt in collidable-object.class.js ->
+  offset = {
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  };
 
   playAnimation(images) {
     let i = this.currentImage % images.length;

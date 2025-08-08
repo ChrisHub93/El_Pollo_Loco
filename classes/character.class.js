@@ -24,6 +24,14 @@ class Character extends MoveableObject {
   ];
   world;
 
+  // Offset für die Collision, damit nicht am Kasten direkt die Kollision ist, sonder am Charakter
+  offset = {
+    top: 120,
+    left: 30,
+    right: 40,
+    bottom: 30,
+  };
+
   constructor() {
     super().loadImage("../assets/img/2_character_pepe/1_idle/idle/I-1.png");
     this.loadImages(this.IMAGE_WALKING);
