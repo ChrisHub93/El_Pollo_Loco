@@ -29,4 +29,19 @@ class DrawableObject {
       this["height"]
     );
   }
+
+  drawFrame(ctx) {
+    // Wird nur bei den Classen Character, Chicken, oder Endboss ausgeführt.
+    if (
+      this instanceof Character ||
+      this instanceof Chicken ||
+      this instanceof Endboss
+    ) {
+      ctx.lineWidth = "5";
+      ctx.strokeStyle = "blue";
+      ctx.rect(this["x"], this["y"], this["width"], this["height"]);
+      ctx.stroke();
+      ctx.beginPath();
+    }
+  }
 }
