@@ -1,5 +1,8 @@
-// level1 ist jetzt ein Objekt.
-// übergeben wird: (enemies, clouds, backgroundObjects)
+// Die constante wird gesetzt, beim laden der HTML.
+// übergeben wird: (enemies, clouds, backgroundObjects) in die Klasse "Level" (level.class.js).
+// const level1 ist jetzt ein Objekt. 
+// level1 = level in der Klasse "Wold".
+
 const level1 = new Level(
   [new Chicken(), new Chicken(), new Chicken(), new Endboss()],
   [new Cloud()],
