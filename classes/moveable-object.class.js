@@ -83,6 +83,17 @@ class MoveableObject {
     );
   }
 
+  hit () {
+    this.energy -= 5;
+    if (this.energy <= 0) {
+      this.energy = 0;
+    }
+  } 
+
+  isDead() {
+    return this.energy == 0;
+  }
+
   // kommt in collidable-object.class.js ->
   offset = {
     top: 0,
