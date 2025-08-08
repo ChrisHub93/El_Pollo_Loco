@@ -16,6 +16,8 @@ class World {
     this.checkCollisions();
   }
 
+  // Übergebe alles von der Klasse "World" um funktionen aus World auch in der Klasse "Character"
+  // anwenden zu können.
   setWorld() {
     this.character.world = this;
   }
@@ -32,7 +34,8 @@ class World {
     }, 200);
   }
 
-  // Alles, was gerendert werden soll
+  // Alles, was gerendert werden soll und wird in einer endlosschleife aktualisiert.
+  // Wie oft, hängt von der Performance der Grafikkarte ab.
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
