@@ -3,6 +3,12 @@
 // const level1 ist jetzt ein Objekt. 
 // level1 = level in der Klasse "Wold".
 
+
+// muss spaäter ein init funktion gemacht werden, damit es erst beim starten des spil´s startet.
+// let level1;
+// function initLevelOne() {
+//     level1 = newLevel(...Code von unten)
+// }
 const level1 = new Level(
   [new Chicken(), new Chicken(), new Chicken(), new Endboss()],
   [new Cloud()],
