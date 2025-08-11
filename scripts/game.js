@@ -59,25 +59,31 @@ window.addEventListener("keyup", (e) => {
   }
 });
 
-function fullscreen() {
-  let fullscreenRef = document.getElementById("fullscreen");
-  enterFullscreen(fullscreenRef);
+function fullscreen(method) {
+  if (method === "enter") {
+    let fullscreenRef = document.getElementById("fullscreen");
+    enterFullscreen(fullscreenRef);
+  } else if (method === "exit") {
+    exitFullscreen();
+  }
 }
 
 function enterFullscreen(element) {
-  if(element.requestFullscreen) {
+  if (element.requestFullscreen) {
     element.requestFullscreen();
-  } else if(element.msRequestFullscreen) {      // for IE11 (remove June 15, 2022)
+  } else if (element.msRequestFullscreen) {
+    // for IE11 (remove June 15, 2022)
     element.msRequestFullscreen();
-  } else if(element.webkitRequestFullscreen) {  // iOS Safari
+  } else if (element.webkitRequestFullscreen) {
+    // iOS Safari
     element.webkitRequestFullscreen();
   }
 }
 
 function exitFullscreen() {
-  if(document.exitFullscreen) {
+  if (document.exitFullscreen) {
     document.exitFullscreen();
-  } else if(document.webkitExitFullscreen) {
+  } else if (document.webkitExitFullscreen) {
     document.webkitExitFullscreen();
   }
 }
