@@ -16,7 +16,8 @@ class MoveableObject extends DrawableObject {
   }
 
   isAboveGround() {
-    if (this instanceof ThrowableObject) { // Throwable should always fall
+    if (this instanceof ThrowableObject) {
+      // Throwable should always fall
       return true;
     } else {
       return this.y < 147;
@@ -71,11 +72,15 @@ class MoveableObject extends DrawableObject {
   };
 
   playAnimation(images) {
-    let i = this.currentImage % images.length;
+    let i = this.currentImage % images.length; // Modulo-Operator (git den Restwert zurück) *1
     let path = images[i];
     this.img = this.imageCache[path];
     this.currentImage++;
   }
+  // *1: Bsp.: 20 % 7(länge Array) = 7 passt 2 mal ganz in 20
+  // 7 * 2 = 14; Der Rest von 14 bis 20 = 6;
+  // Also: 20 % 7 = 6
+  // 0%7= 0; 1%7= 1; 2%7= 2; 3%7= 3;...6%7= 6; 7%7= 0; 8%7= 1; 9%7= 2;....
 
   moveRight() {
     this.x += this.speed;
