@@ -5,6 +5,13 @@ class MoveableObject extends DrawableObject {
   acceleration = 2.5;
   energy = 100;
   lastHit = 0;
+  // kommt in collidable-object.class.js ->
+  offset = {
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  };
 
   applyGravity() {
     setInterval(() => {
@@ -63,21 +70,13 @@ class MoveableObject extends DrawableObject {
     return this.energy == 0;
   }
 
-  // kommt in collidable-object.class.js ->
-  offset = {
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  };
-
   playAnimation(images) {
     let i = this.currentImage % images.length; // Modulo-Operator (git den Restwert zurück) -> *1
     let path = images[i];
     this.img = this.imageCache[path];
     this.currentImage++;
   }
-  // *1: 
+  // *1:
   // Bsp.: 20 % 7(länge Array) = 7 passt 2 mal ganz in 20
   // 7 * 2 = 14; Der Rest von 14 bis 20 = 6;
   // Also: 20 % 7 = 6
