@@ -1,5 +1,5 @@
 class Coin extends MoveableObject {
-  static coinCount = 0; // static, gehört zur classe selbst und nicht nur dem einzelnen Objekt
+  static itemCount = 0; // static, gehört zur classe selbst und nicht nur dem einzelnen Objekt
   y = 350;
   height = 120;
   width = 120;
@@ -21,14 +21,5 @@ class Coin extends MoveableObject {
     setInterval(() => {
       this.playAnimation(this.IMAGE_COINS);
     }, 200);
-  }
-
-  calculatePlacement(start, space, randomness) {
-    const startX = start; // Startposition
-    const spacing = space; // Basisabstand
-    const randomOffset = Math.random() * 100 - randomness; // Zufall von -50px bis +50px
-
-    this.x = startX + Coin.coinCount * spacing + randomOffset;
-    Coin.coinCount++;
-  }
+  } 
 }

@@ -93,4 +93,13 @@ class MoveableObject extends DrawableObject {
   jump() {
     this.speedY = 30;
   }
+
+  calculatePlacement(start, space, randomness) {
+    const startX = start;
+    const spacing = space;
+    const randomOffset = Math.random() * (randomness * 2) - randomness;
+
+    this.x = startX + this.constructor.itemCount * spacing + randomOffset;
+    this.constructor.itemCount++;
+  }
 }
