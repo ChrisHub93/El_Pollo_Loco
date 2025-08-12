@@ -70,7 +70,7 @@ class Character extends MoveableObject {
   }
 
   moveCharacter() {
-    // sound pause
+    // sound pause()
     if (this.canMoveRight()) this.moveRight();
     if (this.canMoveLeft()) this.moveLeft();
     if (this.canJump()) this.jump();

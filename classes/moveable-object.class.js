@@ -70,6 +70,7 @@ class MoveableObject extends DrawableObject {
     return this.energy == 0;
   }
 
+  // Die Bilder des Arrays werden nacheinander abgespielt, um es zu animieren
   playAnimation(images) {
     let i = this.currentImage % images.length; // Modulo-Operator (git den Restwert zurück) -> *1
     let path = images[i];
