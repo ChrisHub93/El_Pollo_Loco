@@ -1,6 +1,6 @@
 class Character extends MoveableObject {
   height = 280;
-  y = 10;
+  y = 147;
   speed = 10;
   IMAGE_WALKING = [
     "../assets/img/2_character_pepe/2_walk/W-21.png",
@@ -66,7 +66,7 @@ class Character extends MoveableObject {
 
     setInterval(() => {
       this.playAnimationsCharacter();
-    }, 50);
+    }, 160); 
   }
 
   moveCharacter() {
