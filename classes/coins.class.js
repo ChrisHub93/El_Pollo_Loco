@@ -13,7 +13,7 @@ class Coin extends MoveableObject {
     super().loadImage(this.IMAGE_COINS[0]);
     this.loadImages(this.IMAGE_COINS);
 
-    this.calculatePlacement();
+    this.calculatePlacement(400, 500, 50);
     this.animate();
   }
 
@@ -23,10 +23,10 @@ class Coin extends MoveableObject {
     }, 200);
   }
 
-  calculatePlacement() {
-    const startX = 400; // Startposition
-    const spacing = 500; // Basisabstand
-    const randomOffset = Math.random() * 100 - 50; // Zufall von -50px bis +50px
+  calculatePlacement(start, space, randomness) {
+    const startX = start; // Startposition
+    const spacing = space; // Basisabstand
+    const randomOffset = Math.random() * 100 - randomness; // Zufall von -50px bis +50px
 
     this.x = startX + Coin.coinCount * spacing + randomOffset;
     Coin.coinCount++;
