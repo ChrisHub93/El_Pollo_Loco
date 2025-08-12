@@ -62,38 +62,45 @@ class Character extends MoveableObject {
   animate() {
     setInterval(() => {
       // sound pause
-      if (
-        this.world["keyboard"]["RIGHT"] &&
-        this.x < this.world["level"]["level_end_x"]
-      ) {
+      if (this.canMoveRight()) {
         this.moveRight();
         this.otherDirection = false;
         // walking sound play()
       }
-      if (this.world["keyboard"]["LEFT"] && this.x > 0) {
+      if (this.canMoveLeft()) {
         this.moveLeft();
         this.otherDirection = true;
         // walking sound play()
       }
-      if (this.world["keyboard"]["SPACE"] && !this.isAboveGround()) {
-        this.jump();
-      }
+      if (this.canJump()) this.jump();
+
       this.world["camera_x"] = -this.x + 100;
     }, 1000 / 60);
 
     setInterval(() => {
-      if (this.isDead()) {
-        this.playAnimation(this.IMAGES_DEAD);
-      } else if (this.isHurt()) {
-        this.playAnimation(this.IMAGES_HURT);
-      } else if (this.isAboveGround()) {
-        this.playAnimation(this.IMAGES_JUMPING);
-      } else {
-        if (this.world["keyboard"]["RIGHT"] || this.world["keyboard"]["LEFT"]) {
-          // walk animation
-          this.playAnimation(this.IMAGE_WALKING);
-        }
-      }
+      if (this.isDead()) this.playAnimation(this.IMAGES_DEAD);
+      else if (this.isHurt()) this.playAnimation(this.IMAGES_HURT);
+      else if (this.isAboveGround()) this.playAnimation(this.IMAGES_JUMPING);
+      else if (this.canAnimate()) this.playAnimation(this.IMAGE_WALKING);
     }, 50);
+  }
+
+  canMoveRight() {
+    return (
+      this.world["keyboard"]["RIGHT"] &&
+      this.x < this.world["level"]["level_end_x"]
+    );
+  }
+
+  canMoveLeft() {
+    return this.world["keyboard"]["LEFT"] && this.x > 0;
+  }
+
+  canJump() {
+    return this.world["keyboard"]["SPACE"] && !this.isAboveGround();
+  }
+
+  canAnimate() {
+    return this.world["keyboard"]["RIGHT"] || this.world["keyboard"]["LEFT"];
   }
 }
