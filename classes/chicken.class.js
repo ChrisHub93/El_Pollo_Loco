@@ -1,4 +1,5 @@
 class Chicken extends MoveableObject {
+  static itemCount = 0; // static, gehört zur classe selbst und nicht nur dem einzelnen Objekt
   y = 365;
   height = 60;
   width = 80;
@@ -13,7 +14,7 @@ class Chicken extends MoveableObject {
     super().loadImage(this.IMAGE_WALKING[0]);
     this.loadImages(this.IMAGE_WALKING);
 
-    this.x = 200 + Math.random() * 500;
+    this.calculatePlacement(350, 400, 60);
     this.speed = 0.15 + Math.random() * 0.25;
     this.animate();
   }
