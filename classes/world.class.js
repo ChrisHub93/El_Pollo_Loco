@@ -8,7 +8,6 @@ class World {
   statusBar = new StatusBar();
   throwableObjects = [];
 
-
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
@@ -28,7 +27,7 @@ class World {
   run() {
     setInterval(() => {
       this.checkCollisions();
-      this.checkThrowableObjects()
+      this.checkThrowableObjects();
     }, 200);
   }
 
@@ -41,9 +40,12 @@ class World {
     });
   }
 
-  checkThrowableObjects(){
-    if(this.keyboard.D === true) {
-      let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+  checkThrowableObjects() {
+    if (this.keyboard.D === true) {
+      let bottle = new ThrowableObject(
+        this.character.x + 100,
+        this.character.y + 100
+      );
       this.throwableObjects.push(bottle);
     }
   }
@@ -51,17 +53,11 @@ class World {
   // Alles, was gerendert werden soll und wird in einer endlosschleife aktualisiert.
   // Wie oft, hängt von der Performance der Grafikkarte ab.
   draw() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);  
 
-    this.ctx.translate(this.camera_x, 0);
-    this.addObjectsToMap(this.level["backgroundObjects"]);
-    this.addObjectsToMap(this.level["clouds"]);
+    this.backgroundObjects();   
 
-    this.ctx.translate(-this.camera_x, 0);
-    // --------START space for fixed objects---------
-    this.addToMap(this.statusBar);
-    this.ctx.translate(this.camera_x, 0);
-    // --------ENDE space for fixed objects---------
+    this.hudElements();
 
     this.addObjectsToMap(this.throwableObjects);
     this.addObjectsToMap(this.level["enemies"]);
@@ -74,6 +70,18 @@ class World {
     requestAnimationFrame(function () {
       self.draw();
     });
+  }
+
+  backgroundObjects(){
+    this.ctx.translate(this.camera_x, 0);
+    this.addObjectsToMap(this.level["backgroundObjects"]);
+    this.addObjectsToMap(this.level["clouds"]);
+    this.ctx.translate(-this.camera_x, 0);
+  }
+
+  hudElements() {
+    this.addToMap(this.statusBar);
+    this.ctx.translate(this.camera_x, 0);
   }
 
   addObjectsToMap(object) {
