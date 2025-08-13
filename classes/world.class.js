@@ -6,7 +6,9 @@ class World {
   keyboard;
   camera_x = 0;
   statusBarHealth = new StatusBar(0, "IMAGES_HEALTH", 100);
-  statusBarCoin = new StatusBar(40, "IMAGES_COIN", 0);
+  statusBarCoins = new StatusBar(45, "IMAGES_COIN", 0);
+  statusBarBottles = new StatusBar(95, "IMAGES_BOTTLE", 0);
+
   throwableObjects = [];
 
   constructor(canvas, keyboard) {
@@ -50,7 +52,7 @@ class World {
     this.level.coins.forEach((coin) => {
       if (this.character.isColliding(coin)) {
         this.character.hitItem();
-        this.statusBarCoin.setPercentage(this.character.coins);
+        this.statusBarCoins.setPercentage(this.character.coins);
         this.removeItem("coins", coin.x);
       }
     });
@@ -97,7 +99,8 @@ class World {
 
   hudElements() {
     this.addToMap(this.statusBarHealth);
-    this.addToMap(this.statusBarCoin);
+    this.addToMap(this.statusBarCoins);
+    this.addToMap(this.statusBarBottles);
     this.ctx.translate(this.camera_x, 0);
   }
 
