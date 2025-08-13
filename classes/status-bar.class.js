@@ -25,14 +25,15 @@ class StatusBar extends DrawableObject {
     "../assets/img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/80.png",
     "../assets/img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/100.png",
   ];
-
   percentage = 100;
+  images;
 
-  constructor() {
+  constructor(y, imagesKey) {
     super();
-    this.loadImages(this.IMAGES_HEALTH);
+    this.images = this[imagesKey];
+    this.loadImages(this.images);
     this.x = 30;
-    this.y = 0;
+    this.y = y;
     this.width = 200;
     this.height = 60;
     this.setPercentage(100);
@@ -40,7 +41,7 @@ class StatusBar extends DrawableObject {
 
   setPercentage(percentage) {
     this.percentage = percentage;
-    let path = this.IMAGES_HEALTH[this.resolveImageIndex()];
+    let path = this.images[this.resolveImageIndex()];
     this.img = this.imageCache[path];
   }
 
