@@ -3,7 +3,7 @@ class Coin extends MoveableObject {
   y = 280;
   height = 120;
   width = 120;
-  
+
   offset = {
     top: 35,
     left: 35,
@@ -20,7 +20,7 @@ class Coin extends MoveableObject {
     super().loadImage(this.IMAGE_COINS[0]);
     this.loadImages(this.IMAGE_COINS);
 
-    this.calculatePlacement(400, 500, 50);
+    this.calculatePlacement(400, 400, 50);
     this.animate();
   }
 
