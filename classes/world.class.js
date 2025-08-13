@@ -29,7 +29,7 @@ class World {
     setInterval(() => {
       this.checkCollisions();
       this.checkThrowableObjects();
-    }, 200);
+    }, 100);
   }
 
   checkCollisions() {
@@ -50,15 +50,14 @@ class World {
     this.level.coins.forEach((coin) => {
       if (this.character.isColliding(coin)) {
         this.character.hitItem();
-        console.log(coin.x);
         this.statusBarCoin.setPercentage(this.character.coins);
-        this.removeItem(coin.x);
+        this.removeItem("coins", coin.x);
       }
     });
   }
 
-  removeItem(xCoord) {
-    this.level.coins = this.level.coins.filter((coin) => coin.x !== xCoord);
+  removeItem(collected, xCoord) {
+    this.level[collected] = this.level[collected].filter((item) => item.x !== xCoord);
   }
 
   checkThrowableObjects() {
