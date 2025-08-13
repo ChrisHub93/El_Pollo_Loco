@@ -36,8 +36,9 @@ class World {
 
   checkCollisions() {
     this.collisionEnemys();
-    this.collisionCoins();
-    this.collisionBottles();
+    this.collisionItems("coins", this.statusBarCoins);
+    this.collisionItems("bottles", this.statusBarBottles);
+    
   }
 
   collisionEnemys() {
@@ -49,25 +50,15 @@ class World {
     });
   }
 
-  collisionCoins() {
-    this.level.coins.forEach((coin) => {
-      if (this.character.isColliding(coin)) {
-        this.character.hitItem("coins");
-        this.statusBarCoins.setPercentage(this.character.coins);
-        this.removeItem("coins", coin.x);
+  collisionItems(itemType, statusBar) {
+    this.level[itemType].forEach((item) => {
+      if (this.character.isColliding(item)) {
+        this.character.hitItem(itemType);
+        statusBar.setPercentage(this.character[itemType]);
+        this.removeItem(itemType, item.x);
       }
     });
-  }
-
-  collisionBottles() {
-    this.level.bottles.forEach((bottle) => {
-      if (this.character.isColliding(bottle)) {
-        this.character.hitItem("bottles");
-        this.statusBarBottles.setPercentage(this.character.bottles);
-        this.removeItem("bottles", bottle.x);
-      }
-    });
-  }
+  }  
 
   removeItem(collected, xCoord) {
     this.level[collected] = this.level[collected].filter(
