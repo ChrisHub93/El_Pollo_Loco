@@ -5,8 +5,8 @@ class World {
   canvas;
   keyboard;
   camera_x = 0;
-  statusBarHealth = new StatusBar(0, 'IMAGES_HEALTH');
-  statusBarCoin = new StatusBar(40, 'IMAGES_COIN');
+  statusBarHealth = new StatusBar(0, "IMAGES_HEALTH", 100);
+  statusBarCoin = new StatusBar(40, "IMAGES_COIN", 0);
   throwableObjects = [];
 
   constructor(canvas, keyboard) {
@@ -33,10 +33,25 @@ class World {
   }
 
   checkCollisions() {
+    this.collisionEnemys();
+    this.collisionCoins();
+  }
+
+  collisionEnemys() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
-        this.character.hit();
+        this.character.hitEnemy();
         this.statusBarHealth.setPercentage(this.character.energy);
+      }
+    });
+  }
+
+  collisionCoins(){
+    this.level.coins.forEach((coin) => {
+      if (this.character.isColliding(coin)) {
+        this.character.hitItem()
+         // coin soll verschwinden
+        this.statusBarCoin.setPercentage(this.character.coins); 
       }
     });
   }
@@ -54,9 +69,9 @@ class World {
   // Alles, was gerendert werden soll und wird in einer endlosschleife aktualisiert.
   // Wie oft, hängt von der Performance der Grafikkarte ab.
   draw() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);  
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    this.backgroundObjects();   
+    this.backgroundObjects();
 
     this.hudElements();
 
@@ -69,7 +84,7 @@ class World {
     });
   }
 
-  backgroundObjects(){
+  backgroundObjects() {
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.level["backgroundObjects"]);
     this.addObjectsToMap(this.level["clouds"]);
@@ -82,7 +97,7 @@ class World {
     this.ctx.translate(this.camera_x, 0);
   }
 
-  levelObjects(){
+  levelObjects() {
     this.addObjectsToMap(this.throwableObjects);
     this.addObjectsToMap(this.level["enemies"]);
     this.addObjectsToMap(this.level["coins"]);

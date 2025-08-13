@@ -5,6 +5,8 @@ class MoveableObject extends DrawableObject {
   acceleration = 2.5;
   energy = 100;
   lastHit = 0;
+  coins = 0;
+  bottles = 0;
   // kommt in collidable-object.class.js ->
   offset = {
     top: 0,
@@ -51,13 +53,18 @@ class MoveableObject extends DrawableObject {
     );
   }
 
-  hit() {
+  hitEnemy() {
     this.energy -= 5;
     if (this.energy <= 0) {
       this.energy = 0;
     } else {
       this.lastHit = new Date().getTime();
     }
+  }
+
+  hitItem(){
+    this.coins += 20;
+    if (this.coins >= 100) this.coins = 100;
   }
 
   isHurt() {
