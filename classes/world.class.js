@@ -46,14 +46,19 @@ class World {
     });
   }
 
-  collisionCoins(){
+  collisionCoins() {
     this.level.coins.forEach((coin) => {
       if (this.character.isColliding(coin)) {
-        this.character.hitItem()
-         // coin soll verschwinden
-        this.statusBarCoin.setPercentage(this.character.coins); 
+        this.character.hitItem();
+        console.log(coin.x);
+        this.statusBarCoin.setPercentage(this.character.coins);
+        this.removeItem(coin.x);
       }
     });
+  }
+
+  removeItem(xCoord) {
+    this.level.coins = this.level.coins.filter((coin) => coin.x !== xCoord);
   }
 
   checkThrowableObjects() {
