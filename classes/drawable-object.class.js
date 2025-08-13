@@ -43,7 +43,7 @@ class DrawableObject {
       this instanceof Endboss ||
       this instanceof Coin
     ) {
-      ctx.lineWidth = "5";
+      ctx.lineWidth = 5;
       ctx.strokeStyle = "blue";
       ctx.rect(this["x"], this["y"], this["width"], this["height"]);
       ctx.stroke();
@@ -58,7 +58,7 @@ class DrawableObject {
       this instanceof Endboss ||
       this instanceof Coin
     ) {
-      ctx.lineWidth = "3";
+      ctx.lineWidth = 3;
       ctx.strokeStyle = "red";
 
       ctx.rect(
