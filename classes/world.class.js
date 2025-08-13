@@ -37,6 +37,7 @@ class World {
   checkCollisions() {
     this.collisionEnemys();
     this.collisionCoins();
+    this.collisionBottles();
   }
 
   collisionEnemys() {
@@ -51,15 +52,27 @@ class World {
   collisionCoins() {
     this.level.coins.forEach((coin) => {
       if (this.character.isColliding(coin)) {
-        this.character.hitItem();
+        this.character.hitItem("coins");
         this.statusBarCoins.setPercentage(this.character.coins);
         this.removeItem("coins", coin.x);
       }
     });
   }
 
+  collisionBottles() {
+    this.level.bottles.forEach((bottle) => {
+      if (this.character.isColliding(bottle)) {
+        this.character.hitItem("bottles");
+        this.statusBarBottles.setPercentage(this.character.bottles);
+        this.removeItem("bottles", bottle.x);
+      }
+    });
+  }
+
   removeItem(collected, xCoord) {
-    this.level[collected] = this.level[collected].filter((item) => item.x !== xCoord);
+    this.level[collected] = this.level[collected].filter(
+      (item) => item.x !== xCoord
+    );
   }
 
   checkThrowableObjects() {

@@ -62,9 +62,9 @@ class MoveableObject extends DrawableObject {
     }
   }
 
-  hitItem(){
-    this.coins += 20;
-    if (this.coins >= 100) this.coins = 100;
+  hitItem(item){
+    this[item] += 20;
+    if (this[item] >= 100) this[item]= 100;
   }
 
   isHurt() {
