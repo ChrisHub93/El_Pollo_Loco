@@ -38,7 +38,6 @@ class World {
     this.collisionEnemys();
     this.collisionItems("coins", this.statusBarCoins);
     this.collisionItems("bottles", this.statusBarBottles);
-    
   }
 
   collisionEnemys() {
@@ -58,7 +57,7 @@ class World {
         this.removeItem(itemType, item.x);
       }
     });
-  }  
+  }
 
   removeItem(collected, xCoord) {
     this.level[collected] = this.level[collected].filter(
@@ -67,13 +66,19 @@ class World {
   }
 
   checkThrowableObjects() {
-    if (this.keyboard.SPACE === true) {
-      let bottle = new ThrowableObject(
-        this.character.x + 100,
-        this.character.y + 100
-      );
-      this.throwableObjects.push(bottle);
-    }
+    if (this.canBottleBeThrown()) this.throwBottles();
+  }
+
+  canBottleBeThrown() {
+    return this.keyboard.SPACE === true && this.statusBarBottles.percentage > 0;
+  }
+
+  throwBottles() {
+    let bottle = new ThrowableObject(
+      this.character.x + 100,
+      this.character.y + 100
+    );
+    this.throwableObjects.push(bottle);
   }
 
   // Alles, was gerendert werden soll und wird in einer endlosschleife aktualisiert.
