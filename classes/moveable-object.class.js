@@ -67,6 +67,11 @@ class MoveableObject extends DrawableObject {
     if (this[item] >= 100) this[item]= 100;
   }
 
+  throwItem(item) {
+    this[item] -= 20;
+    if (this[item] < 0) this[item]= 0;
+  }
+
   isHurt() {
     let timePassed = new Date().getTime() - this.lastHit; // Difference in ms
     timePassed = timePassed / 1000; // Difference in s

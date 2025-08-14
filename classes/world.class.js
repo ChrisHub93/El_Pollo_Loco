@@ -79,6 +79,8 @@ class World {
       this.character.y + 100
     );
     this.throwableObjects.push(bottle);
+    this.character.throwItem("bottles");
+    this.statusBarBottles.setPercentage(this.character.bottles);
   }
 
   // Alles, was gerendert werden soll und wird in einer endlosschleife aktualisiert.
