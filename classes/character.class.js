@@ -86,7 +86,7 @@ class Character extends MoveableObject {
 
   canMoveRight() {
     return (
-      this.world["keyboard"]["RIGHT"] &&
+      this.world["keyboard"]["D"] &&
       this.x < this.world["level"]["level_end_x"]
     );
   }
@@ -98,7 +98,7 @@ class Character extends MoveableObject {
   }
 
   canMoveLeft() {
-    return this.world["keyboard"]["LEFT"] && this.x > 0;
+    return this.world["keyboard"]["A"] && this.x > 0;
   }
 
   moveLeft() {
@@ -108,10 +108,10 @@ class Character extends MoveableObject {
   }
 
   canJump() {
-    return this.world["keyboard"]["SPACE"] && !this.isAboveGround();
+    return this.world["keyboard"]["W"] && !this.isAboveGround();
   }
 
   canAnimate() {
-    return this.world["keyboard"]["RIGHT"] || this.world["keyboard"]["LEFT"];
+    return this.world["keyboard"]["D"] || this.world["keyboard"]["A"];
   }
 }
