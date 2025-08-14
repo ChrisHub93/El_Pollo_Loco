@@ -28,14 +28,26 @@ class ThrowableObject extends MoveableObject {
     this.y = y;
     this.width = 80;
     this.height = 90;
-    this.throw(); // Zum testen!
+    this.throw();
   }
 
   throw() {
     this.applyGravity();
-    setInterval(() => {
-      this.x += 10;
-      this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
-    }, 25);
+
+    if (this.y < 400) {
+      const intervalId = setInterval(() => {
+        this.x += 10;
+        this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
+        if (this.y >= 300) {
+          this.splashAnimation();
+          clearInterval(intervalId);
+        }
+      }, 25);
+    }
+  }
+
+  splashAnimation() {
+    this.y = 370;
+    this.playAnimation(this.IMAGES_BOTTLE_SPLASH);
   }
 }
