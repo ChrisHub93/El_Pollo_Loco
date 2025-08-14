@@ -31,7 +31,7 @@ class World {
     setInterval(() => {
       this.checkCollisions();
       this.checkThrowableObjects();
-    }, 100);
+    }, 10);
   }
 
   checkCollisions() {
@@ -43,8 +43,22 @@ class World {
   collisionEnemys() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
-        this.character.hitEnemy();
-        this.statusBarHealth.setPercentage(this.character.energy);
+        let fromAbove =
+          this.character.y + this.character.height >= enemy.y &&
+          this.character.y + this.character.height <= enemy.y + enemy.height &&
+          this.character.speedY < 0;
+      
+        if (fromAbove) {
+          // Gegner entfernen
+          console.log("Chicken besiegt!");
+          this.removeItem("enemies", enemy.x);
+          this.character.speedY = -12; // Rückstoß nach oben
+        } else {
+          // Schaden
+          this.character.hitEnemy();
+          this.statusBarHealth.setPercentage(this.character.energy);
+          console.log("aua");
+        }
       }
     });
   }
