@@ -103,8 +103,8 @@ class MoveableObject extends DrawableObject {
     this.x -= this.speed;
   }
 
-  jump() {
-    this.speedY = 30;
+  jump(height) {
+    this.speedY = height;
   }
 
   calculatePlacement(start, space, randomness) {

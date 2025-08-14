@@ -48,16 +48,12 @@ class World {
           this.character.y + this.character.height <= enemy.y + enemy.height &&
           this.character.speedY < 0;
       
-        if (fromAbove) {
-          // Gegner entfernen
-          console.log("Chicken besiegt!");
+        if (fromAbove) {          
           this.removeItem("enemies", enemy.x);
-          this.character.speedY = -12; // Rückstoß nach oben
+          this.character.jump(15); // Rückstoß nach oben
         } else {
-          // Schaden
           this.character.hitEnemy();
           this.statusBarHealth.setPercentage(this.character.energy);
-          console.log("aua");
         }
       }
     });

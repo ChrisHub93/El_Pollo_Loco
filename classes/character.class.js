@@ -70,10 +70,11 @@ class Character extends MoveableObject {
   }
 
   moveCharacter() {
+
     // sound pause()
     if (this.canMoveRight()) this.moveRight();
     if (this.canMoveLeft()) this.moveLeft();
-    if (this.canJump()) this.jump();
+    if (this.canJump()) this.jump(30);
     this.world["camera_x"] = -this.x + 100;
   }
 
