@@ -56,7 +56,7 @@ class World {
 
           setTimeout(() => {
             this.removeItem("enemies", enemy.x);
-          }, 500);
+          }, 400);
         } else {
           this.character.hitEnemy();
           this.statusBarHealth.setPercentage(this.character.energy);
