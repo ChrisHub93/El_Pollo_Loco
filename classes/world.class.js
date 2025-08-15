@@ -45,24 +45,32 @@ class World {
       if (enemy.isDead) return;
 
       if (this.character.isColliding(enemy)) {
-        let fromAbove =
-          this.character.y + this.character.height >= enemy.y &&
-          this.character.y + this.character.height <= enemy.y + enemy.height &&
-          this.character.speedY < 0;
-
-        if (fromAbove) {
-          enemy.onHit();
-          this.character.jump(15);
-
-          setTimeout(() => {
-            this.removeItem("enemies", enemy.x);
-          }, 400);
-        } else {
-          this.character.hitEnemy();
-          this.statusBarHealth.setPercentage(this.character.energy);
-        }
+        if (this.isFromAbove(enemy)) this.resolveEnemyStomp(enemy);
+        else this.characterGetsHurt();
       }
     });
+  }
+
+  isFromAbove(enemy) {
+    return (
+      this.character.y + this.character.height >= enemy.y &&
+      this.character.y + this.character.height <= enemy.y + enemy.height &&
+      this.character.speedY < 0
+    );
+  }
+
+  resolveEnemyStomp(enemy) {
+    enemy.onHit();
+    this.character.jump(15);
+
+    setTimeout(() => {
+      this.removeItem("enemies", enemy.x);
+    }, 400);
+  }
+
+  characterGetsHurt() {
+    this.character.hitEnemy();
+    this.statusBarHealth.setPercentage(this.character.energy);
   }
 
   collisionItems(itemType, statusBar) {
@@ -103,11 +111,9 @@ class World {
   // Wie oft, hängt von der Performance der Grafikkarte ab.
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
+    
     this.backgroundObjects();
-
     this.hudElements();
-
     this.levelObjects();
 
     // Dadurch wird draw() immer wieder aufgerufen ->
