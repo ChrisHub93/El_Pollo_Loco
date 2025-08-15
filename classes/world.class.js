@@ -42,22 +42,21 @@ class World {
 
   collisionEnemys() {
     this.level.enemies.forEach((enemy) => {
-      if (enemy.isDead) return; // tote Gegner ignorieren
-  
+      if (enemy.isDead) return;
+
       if (this.character.isColliding(enemy)) {
         let fromAbove =
           this.character.y + this.character.height >= enemy.y &&
           this.character.y + this.character.height <= enemy.y + enemy.height &&
           this.character.speedY < 0;
-      
-        if (fromAbove) {  
-          enemy.isDead = true; // ab jetzt keine Kollision mehr
+
+        if (fromAbove) {
           enemy.onHit();
           this.character.jump(15);
-  
+
           setTimeout(() => {
             this.removeItem("enemies", enemy.x);
-          }, 500); 
+          }, 500);
         } else {
           this.character.hitEnemy();
           this.statusBarHealth.setPercentage(this.character.energy);
