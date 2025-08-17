@@ -10,7 +10,7 @@
 //     level1 = newLevel(...Code von unten)
 // }
 const level1 = new Level(
-  [new Chicken(), new Chicken(), new Chicken(), new Endboss(),new ChickenSmall(), new ChickenSmall(), new ChickenSmall(), new ChickenSmall()],  
+  [new Chicken(), new Chicken(), new Chicken, new Chicken(), new Endboss(),new ChickenSmall(), new ChickenSmall(), new ChickenSmall(), new ChickenSmall(), new ChickenSmall()],  
   [new Cloud()],
   // prettier-ignore
   [
