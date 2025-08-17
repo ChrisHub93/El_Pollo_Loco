@@ -35,7 +35,7 @@ class ChickenSmall extends MoveableObject {
       if (!this.isDead) {
         this.moveInterval = setInterval(() => {
           this.moveLeft();
-        }, 1000 / 60);
+        }, 1000 / 30);
   
         this.walkInterval = setInterval(() => {
           this.playAnimation(this.IMAGE_WALKING);
