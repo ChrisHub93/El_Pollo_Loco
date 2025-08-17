@@ -10,7 +10,7 @@
 //     level1 = newLevel(...Code von unten)
 // }
 const level1 = new Level(
-  [new Chicken(), new Chicken(), new Chicken(), new Endboss()],
+  [new Chicken(), new Chicken(), new Chicken(), new Endboss(),new ChickenSmall(), new ChickenSmall(), new ChickenSmall(), new ChickenSmall()],  
   [new Cloud()],
   // prettier-ignore
   [
@@ -38,5 +38,5 @@ const level1 = new Level(
         new BackgroundObject("../assets/img/5_background/layers/1_first_layer/2.png", 720*3),
       ],
       [new Coin(), new Coin(),new Coin(),new Coin(),new Coin()],
-      [new Bottle(), new Bottle(), new Bottle(), new Bottle(), new Bottle()]
+      [new Bottle(), new Bottle(), new Bottle(), new Bottle(), new Bottle()],    
 );
