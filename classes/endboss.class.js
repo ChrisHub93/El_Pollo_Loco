@@ -64,16 +64,15 @@ class Endboss extends MoveableObject {
     this.loadImages(this.IMAGES_DEAD);
 
     this.x = 3250;
-
-    this.animate();
   }
 
-  animateStartFrequency(){
+  animateStartFrequency() {
+    this.isOnPlace = true;
 
+    if(this.isOnPlace) this.animate();
   }
 
   animate() {
-
     // jede Sekunde nach links moven
     // setInterval(() => {
     //   this.moveCharacter();
@@ -81,19 +80,17 @@ class Endboss extends MoveableObject {
 
     setInterval(() => {
       this.playAnimationsCharacter();
-    }, 160); 
-  }
-
-  moveCharacter(){
-    setInterval(() => {
-      this.playAnimation(this.IMAGES_WALK)
-    this.x -= 0.5;
     }, 160);
-
-    
   }
 
-  playAnimationsCharacter(){
+  moveCharacter() {
+    setInterval(() => {
+      this.playAnimation(this.IMAGES_WALK);
+      this.x -= 0.5;
+    }, 160);
+  }
+
+  playAnimationsCharacter() {
     if (this.isDead) this.playAnimation(this.IMAGES_DEAD);
     else if (this.isHurt()) this.playAnimation(this.IMAGES_HURT);
     else this.playAnimation(this.IMAGES_ATTACK);

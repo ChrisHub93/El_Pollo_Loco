@@ -67,11 +67,10 @@ class Character extends MoveableObject {
 
     setInterval(() => {
       this.playAnimationsCharacter();
-    }, 160); 
+    }, 160);
   }
 
   moveCharacter() {
-
     // sound pause()
     if (this.canMoveRight()) this.moveRight();
     if (this.canMoveLeft()) this.moveLeft();
@@ -89,7 +88,8 @@ class Character extends MoveableObject {
   canMoveRight() {
     return (
       this.world["keyboard"]["D"] &&
-      this.x < this.world["level"]["level_end_x"]
+      this.x < this.world["level"]["level_end_x"] &&
+      this.world.keyboard.keyboardReady
     );
   }
 
@@ -100,7 +100,11 @@ class Character extends MoveableObject {
   }
 
   canMoveLeft() {
-    return this.world["keyboard"]["A"] && this.x > 0;
+    return (
+      this.world["keyboard"]["A"] &&
+      this.x > 0 &&
+      this.world.keyboard.keyboardReady
+    );
   }
 
   moveLeft() {
@@ -110,10 +114,17 @@ class Character extends MoveableObject {
   }
 
   canJump() {
-    return this.world["keyboard"]["W"] && !this.isAboveGround();
+    return (
+      this.world["keyboard"]["W"] &&
+      !this.isAboveGround() &&
+      this.world.keyboard.keyboardReady
+    );
   }
 
   canAnimate() {
-    return this.world["keyboard"]["D"] || this.world["keyboard"]["A"];
+    return (
+      this.world["keyboard"]["D"] ||
+      (this.world["keyboard"]["A"] && this.world.keyboard.keyboardReady)
+    );
   }
 }

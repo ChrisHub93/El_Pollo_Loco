@@ -67,17 +67,26 @@ class World {
     if (this.characterOnPosition()) {
       this.character.isOnEndbossPosition = true;
       console.log("Ziel erreicht");
-      // this.endboss.animate();
-      // keine tastenanschläge zulassen
+      this.keyboard.keyboardReady = false;
+      this.startEnbossAnimation();
+      setTimeout(() => {
+        this.keyboard.keyboardReady = true;
+        
+      }, 4000);
+      
       // statusleiste enboss anzeigen
       // endboss soll von rechts nach links ins bild walken
       // endboss
     }
   }
 
+  startEnbossAnimation() {    
+    this.endboss.animateStartFrequency();
+  }
+
   characterOnPosition() {
     return (
-      this.character.x >= 2810 && this.character.isOnEndbossPosition == false
+      this.character.x >= 2900 && this.character.isOnEndbossPosition == false
     );
   }
 
@@ -144,7 +153,7 @@ class World {
   }
 
   canBottleBeThrown() {
-    return this.keyboard.SPACE === true && this.statusBarBottles.percentage > 0;
+    return this.keyboard.SPACE === true && this.statusBarBottles.percentage > 0 && this.world.keyboard.keyboardReady;
   }
 
   throwBottles() {
@@ -184,7 +193,7 @@ class World {
     this.addToMap(this.statusBarHealth);
     this.addToMap(this.statusBarCoins);
     this.addToMap(this.statusBarBottles);
-    this.addToMap(this.statusBarEnboss);
+    if (this.endboss.isOnPlace) this.addToMap(this.statusBarEnboss);
     this.ctx.translate(this.camera_x, 0);
   }
 
