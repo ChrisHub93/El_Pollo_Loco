@@ -13,7 +13,8 @@ window.addEventListener("keydown", (e) => {
   if (e.keyCode == 87) keyboard.W = true;
   if (e.keyCode == 65) keyboard.A = true;  
   if (e.keyCode == 68) keyboard.D = true;  
-  if (e.keyCode == 32) keyboard.SPACE = true; 
+  if (e.keyCode === 32) keyboard.SPACE = true; 
+
 });
 
 window.addEventListener("keyup", (e) => {

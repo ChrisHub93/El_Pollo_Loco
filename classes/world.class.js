@@ -30,9 +30,11 @@ class World {
   // Überprüft, ob der Charakter mit einem Gegner kollidiert.
   run() {
     setInterval(() => {
-      this.checkCollisions();
-      this.checkThrowableObjects();
+      this.checkCollisions();      
     }, 20);
+    setInterval(()=>{
+      this.checkThrowableObjects();
+    },80)
   }
 
   checkCollisions() {
@@ -91,7 +93,10 @@ class World {
   }
 
   checkThrowableObjects() {
-    if (this.canBottleBeThrown()) this.throwBottles();
+    if (this.canBottleBeThrown()) {
+      this.throwBottles();
+      this.keyboard.SPACE = false; 
+    }
   }
 
   canBottleBeThrown() {
