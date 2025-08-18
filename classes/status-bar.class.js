@@ -25,14 +25,23 @@ class StatusBar extends DrawableObject {
     "../assets/img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/80.png",
     "../assets/img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/100.png",
   ];
+
+  IMAGES_ENDBOSS = [
+    "../assets/img/7_statusbars/2_statusbar_endboss/green/green0.png",
+    "../assets/img/7_statusbars/2_statusbar_endboss/green/green20.png",
+    "../assets/img/7_statusbars/2_statusbar_endboss/green/green40.png",
+    "../assets/img/7_statusbars/2_statusbar_endboss/green/green60.png",
+    "../assets/img/7_statusbars/2_statusbar_endboss/green/green80.png",
+    "../assets/img/7_statusbars/2_statusbar_endboss/green/green100.png",
+  ];
   percentage = 0;
   images;
 
-  constructor(y, imagesKey, percentage) {
+  constructor(x, y, imagesKey, percentage) {
     super();
     this.images = this[imagesKey];
     this.loadImages(this.images);
-    this.x = 30;
+    this.x = x;
     this.y = y;
     this.width = 200;
     this.height = 60;

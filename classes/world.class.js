@@ -5,9 +5,10 @@ class World {
   canvas;
   keyboard;
   camera_x = 0;
-  statusBarHealth = new StatusBar(0, "IMAGES_HEALTH", 100);
-  statusBarCoins = new StatusBar(45, "IMAGES_COIN", 0);
-  statusBarBottles = new StatusBar(95, "IMAGES_BOTTLE", 0);
+  statusBarHealth = new StatusBar(30, 0, "IMAGES_HEALTH", 100);
+  statusBarCoins = new StatusBar(30, 45, "IMAGES_COIN", 0);
+  statusBarBottles = new StatusBar(30, 95, "IMAGES_BOTTLE", 0);
+  statusBarEnboss = new StatusBar(470, 6, "IMAGES_ENDBOSS", 100);
 
   throwableObjects = [];
 
@@ -134,6 +135,7 @@ class World {
     this.addToMap(this.statusBarHealth);
     this.addToMap(this.statusBarCoins);
     this.addToMap(this.statusBarBottles);
+    this.addToMap(this.statusBarEnboss);
     this.ctx.translate(this.camera_x, 0);
   }
 

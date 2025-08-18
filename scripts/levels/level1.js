@@ -1,8 +1,7 @@
 // Die constante wird gesetzt, beim laden der HTML.
 // übergeben wird: (enemies, clouds, backgroundObjects) in die Klasse "Level" (level.class.js).
-// const level1 ist jetzt ein Objekt. 
+// const level1 ist jetzt ein Objekt.
 // level1 = level in der Klasse "Wold".
-
 
 // muss spaäter ein init funktion gemacht werden, damit es erst beim starten des spil´s startet.
 // let level1;
@@ -10,7 +9,18 @@
 //     level1 = newLevel(...Code von unten)
 // }
 const level1 = new Level(
-  [new Chicken(), new Chicken(), new Chicken, new Chicken(), new Endboss(),new ChickenSmall(), new ChickenSmall(), new ChickenSmall(), new ChickenSmall(), new ChickenSmall()],  
+  [
+    new Chicken(),
+    new Chicken(),
+    new Chicken(),
+    new Chicken(),
+    new ChickenSmall(),
+    new ChickenSmall(),
+    new ChickenSmall(),
+    new ChickenSmall(),
+    new ChickenSmall(),
+    new Endboss(),
+  ],
   [new Cloud()],
   // prettier-ignore
   [
@@ -47,6 +57,6 @@ const level1 = new Level(
         new BackgroundObject("../assets/img/5_background/layers/1_first_layer/1.png", 720*4),
 
       ],
-      [new Coin(), new Coin(),new Coin(),new Coin(),new Coin()],
-      [new Bottle(), new Bottle(), new Bottle(), new Bottle(), new Bottle()],    
+  [new Coin(), new Coin(), new Coin(), new Coin(), new Coin()],
+  [new Bottle(), new Bottle(), new Bottle(), new Bottle(), new Bottle()]
 );
