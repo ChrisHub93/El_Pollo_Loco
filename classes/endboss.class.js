@@ -68,11 +68,29 @@ class Endboss extends MoveableObject {
     this.animate();
   }
 
+  animateStartFrequency(){
+
+  }
+
   animate() {
+
+    // jede Sekunde nach links moven
+    // setInterval(() => {
+    //   this.moveCharacter();
+    // }, 1000);
 
     setInterval(() => {
       this.playAnimationsCharacter();
     }, 160); 
+  }
+
+  moveCharacter(){
+    setInterval(() => {
+      this.playAnimation(this.IMAGES_WALK)
+    this.x -= 0.5;
+    }, 160);
+
+    
   }
 
   playAnimationsCharacter(){

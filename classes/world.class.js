@@ -67,6 +67,7 @@ class World {
     if (this.characterOnPosition()) {
       this.character.isOnEndbossPosition = true;
       console.log("Ziel erreicht");
+      // this.endboss.animate();
       // keine tastenanschläge zulassen
       // statusleiste enboss anzeigen
       // endboss soll von rechts nach links ins bild walken
