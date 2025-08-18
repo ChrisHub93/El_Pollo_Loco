@@ -69,11 +69,7 @@ class World {
       console.log("Ziel erreicht");
       this.keyboard.keyboardReady = false;
       this.startEnbossAnimation();
-      setTimeout(() => {
-        this.keyboard.keyboardReady = true;
-        
-      }, 4000);
-      
+      if (this.endboss.isOnPlace) this.keyboard.keyboardReady = true;       
       // statusleiste enboss anzeigen
       // endboss soll von rechts nach links ins bild walken
       // endboss

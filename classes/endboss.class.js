@@ -67,8 +67,9 @@ class Endboss extends MoveableObject {
   }
 
   animateStartFrequency() {
-    this.isOnPlace = true;
+    
 
+    if (this.x === 3250) this.isOnPlace = true;
     if(this.isOnPlace) this.animate();
   }
 
