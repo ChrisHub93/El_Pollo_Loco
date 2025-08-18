@@ -36,13 +36,27 @@ class World {
     }, 20);
     setInterval(()=>{
       this.checkThrowableObjects();
+      this.checkBottleHit();
     },80)
+  }
+
+  checkBottleHit() {
+    this.throwableObjects.forEach((bottle, index) => {
+      if (this.endboss.bottleIsColliding(bottle)) {
+        console.log("Treffer Boss!");
+        bottle.splashAnimation(bottle.y);
+        setTimeout(() => {
+          this.throwableObjects.splice(index, 1); // Flasche verschwindet
+        }, 500);
+        //this.endboss.hit(); // Boss Schaden zufügen
+      }
+    });
   }
 
   characterEndbossPosition() {
     if(this.characterOnPosition()) {
       this.character.isOnEndbossPosition = true;
-      console.log("Ziel erreicht");
+      console.log("Ziel erreicht");      
       // statusleiste enboss anzeigen
       // endboss soll von rechts nach links ins bild walken
       // endboss 
@@ -125,7 +139,7 @@ class World {
       this.character.y + 100
     );
     this.throwableObjects.push(bottle);
-    this.character.throwItem("bottles");
+    this.character.throwItem("bottles"); // movable-object. bottles wird verrringert
     this.statusBarBottles.setPercentage(this.character.bottles);
   }
 
@@ -161,10 +175,10 @@ class World {
   }
 
   levelObjects() {
-    this.addObjectsToMap(this.throwableObjects);
     this.addObjectsToMap(this.level["enemies"]);
     this.addObjectsToMap(this.level["coins"]);
     this.addObjectsToMap(this.level["bottles"]);
+    this.addObjectsToMap(this.throwableObjects);
     this.addToMap(this.character);
     this.ctx.translate(-this.camera_x, 0);
   }

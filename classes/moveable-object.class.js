@@ -33,16 +33,6 @@ class MoveableObject extends DrawableObject {
     }
   }
 
-  // character.isColloding(chicken);
-  // isColliding(mO) {
-  //   return (
-  //     this.x + this.width > mO.x &&
-  //     this.y + this.height > mO.y &&
-  //     this.x < mO.x + mO.width &&
-  //     this.y < mO.y + mO.height
-  //   );
-  // }
-
   // isColliding function aus Video 12->
   isColliding(mO) {
     return (
@@ -51,7 +41,7 @@ class MoveableObject extends DrawableObject {
       this.x + this.offset.left < mO.x + mO.width - mO.offset.right &&
       this.y + this.offset.top < mO.y + mO.height - mO.offset.bottom
     );
-  }  
+  }
 
   hitEnemy() {
     this.energy -= 0.5;
@@ -62,14 +52,14 @@ class MoveableObject extends DrawableObject {
     }
   }
 
-  hitItem(item){
+  hitItem(item) {
     this[item] += 20;
-    if (this[item] >= 100) this[item]= 100;
+    if (this[item] >= 100) this[item] = 100;
   }
 
   throwItem(item) {
     this[item] -= 20;
-    if (this[item] < 0) this[item]= 0;
+    if (this[item] < 0) this[item] = 0;
   }
 
   isHurt() {

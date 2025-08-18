@@ -6,8 +6,8 @@ class Endboss extends MoveableObject {
   isOnPlace = false;
 
   offset = {
-    top: 80,
-    left: 15,
+    top: 170, 
+    left: 60,
     right: 35,
     bottom: 30,
   };
@@ -70,5 +70,14 @@ class Endboss extends MoveableObject {
     setInterval(() => {
       this.playAnimation(this.IMAGES_ALERT);
     }, 130);
+  }
+
+  bottleIsColliding(mO){
+    return (
+      this.x + this.width - this.offset.right > mO.x + mO.offset.left &&
+      this.y + this.height - this.offset.bottom > mO.y + mO.offset.top &&
+      this.x + this.offset.left < mO.x + mO.width - mO.offset.right &&
+      this.y + this.offset.top < mO.y + mO.height - mO.offset.bottom
+    );
   }
 }

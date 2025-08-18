@@ -1,6 +1,7 @@
 class ThrowableObject extends MoveableObject {
   speedY = 30;
   speedX = 20;
+  rotationInterval = null;
 
   IMAGES_BOTTLE_ROTATION = [
     "../assets/img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png",
@@ -33,19 +34,29 @@ class ThrowableObject extends MoveableObject {
 
   throw() {
     this.applyGravity();
-
-    const intervalId = setInterval(() => {
+  
+    this.rotationInterval = setInterval(() => {
       this.x += 10;
       this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
-      if (this.y >= 300) {
-        this.splashAnimation();
-        clearInterval(intervalId);
+  
+      if (this.groundHit()) {
+        this.splashAnimation(370);
       }
     }, 25);
   }
 
-  splashAnimation() {
-    this.y = 370;
-    this.playAnimation(this.IMAGES_BOTTLE_SPLASH);
+  groundHit(){
+    return this.y >= 300
   }
+  
+  splashAnimation(y) {
+    this.y = y;
+    this.playAnimation(this.IMAGES_BOTTLE_SPLASH);
+  
+    if (this.rotationInterval) {
+      clearInterval(this.rotationInterval);
+      this.rotationInterval = null;
+    }
+  }
+  
 }
