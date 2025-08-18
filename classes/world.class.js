@@ -45,9 +45,11 @@ class World {
       if (this.endboss.bottleIsColliding(bottle)) {
         console.log("Treffer Boss!");
         bottle.splashAnimation(bottle.y);
+        //statusBar.setPercentage(statusBarEnboss);
         setTimeout(() => {
           this.throwableObjects.splice(index, 1); // Flasche verschwindet
-        }, 500);
+        }, 300);
+        this.character.reduceStatus20("energyEndboss");
         //this.endboss.hit(); // Boss Schaden zufügen
       }
     });
@@ -139,7 +141,7 @@ class World {
       this.character.y + 100
     );
     this.throwableObjects.push(bottle);
-    this.character.throwItem("bottles"); // movable-object. bottles wird verrringert
+    this.character.reduceStatus20("bottles"); // movable-object. bottles wird verrringert
     this.statusBarBottles.setPercentage(this.character.bottles);
   }
 

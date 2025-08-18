@@ -4,6 +4,7 @@ class MoveableObject extends DrawableObject {
   speedY = 0;
   acceleration = 2.5;
   energy = 100;
+  energyEndboss = 100;
   lastHit = 0;
   coins = 0;
   bottles = 0;
@@ -57,7 +58,7 @@ class MoveableObject extends DrawableObject {
     if (this[item] >= 100) this[item] = 100;
   }
 
-  throwItem(item) {
+  reduceStatus20(item) {
     this[item] -= 20;
     if (this[item] < 0) this[item] = 0;
   }
