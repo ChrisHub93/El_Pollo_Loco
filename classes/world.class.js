@@ -45,10 +45,11 @@ class World {
       if (!bottle.hasHit && this.endboss.bottleIsColliding(bottle)) {
         bottle.hasHit = true; 
         bottle.splashAnimation(bottle.y);
-        //statusBar.setPercentage(statusBarEnboss);
+       
         setTimeout(() => {
           this.throwableObjects.splice(index, 1); // Flasche verschwindet
           this.character.reduceStatus20("energyEndboss");
+          this.statusBarEnboss.setPercentage(this.character.energyEndboss);
           console.log("Treffer Boss!");
         }, 80);
         //this.endboss.hit(); // Boss Schaden zufügen
