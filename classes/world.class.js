@@ -111,7 +111,7 @@ class World {
   // Wie oft, hängt von der Performance der Grafikkarte ab.
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    
+
     this.backgroundObjects();
     this.hudElements();
     this.levelObjects();
@@ -158,7 +158,7 @@ class World {
       this.flipImage(mO);
     }
     mO.draw(this.ctx);
-    mO.drawFrame(this.ctx);
+    //mO.drawFrame(this.ctx);
     mO.drawHitbox(this.ctx);
     if (mO.otherDirection) {
       this.flipImageBack(mO);
