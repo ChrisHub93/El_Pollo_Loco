@@ -2,6 +2,7 @@ class ThrowableObject extends MoveableObject {
   speedY = 30;
   speedX = 20;
   rotationInterval = null;
+  hasHit = false; 
 
   IMAGES_BOTTLE_ROTATION = [
     "../assets/img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png",

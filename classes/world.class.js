@@ -42,14 +42,15 @@ class World {
 
   checkBottleHit() {
     this.throwableObjects.forEach((bottle, index) => {
-      if (this.endboss.bottleIsColliding(bottle)) {
-        console.log("Treffer Boss!");
+      if (!bottle.hasHit && this.endboss.bottleIsColliding(bottle)) {
+        bottle.hasHit = true; 
         bottle.splashAnimation(bottle.y);
         //statusBar.setPercentage(statusBarEnboss);
         setTimeout(() => {
           this.throwableObjects.splice(index, 1); // Flasche verschwindet
-        }, 300);
-        this.character.reduceStatus20("energyEndboss");
+          this.character.reduceStatus20("energyEndboss");
+          console.log("Treffer Boss!");
+        }, 80);
         //this.endboss.hit(); // Boss Schaden zufügen
       }
     });
