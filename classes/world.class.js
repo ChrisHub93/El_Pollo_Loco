@@ -9,6 +9,7 @@ class World {
   statusBarCoins = new StatusBar(30, 45, "IMAGES_COIN", 0);
   statusBarBottles = new StatusBar(30, 95, "IMAGES_BOTTLE", 0);
   statusBarEnboss = new StatusBar(470, 6, "IMAGES_ENDBOSS", 100);
+  endboss = this.level.enemies.find(enemy => enemy instanceof Endboss);
 
   throwableObjects = [];
 
@@ -30,11 +31,26 @@ class World {
   // Überprüft, ob der Charakter mit einem Gegner kollidiert.
   run() {
     setInterval(() => {
-      this.checkCollisions();      
+      this.checkCollisions();   
+      this.characterEndbossPosition();   
     }, 20);
     setInterval(()=>{
       this.checkThrowableObjects();
     },80)
+  }
+
+  characterEndbossPosition() {
+    if(this.characterOnPosition()) {
+      this.character.isOnEndbossPosition = true;
+      console.log("Ziel erreicht");
+      // statusleiste enboss anzeigen
+      // endboss soll von rechts nach links ins bild walken
+      // endboss 
+    }
+  }
+
+  characterOnPosition(){
+     return (this.character.x >= 2810 && this.character.isOnEndbossPosition == false);
   }
 
   checkCollisions() {
