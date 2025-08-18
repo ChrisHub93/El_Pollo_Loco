@@ -48,11 +48,9 @@ class World {
        
         setTimeout(() => {
           this.throwableObjects.splice(index, 1); // Flasche verschwindet
-          this.character.reduceStatus20("energyEndboss");
-          this.statusBarEnboss.setPercentage(this.character.energyEndboss);
-          console.log("Treffer Boss!");
         }, 80);
-        //this.endboss.hit(); // Boss Schaden zufügen
+        this.character.reduceStatus("energyEndboss", 25);
+        this.statusBarEnboss.setPercentage(this.character.energyEndboss);
       }
     });
   }
@@ -143,7 +141,7 @@ class World {
       this.character.y + 100
     );
     this.throwableObjects.push(bottle);
-    this.character.reduceStatus20("bottles"); // movable-object. bottles wird verrringert
+    this.character.reduceStatus("bottles", 20); // movable-object. bottles wird verrringert
     this.statusBarBottles.setPercentage(this.character.bottles);
   }
 

@@ -58,8 +58,8 @@ class MoveableObject extends DrawableObject {
     if (this[item] >= 100) this[item] = 100;
   }
 
-  reduceStatus20(item) {
-    this[item] -= 20;
+  reduceStatus(item, status) {
+    this[item] -= status;
     if (this[item] < 0) this[item] = 0;
   }
 

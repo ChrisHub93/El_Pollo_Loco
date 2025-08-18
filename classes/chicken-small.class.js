@@ -4,6 +4,8 @@ class ChickenSmall extends MoveableObject {
     height = 60;
     width = 80;
     isDead = false;
+    moveInterval = null;
+    walkInterval = null;
   
     offset = {
       top: 0,
