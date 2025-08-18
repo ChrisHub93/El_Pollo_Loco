@@ -42,23 +42,28 @@ class World {
 
   checkBottleHit() {
     this.throwableObjects.forEach((bottle, index) => {
-      if (!bottle.hasHit && this.endboss.bottleIsColliding(bottle)) {
+      if (this.canBossHit(bottle)) {
         bottle.hasHit = true; 
         bottle.splashAnimation(bottle.y);
        
         setTimeout(() => {
           this.throwableObjects.splice(index, 1); // Flasche verschwindet
         }, 80);
-        this.character.reduceStatus("energyEndboss", 25);
-        this.statusBarEnboss.setPercentage(this.character.energyEndboss);
+        this.endboss.energy -= 25;
+        this.statusBarEnboss.setPercentage(this.endboss.energy);
       }
     });
+  }
+
+  canBossHit(bottle){
+    return !bottle.hasHit && this.endboss.bottleIsColliding(bottle)
   }
 
   characterEndbossPosition() {
     if(this.characterOnPosition()) {
       this.character.isOnEndbossPosition = true;
-      console.log("Ziel erreicht");      
+      console.log("Ziel erreicht");     
+      // keine tastenanschläge zulassen 
       // statusleiste enboss anzeigen
       // endboss soll von rechts nach links ins bild walken
       // endboss 
