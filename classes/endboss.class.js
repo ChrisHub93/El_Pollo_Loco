@@ -62,18 +62,26 @@ class Endboss extends MoveableObject {
     this.loadImages(this.IMAGES_ATTACK);
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
-
-    this.x = 3250;
+    this.x = 3450;
   }
 
   animateStartFrequency() {
-    
+    this.startInterval = setInterval(() => {
+      this.startFrequence();
+    }, 80);
+  }
 
-    if (this.x === 3250) this.isOnPlace = true;
-    if(this.isOnPlace) this.animate();
+  startFrequence() {
+    this.playAnimation(this.IMAGES_WALK);
+    if (this.x > 3249) this.x -= 10;
+    else if (this.x <= 3249) {
+      this.isOnPlace = true;
+      this.animate();
+    }
   }
 
   animate() {
+    clearInterval(this.startInterval);
     // jede Sekunde nach links moven
     // setInterval(() => {
     //   this.moveCharacter();

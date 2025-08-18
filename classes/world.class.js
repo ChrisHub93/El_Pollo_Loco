@@ -66,19 +66,12 @@ class World {
   characterEndbossPosition() {
     if (this.characterOnPosition()) {
       this.character.isOnEndbossPosition = true;
-      console.log("Ziel erreicht");
       this.keyboard.keyboardReady = false;
-      this.startEnbossAnimation();
-      if (this.endboss.isOnPlace) this.keyboard.keyboardReady = true;       
-      // statusleiste enboss anzeigen
-      // endboss soll von rechts nach links ins bild walken
-      // endboss
+      this.endboss.animateStartFrequency();
     }
+    if (this.endboss.isOnPlace) this.keyboard.keyboardReady = true;    
   }
 
-  startEnbossAnimation() {    
-    this.endboss.animateStartFrequency();
-  }
 
   characterOnPosition() {
     return (
@@ -149,7 +142,7 @@ class World {
   }
 
   canBottleBeThrown() {
-    return this.keyboard.SPACE === true && this.statusBarBottles.percentage > 0 && this.world.keyboard.keyboardReady;
+    return this.keyboard.SPACE === true && this.statusBarBottles.percentage > 0 && this.keyboard.keyboardReady;
   }
 
   throwBottles() {
