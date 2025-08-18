@@ -9,7 +9,7 @@ class World {
   statusBarCoins = new StatusBar(30, 45, "IMAGES_COIN", 0);
   statusBarBottles = new StatusBar(30, 95, "IMAGES_BOTTLE", 0);
   statusBarEnboss = new StatusBar(470, 6, "IMAGES_ENDBOSS", 100);
-  endboss = this.level.enemies.find(enemy => enemy instanceof Endboss);
+  endboss = this.level.enemies.find((enemy) => enemy instanceof Endboss);
 
   throwableObjects = [];
 
@@ -31,47 +31,53 @@ class World {
   // Überprüft, ob der Charakter mit einem Gegner kollidiert.
   run() {
     setInterval(() => {
-      this.checkCollisions();   
-      this.characterEndbossPosition();   
+      this.checkCollisions();
+      this.characterEndbossPosition();
     }, 20);
-    setInterval(()=>{
+    setInterval(() => {
       this.checkThrowableObjects();
       this.checkBottleHit();
-    },80)
+    }, 80);
   }
 
   checkBottleHit() {
     this.throwableObjects.forEach((bottle, index) => {
       if (this.canBossHit(bottle)) {
-        bottle.hasHit = true; 
+        bottle.hasHit = true;
         bottle.splashAnimation(bottle.y);
-       
+
         setTimeout(() => {
           this.throwableObjects.splice(index, 1); // Flasche verschwindet
         }, 80);
         this.endboss.energy -= 25;
         this.statusBarEnboss.setPercentage(this.endboss.energy);
+        this.endboss.lastHit = new Date().getTime();
+        if (this.endboss.energy === 0) {
+          this.endboss.isDead = true;
+        }
       }
     });
   }
 
-  canBossHit(bottle){
-    return !bottle.hasHit && this.endboss.bottleIsColliding(bottle)
+  canBossHit(bottle) {
+    return !bottle.hasHit && this.endboss.bottleIsColliding(bottle);
   }
 
   characterEndbossPosition() {
-    if(this.characterOnPosition()) {
+    if (this.characterOnPosition()) {
       this.character.isOnEndbossPosition = true;
-      console.log("Ziel erreicht");     
-      // keine tastenanschläge zulassen 
+      console.log("Ziel erreicht");
+      // keine tastenanschläge zulassen
       // statusleiste enboss anzeigen
       // endboss soll von rechts nach links ins bild walken
-      // endboss 
+      // endboss
     }
   }
 
-  characterOnPosition(){
-     return (this.character.x >= 2810 && this.character.isOnEndbossPosition == false);
+  characterOnPosition() {
+    return (
+      this.character.x >= 2810 && this.character.isOnEndbossPosition == false
+    );
   }
 
   checkCollisions() {
@@ -132,7 +138,7 @@ class World {
   checkThrowableObjects() {
     if (this.canBottleBeThrown()) {
       this.throwBottles();
-      this.keyboard.SPACE = false; 
+      this.keyboard.SPACE = false;
     }
   }
 

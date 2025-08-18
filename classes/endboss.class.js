@@ -5,8 +5,10 @@ class Endboss extends MoveableObject {
   isDead = false;
   isOnPlace = false;
 
+  moveInterval = null;
+
   offset = {
-    top: 170, 
+    top: 170,
     left: 60,
     right: 35,
     bottom: 30,
@@ -67,12 +69,19 @@ class Endboss extends MoveableObject {
   }
 
   animate() {
+
     setInterval(() => {
-      this.playAnimation(this.IMAGES_ALERT);
-    }, 130);
+      this.playAnimationsCharacter();
+    }, 160); 
   }
 
-  bottleIsColliding(mO){
+  playAnimationsCharacter(){
+    if (this.isDead) this.playAnimation(this.IMAGES_DEAD);
+    else if (this.isHurt()) this.playAnimation(this.IMAGES_HURT);
+    else this.playAnimation(this.IMAGES_ATTACK);
+  }
+
+  bottleIsColliding(mO) {
     return (
       this.x + this.width - this.offset.right > mO.x + mO.offset.left &&
       this.y + this.height - this.offset.bottom > mO.y + mO.offset.top &&
