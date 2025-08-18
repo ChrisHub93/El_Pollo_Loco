@@ -64,7 +64,7 @@ class World {
   }
 
   characterEndbossPosition() {
-    if (this.characterOnPosition()) {
+    if (this.characterOnBossPosition()) {
       this.character.isOnEndbossPosition = true;
       this.keyboard.keyboardReady = false;
       this.endboss.animateStartFrequency();
@@ -73,7 +73,7 @@ class World {
   }
 
 
-  characterOnPosition() {
+  characterOnBossPosition() {
     return (
       this.character.x >= 2900 && this.character.isOnEndbossPosition == false
     );
