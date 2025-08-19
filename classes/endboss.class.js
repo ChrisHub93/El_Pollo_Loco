@@ -82,14 +82,32 @@ class Endboss extends MoveableObject {
 
   animate() {
     clearInterval(this.startInterval);
-    // jede Sekunde nach links moven
-    // setInterval(() => {
-    //   this.moveCharacter();
-    // }, 1000);
-
-    setInterval(() => {
+  
+    // Standard-Animation
+    this.playAnimationsCharacterInterval = setInterval(() => {
       this.playAnimationsCharacter();
     }, 160);
+  
+    // Alle 3 Sekunden -> kurz vorwärts laufen
+    this.moveForwardInterval = setInterval(() => {
+      // Standardanimation pausieren
+      clearInterval(this.playAnimationsCharacterInterval);
+  
+      // Einmal Schrittintervall starten
+      let stepInterval = setInterval(() => {
+        this.playAnimation(this.IMAGES_WALK);
+        this.x -= 10;
+      }, 80);
+  
+      // Nach 1 Sekunde stoppen + normale Animation zurückholen
+      setTimeout(() => {
+        clearInterval(stepInterval); 
+        this.playAnimationsCharacterInterval = setInterval(() => {
+          this.playAnimationsCharacter();
+        }, 160);
+      }, 1000);
+  
+    }, 3000); 
   }
 
   moveCharacter() {
@@ -98,12 +116,13 @@ class Endboss extends MoveableObject {
       this.x -= 0.5;
     }, 160);
   }
-
+  
   playAnimationsCharacter() {
     if (this.isDead) this.playAnimation(this.IMAGES_DEAD);
     else if (this.isHurt()) this.playAnimation(this.IMAGES_HURT);
     else this.playAnimation(this.IMAGES_ATTACK);
   }
+  
 
   bottleIsColliding(mO) {
     return (

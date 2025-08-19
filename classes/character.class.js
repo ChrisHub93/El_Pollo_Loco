@@ -1,6 +1,7 @@
 class Character extends MoveableObject {
   height = 280;
   y = 147;
+  x = 2800; //!!!! Nur zum TEST Zeile muss wieder gelöscht werden!!!!!!
   speed = 10;
   isOnEndbossPosition = false;
   IMAGE_WALKING = [
