@@ -1,6 +1,6 @@
 class Coin extends MoveableObject {
   static itemCount = 0; // static, gehört zur classe selbst und nicht nur dem einzelnen Objekt
-  y = 80;
+  y = 150;
   height = 120;
   width = 120;
 
@@ -21,7 +21,9 @@ class Coin extends MoveableObject {
     this.loadImages(this.IMAGE_COINS);
 
     this.calculatePlacementX(400, 400, 50);
+    this.y = this.randomNumber50to150();
     this.animate();
+    
   }
 
   animate() {

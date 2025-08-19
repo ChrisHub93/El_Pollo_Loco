@@ -106,4 +106,8 @@ class MoveableObject extends DrawableObject {
     this.x = startX + this.constructor.itemCount * spacing + randomOffset;
     this.constructor.itemCount++;
   }
+
+  randomNumber50to150() {
+    return Math.floor(Math.random() * (150 - 50 + 1)) + 50;
+  }
 }
