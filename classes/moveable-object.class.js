@@ -98,7 +98,7 @@ class MoveableObject extends DrawableObject {
     this.speedY = height;
   }
 
-  calculatePlacement(start, space, randomness) {
+  calculatePlacementX(start, space, randomness) {
     const startX = start;
     const spacing = space;
     const randomOffset = Math.random() * (randomness * 2) - randomness;
