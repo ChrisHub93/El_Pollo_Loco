@@ -95,6 +95,10 @@ class Endboss extends MoveableObject {
   
       // Einmal Schrittintervall starten
       let stepInterval = setInterval(() => {
+        if (this.isHurt()) {
+          clearInterval(stepInterval);
+          this.playAnimationsCharacter();
+        }
         this.playAnimation(this.IMAGES_WALK);
         this.x -= 10;
       }, 80);
