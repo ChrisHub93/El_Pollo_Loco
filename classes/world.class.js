@@ -90,6 +90,8 @@ class World {
       if (enemy.isDead) return;
 
       if (this.character.isColliding(enemy)) {
+        
+        
         if (this.isFromAbove(enemy)) this.resolveEnemyStomp(enemy);
         else this.characterGetsHurt();
       }
@@ -97,6 +99,7 @@ class World {
   }
 
   isFromAbove(enemy) {
+    if (enemy instanceof Endboss) return;
     return (
       this.character.y + this.character.height >= enemy.y &&
       this.character.y + this.character.height <= enemy.y + enemy.height &&
