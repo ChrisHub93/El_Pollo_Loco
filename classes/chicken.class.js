@@ -1,6 +1,6 @@
 class Chicken extends MoveableObject {
   static itemCount = 0; // static, gehört zur classe selbst und nicht nur dem einzelnen Objekt
-  y = 365;
+  y = 360;
   height = 60;
   width = 80;
   isDead = false;
@@ -9,7 +9,7 @@ class Chicken extends MoveableObject {
     top: 0,
     left: 0,
     right: 0,
-    bottom: 0,
+    bottom: 10,
   };
 
   IMAGE_WALKING = [

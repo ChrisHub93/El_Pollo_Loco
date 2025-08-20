@@ -8,10 +8,10 @@ class Endboss extends MoveableObject {
   moveInterval = null;
 
   offset = {
-    top: 170,
+    top: 60,
     left: 60,
     right: 35,
-    bottom: 30,
+    bottom: 60,
   };
 
   IMAGES_WALK = [

@@ -1,6 +1,6 @@
 class ChickenSmall extends MoveableObject {
     static itemCount = 0; 
-    y = 365;
+    y = 360;
     height = 60;
     width = 80;
     isDead = false;
@@ -11,7 +11,7 @@ class ChickenSmall extends MoveableObject {
       top: 0,
       left: 10,
       right: 10,
-      bottom: 0,
+      bottom: 10,
     };
   
     IMAGE_WALKING = [

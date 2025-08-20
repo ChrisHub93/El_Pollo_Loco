@@ -99,13 +99,18 @@ class World {
   }
 
   isFromAbove(enemy) {
-    if (enemy instanceof Endboss) return;
+    if (enemy instanceof Endboss) return false;
+  
+    const charBottom = this.character.y + this.character.height - this.character.offset.bottom;
+    const enemyTop   = enemy.y + enemy.offset.top;
+  
     return (
-      this.character.y + this.character.height >= enemy.y &&
-      this.character.y + this.character.height <= enemy.y + enemy.height &&
-      this.character.speedY < 0
+      charBottom >= enemyTop &&
+      charBottom <= enemy.y + enemy.height - enemy.offset.bottom &&
+      this.character.speedY < 0   // bei dir: fallen = speedY < 0
     );
   }
+  
 
   resolveEnemyStomp(enemy) {
     enemy.onHit();
