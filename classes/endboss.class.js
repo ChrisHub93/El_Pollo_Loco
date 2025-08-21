@@ -6,8 +6,6 @@ class Endboss extends MoveableObject {
   isOnPlace = false;
   steps = 0;
 
-  moveInterval = null;
-
   offset = {
     top: 60,
     left: 60,
@@ -108,8 +106,8 @@ class Endboss extends MoveableObject {
 
   moveForward() {
     clearInterval(this.playAnimationsCharacterInterval);
-
     this.steps = 0;
+    
     this.stepInterval = setInterval(() => {
       if (this.isHurt()) {
         this.stopAllIntervals();

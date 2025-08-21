@@ -1,9 +1,10 @@
 class Character extends MoveableObject {
   height = 280;
   y = 147;
-  x = 2800; //!!!! Nur zum TEST Zeile muss wieder gelöscht werden!!!!!!
   speed = 10;
   isOnEndbossPosition = false;
+  world;
+
   IMAGE_WALKING = [
     "../assets/img/2_character_pepe/2_walk/W-21.png",
     "../assets/img/2_character_pepe/2_walk/W-22.png",
@@ -41,9 +42,6 @@ class Character extends MoveableObject {
     "../assets/img/2_character_pepe/5_dead/D-57.png",
   ];
 
-  world;
-
-  // Offset für die Collision, damit nicht am Kasten direkt die Kollision ist, sonder am Charakter
   offset = {
     top: 120,
     left: 30,
@@ -124,8 +122,8 @@ class Character extends MoveableObject {
 
   canAnimate() {
     return (
-      this.world["keyboard"]["D"] ||
-      (this.world["keyboard"]["A"] && this.world.keyboard.keyboardReady)
+      (this.world["keyboard"]["D"] || this.world["keyboard"]["A"]) &&
+      this.world.keyboard.keyboardReady
     );
   }
 }
