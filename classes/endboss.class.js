@@ -5,6 +5,7 @@ class Endboss extends MoveableObject {
   isDead = false;
   isOnPlace = false;
   skipDelay = false;
+  steps = 0;
 
   moveInterval = null;
 
@@ -91,43 +92,48 @@ class Endboss extends MoveableObject {
   animate() {
     this.stopAllIntervals();
     this.skipDelay = false;
-
-    this.playAnimationsCharacterInterval = setInterval(() => {
-      this.playAnimationsCharacter();
-    }, 160);
+    this.animation();
+    if (this.isDead) return;
 
     this.moveForwardInterval = setInterval(() => {
-      clearInterval(this.playAnimationsCharacterInterval);
-
-      let steps = 0;
-      this.stepInterval = setInterval(() => {
-        if (this.isHurt()) {
-          this.stopAllIntervals();
-          this.animate();
-          return;
-        }
-
-        this.playAnimation(this.IMAGES_WALK);
-        this.x -= 10;
-        steps++;
-
-        if (steps >= 12) {
-          // ca. 1 Sekunde
-          clearInterval(this.stepInterval);
-
-          // Standardanimation zurückholen
-          this.playAnimationsCharacterInterval = setInterval(() => {
-            this.playAnimationsCharacter();
-          }, 160);
-        }
-      }, 80);
+      this.moveForward();
     }, 3000);
+  }
+
+  moveForward() {
+    clearInterval(this.playAnimationsCharacterInterval);
+
+    this.steps = 0;
+    this.stepInterval = setInterval(() => {
+      if (this.isHurt()) {
+        this.stopAllIntervals();
+        this.animate();
+        return;
+      }
+      this.walk();
+      if (this.steps >= 12) {
+        clearInterval(this.stepInterval);
+        this.animation();
+      }
+    }, 80);
+  }
+
+  walk() {
+    this.playAnimation(this.IMAGES_WALK);
+    this.x -= 10;
+    this.steps++;
   }
 
   moveCharacter() {
     setInterval(() => {
       this.playAnimation(this.IMAGES_WALK);
       this.x -= 0.5;
+    }, 160);
+  }
+
+  animation() {
+    this.playAnimationsCharacterInterval = setInterval(() => {
+      this.playAnimationsCharacter();
     }, 160);
   }
 
