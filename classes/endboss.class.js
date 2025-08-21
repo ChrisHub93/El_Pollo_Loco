@@ -4,6 +4,7 @@ class Endboss extends MoveableObject {
   y = 50;
   isDead = false;
   isOnPlace = false;
+  skipDelay = false;
 
   moveInterval = null;
 
@@ -80,38 +81,47 @@ class Endboss extends MoveableObject {
     }
   }
 
-  animate() {
+  stopAllIntervals() {
     clearInterval(this.startInterval);
-  
-    // Standard-Animation
+    clearInterval(this.playAnimationsCharacterInterval);
+    clearInterval(this.moveForwardInterval);
+    clearInterval(this.stepInterval);
+  }
+
+  animate() {
+    this.stopAllIntervals();
+    this.skipDelay = false;
+
     this.playAnimationsCharacterInterval = setInterval(() => {
       this.playAnimationsCharacter();
     }, 160);
-  
-    // Alle 3 Sekunden -> kurz vorwärts laufen
+
     this.moveForwardInterval = setInterval(() => {
-      // Standardanimation pausieren
       clearInterval(this.playAnimationsCharacterInterval);
-  
-      // Einmal Schrittintervall starten
-      let stepInterval = setInterval(() => {
+
+      let steps = 0;
+      this.stepInterval = setInterval(() => {
         if (this.isHurt()) {
-          clearInterval(stepInterval);
-          this.playAnimationsCharacter();
+          this.stopAllIntervals();
+          this.animate();
+          return;
         }
+
         this.playAnimation(this.IMAGES_WALK);
         this.x -= 10;
+        steps++;
+
+        if (steps >= 12) {
+          // ca. 1 Sekunde
+          clearInterval(this.stepInterval);
+
+          // Standardanimation zurückholen
+          this.playAnimationsCharacterInterval = setInterval(() => {
+            this.playAnimationsCharacter();
+          }, 160);
+        }
       }, 80);
-  
-      // Nach 1 Sekunde stoppen + normale Animation zurückholen
-      setTimeout(() => {
-        clearInterval(stepInterval); 
-        this.playAnimationsCharacterInterval = setInterval(() => {
-          this.playAnimationsCharacter();
-        }, 160);
-      }, 1000);
-  
-    }, 3000); 
+    }, 3000);
   }
 
   moveCharacter() {
@@ -120,13 +130,12 @@ class Endboss extends MoveableObject {
       this.x -= 0.5;
     }, 160);
   }
-  
+
   playAnimationsCharacter() {
     if (this.isDead) this.playAnimation(this.IMAGES_DEAD);
     else if (this.isHurt()) this.playAnimation(this.IMAGES_HURT);
     else this.playAnimation(this.IMAGES_ATTACK);
   }
-  
 
   bottleIsColliding(mO) {
     return (
