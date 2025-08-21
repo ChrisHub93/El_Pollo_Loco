@@ -4,7 +4,6 @@ class Endboss extends MoveableObject {
   y = 50;
   isDead = false;
   isOnPlace = false;
-  skipDelay = false;
   steps = 0;
 
   moveInterval = null;
@@ -91,13 +90,20 @@ class Endboss extends MoveableObject {
 
   animate() {
     this.stopAllIntervals();
-    this.skipDelay = false;
     this.animation();
     if (this.isDead) return;
 
     this.moveForwardInterval = setInterval(() => {
       this.moveForward();
     }, 3000);
+  }
+
+  animation() {
+    this.playAnimationsCharacterInterval = setInterval(() => {
+      if (this.isDead) this.playAnimation(this.IMAGES_DEAD);
+      else if (this.isHurt()) this.playAnimation(this.IMAGES_HURT);
+      else this.playAnimation(this.IMAGES_ATTACK);
+    }, 160);
   }
 
   moveForward() {
@@ -122,25 +128,6 @@ class Endboss extends MoveableObject {
     this.playAnimation(this.IMAGES_WALK);
     this.x -= 10;
     this.steps++;
-  }
-
-  moveCharacter() {
-    setInterval(() => {
-      this.playAnimation(this.IMAGES_WALK);
-      this.x -= 0.5;
-    }, 160);
-  }
-
-  animation() {
-    this.playAnimationsCharacterInterval = setInterval(() => {
-      this.playAnimationsCharacter();
-    }, 160);
-  }
-
-  playAnimationsCharacter() {
-    if (this.isDead) this.playAnimation(this.IMAGES_DEAD);
-    else if (this.isHurt()) this.playAnimation(this.IMAGES_HURT);
-    else this.playAnimation(this.IMAGES_ATTACK);
   }
 
   bottleIsColliding(mO) {
