@@ -4,6 +4,7 @@ class Chicken extends MoveableObject {
   height = 60;
   width = 80;
   isDead = false;
+  character = "chicken";
 
   offset = {
     top: 0,

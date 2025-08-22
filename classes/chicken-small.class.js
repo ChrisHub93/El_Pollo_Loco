@@ -6,6 +6,7 @@ class ChickenSmall extends MoveableObject {
     isDead = false;
     moveInterval = null;
     walkInterval = null;
+    character = "chicken-small";
   
     offset = {
       top: 0,

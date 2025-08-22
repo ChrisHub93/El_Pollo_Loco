@@ -8,6 +8,7 @@ class MoveableObject extends DrawableObject {
   lastHit = 0;
   coins = 0;
   bottles = 0;
+  character = "moveableObject";
   // kommt in collidable-object.class.js ->
   offset = {
     top: 0,

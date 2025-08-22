@@ -90,7 +90,7 @@ class World {
 
       if (this.character.isColliding(enemy)) {
         if (this.isFromAbove(enemy)) this.resolveEnemyStomp(enemy);
-        else this.characterGetsHurt();
+        else this.characterGetsHurt(enemy);
       }
     });
   }
@@ -118,28 +118,30 @@ class World {
     }, 400);
   }
 
-  characterGetsHurt() {
+  characterGetsHurt(enemy) {
     this.keyboard.keyboardReady = false;
+    console.log("keyboard aus");
     this.character.hitEnemy();
     this.statusBarHealth.setPercentage(this.character.energy);
-    this.characterPushBack();
-    
+    this.characterPushBack(enemy);
   }
 
-  characterPushBack() {
-    
+  characterPushBack(enemy) {
     if (this.pushBackInterval) {
       clearInterval(this.pushBackInterval);
     }
     this.pushBackInterval = setInterval(() => {
-      this.character.x -= 4;
+      if (enemy.character == "endboss") this.character.x -= 13;
+      else this.character.x -= 4;
     }, 10);
+
     this.character.jump(15);
     setTimeout(() => {
       clearInterval(this.pushBackInterval);
       this.pushBackInterval = null;
       this.keyboard.keyboardReady = true;
-    }, 400);
+      console.log("kexboard an");
+    }, 700);
   }
 
   collisionItems(itemType, statusBar) {

@@ -5,6 +5,7 @@ class Endboss extends MoveableObject {
   isDead = false;
   isOnPlace = false;
   steps = 0;
+  character = "endboss";
 
   offset = {
     top: 60,
