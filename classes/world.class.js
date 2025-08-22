@@ -119,7 +119,7 @@ class World {
   }
 
   characterGetsHurt(enemy) {
-    this.keyboard.keyboardReady = false;
+    
     console.log("keyboard aus");
     this.character.hitEnemy();
     this.statusBarHealth.setPercentage(this.character.energy);
@@ -127,11 +127,12 @@ class World {
   }
 
   characterPushBack(enemy) {
+    this.keyboard.keyboardReady = false;
     if (this.pushBackInterval) {
       clearInterval(this.pushBackInterval);
     }
     this.pushBackInterval = setInterval(() => {
-      if (enemy.character == "endboss") this.character.x -= 13;
+      if (enemy.character == "endboss") this.character.x -= 8;
       else this.character.x -= 4;
     }, 10);
 
