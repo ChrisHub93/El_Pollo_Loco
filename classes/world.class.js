@@ -69,9 +69,8 @@ class World {
       this.keyboard.keyboardReady = false;
       this.endboss.animateStartFrequency();
     }
-    if (this.endboss.isOnPlace) this.keyboard.keyboardReady = true;    
+    if (this.endboss.isOnPlace) this.keyboard.keyboardReady = true;
   }
-
 
   characterOnBossPosition() {
     return (
@@ -90,8 +89,6 @@ class World {
       if (enemy.isDead) return;
 
       if (this.character.isColliding(enemy)) {
-        
-        
         if (this.isFromAbove(enemy)) this.resolveEnemyStomp(enemy);
         else this.characterGetsHurt();
       }
@@ -100,17 +97,17 @@ class World {
 
   isFromAbove(enemy) {
     if (enemy instanceof Endboss) return false;
-  
-    const charBottom = this.character.y + this.character.height - this.character.offset.bottom;
-    const enemyTop   = enemy.y + enemy.offset.top;
-  
+
+    const charBottom =
+      this.character.y + this.character.height - this.character.offset.bottom;
+    const enemyTop = enemy.y + enemy.offset.top;
+
     return (
       charBottom >= enemyTop &&
       charBottom <= enemy.y + enemy.height - enemy.offset.bottom &&
-      this.character.speedY < 0   // bei dir: fallen = speedY < 0
+      this.character.speedY < 0 // bei dir: fallen = speedY < 0
     );
   }
-  
 
   resolveEnemyStomp(enemy) {
     enemy.onHit();
@@ -122,8 +119,27 @@ class World {
   }
 
   characterGetsHurt() {
+    this.keyboard.keyboardReady = false;
     this.character.hitEnemy();
     this.statusBarHealth.setPercentage(this.character.energy);
+    this.characterPushBack();
+    
+  }
+
+  characterPushBack() {
+    
+    if (this.pushBackInterval) {
+      clearInterval(this.pushBackInterval);
+    }
+    this.pushBackInterval = setInterval(() => {
+      this.character.x -= 4;
+    }, 10);
+    this.character.jump(15);
+    setTimeout(() => {
+      clearInterval(this.pushBackInterval);
+      this.pushBackInterval = null;
+      this.keyboard.keyboardReady = true;
+    }, 400);
   }
 
   collisionItems(itemType, statusBar) {
@@ -150,7 +166,11 @@ class World {
   }
 
   canBottleBeThrown() {
-    return this.keyboard.SPACE === true && this.statusBarBottles.percentage > 0 && this.keyboard.keyboardReady;
+    return (
+      this.keyboard.SPACE === true &&
+      this.statusBarBottles.percentage > 0 &&
+      this.keyboard.keyboardReady
+    );
   }
 
   throwBottles() {
