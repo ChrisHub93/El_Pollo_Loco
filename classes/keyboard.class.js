@@ -39,7 +39,7 @@ class Keyboard {
 
       this.longIdleTimeout = setTimeout(() => {
         this.LONG_IDLE = true;
-      }, 3000);
+      }, 4000);
     }
   }
 }
