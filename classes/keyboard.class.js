@@ -13,6 +13,7 @@ class Keyboard {
 
     window.addEventListener("keydown", (e) => this.handleKey(e, true));
     window.addEventListener("keyup", (e) => this.handleKey(e, false));
+    this.setKey(this.D, true);
   }
 
   handleKey(e, isPressed) {
@@ -34,11 +35,11 @@ class Keyboard {
 
       this.idleTimeout = setTimeout(() => {
         this.IDLE = true;
-      }, 2000);
+      }, 100);
 
       this.longIdleTimeout = setTimeout(() => {
         this.LONG_IDLE = true;
-      }, 5000);
+      }, 3000);
     }
   }
 }
