@@ -10,6 +10,7 @@ class World {
   statusBarBottles = new StatusBar(30, 95, "IMAGES_BOTTLE", 0);
   statusBarEnboss = new StatusBar(470, 6, "IMAGES_ENDBOSS", 100);
   endboss = this.level.enemies.find((enemy) => enemy instanceof Endboss);
+  onHit = false;
 
   throwableObjects = [];
 
@@ -90,7 +91,7 @@ class World {
 
       if (this.character.isColliding(enemy)) {
         if (this.isFromAbove(enemy)) this.resolveEnemyStomp(enemy);
-        else this.characterGetsHurt(enemy);
+        else if (!this.onHit) this.characterGetsHurt(enemy);
       }
     });
   }
@@ -119,8 +120,7 @@ class World {
   }
 
   characterGetsHurt(enemy) {
-    
-    console.log("keyboard aus");
+    this.onHit = true;
     this.character.hitEnemy();
     this.statusBarHealth.setPercentage(this.character.energy);
     this.characterPushBack(enemy);
@@ -141,7 +141,7 @@ class World {
       clearInterval(this.pushBackInterval);
       this.pushBackInterval = null;
       this.keyboard.keyboardReady = true;
-      console.log("kexboard an");
+      this.onHit = false;
     }, 700);
   }
 
