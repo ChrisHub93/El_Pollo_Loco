@@ -11,7 +11,6 @@ class World {
   statusBarEnboss = new StatusBar(470, 6, "IMAGES_ENDBOSS", 100);
   endboss = this.level.enemies.find((enemy) => enemy instanceof Endboss);
   onHit = false;
-
   throwableObjects = [];
 
   constructor(canvas, keyboard) {
@@ -21,6 +20,22 @@ class World {
     this.draw();
     this.setWorld();
     this.run();
+  }
+
+  // Alles, was gerendert werden soll und wird in einer endlosschleife aktualisiert.
+  // Wie oft, hängt von der Performance der Grafikkarte ab.
+  draw() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+    this.backgroundObjects();
+    this.hudElements();
+    this.levelObjects();
+
+    // Dadurch wird draw() immer wieder aufgerufen ->
+    let self = this;
+    requestAnimationFrame(function () {
+      self.draw();
+    });
   }
 
   // Übergebe alles von der Klasse "World" um funktionen aus World auch in der Klasse "Character"
@@ -190,21 +205,6 @@ class World {
     this.statusBarBottles.setPercentage(this.character.bottles);
   }
 
-  // Alles, was gerendert werden soll und wird in einer endlosschleife aktualisiert.
-  // Wie oft, hängt von der Performance der Grafikkarte ab.
-  draw() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-    this.backgroundObjects();
-    this.hudElements();
-    this.levelObjects();
-
-    // Dadurch wird draw() immer wieder aufgerufen ->
-    let self = this;
-    requestAnimationFrame(function () {
-      self.draw();
-    });
-  }
 
   backgroundObjects() {
     this.ctx.translate(this.camera_x, 0);
