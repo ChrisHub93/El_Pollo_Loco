@@ -1,6 +1,6 @@
 class ChickenSmall extends MoveableObject {
     static itemCount = 0; 
-    y = 360;
+    y = 365;
     height = 60;
     width = 80;
     isDead = false;
@@ -9,9 +9,9 @@ class ChickenSmall extends MoveableObject {
     character = "chicken-small";
   
     offset = {
-      top: 0,
-      left: 10,
-      right: 10,
+      top: 20,
+      left: 15,
+      right: 15,
       bottom: 10,
     };
   

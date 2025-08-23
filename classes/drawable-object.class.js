@@ -59,7 +59,7 @@ class DrawableObject {
       this instanceof Endboss ||
       this instanceof Coin
     ) {
-      ctx.lineWidth = 3;
+      ctx.lineWidth = 1;
       ctx.strokeStyle = "red";
 
       ctx.rect(

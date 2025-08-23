@@ -72,7 +72,7 @@ class Character extends MoveableObject {
     top: 120,
     left: 30,
     right: 40,
-    bottom: 10,
+    bottom: 15,
   };
 
   constructor() {

@@ -34,7 +34,7 @@ class World {
     setInterval(() => {
       this.checkCollisions();
       this.characterEndbossPosition();
-    }, 20);
+    }, 10);
     setInterval(() => {
       this.checkThrowableObjects();
       this.checkBottleHit();
@@ -120,6 +120,7 @@ class World {
   }
 
   characterGetsHurt(enemy) {
+    console.log(enemy);
     this.onHit = true;
     this.character.hitEnemy();
     this.statusBarHealth.setPercentage(this.character.energy);
