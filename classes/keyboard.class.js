@@ -7,12 +7,10 @@ class Keyboard {
     this.SPACE = false;
     this.IDLE = false;
     this.LONG_IDLE = false;
-    this.pressed = false;
 
     this.idleTimeout = null;
     this.longIdleTimeout = null;
 
-    // Event Listener direkt in der Klasse binden
     window.addEventListener("keydown", (e) => this.handleKey(e, true));
     window.addEventListener("keyup", (e) => this.handleKey(e, false));
   }
@@ -28,7 +26,6 @@ class Keyboard {
     this[key] = isPressed;
 
     if (isPressed) {
-      this.pressed = true;
       this.IDLE = false;
       this.LONG_IDLE = false;
 
@@ -37,26 +34,11 @@ class Keyboard {
 
       this.idleTimeout = setTimeout(() => {
         this.IDLE = true;
-      }, 1000);
+      }, 2000);
 
       this.longIdleTimeout = setTimeout(() => {
         this.LONG_IDLE = true;
       }, 5000);
-    } else {
-      if (!this.W && !this.A && !this.D && !this.SPACE) {
-        this.pressed = false;
-
-        clearTimeout(this.idleTimeout);
-        clearTimeout(this.longIdleTimeout);
-
-        this.idleTimeout = setTimeout(() => {
-          this.IDLE = true;
-        }, 1000);
-
-        this.longIdleTimeout = setTimeout(() => {
-          this.LONG_IDLE = true;
-        }, 5000);
-      }
     }
   }
 }
