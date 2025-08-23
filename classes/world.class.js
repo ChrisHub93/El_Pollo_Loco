@@ -128,21 +128,24 @@ class World {
 
   characterPushBack(enemy) {
     this.keyboard.keyboardReady = false;
-    if (this.pushBackInterval) {
-      clearInterval(this.pushBackInterval);
-    }
+
+    if (this.pushBackInterval) clearInterval(this.pushBackInterval);
+
     this.pushBackInterval = setInterval(() => {
       if (enemy.character == "endboss") this.character.x -= 8;
       else this.character.x -= 4;
     }, 10);
 
     this.character.jump(15);
-    setTimeout(() => {
-      clearInterval(this.pushBackInterval);
-      this.pushBackInterval = null;
-      this.keyboard.keyboardReady = true;
-      this.onHit = false;
-    }, 700);
+
+    setTimeout(() => this.resetPushbackState(), 700);
+  }
+
+  resetPushbackState() {
+    clearInterval(this.pushBackInterval);
+    this.pushBackInterval = null;
+    this.keyboard.keyboardReady = true;
+    this.onHit = false;
   }
 
   collisionItems(itemType, statusBar) {
