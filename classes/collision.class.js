@@ -69,6 +69,25 @@ class Collision {
     this.characterPushBack(enemy);
   }
 
+  characterPushBack(enemy) {
+    if (this.character.x < 0) {
+      this.resetPushbackState();
+      return;
+    }
+    keyboard.keyboardReady = false;
+
+    if (this.pushBackInterval) clearInterval(this.pushBackInterval);
+
+    this.pushBackInterval = setInterval(() => {
+      if (enemy.character == "endboss") this.character.x -= 8;
+      else this.character.x -= 4;
+    }, 10);
+
+    this.character.jump(15);
+
+    setTimeout(() => this.resetPushbackState(), 700);
+  }
+
   resetPushbackState() {
     clearInterval(this.pushBackInterval);
     this.pushBackInterval = null;

@@ -70,21 +70,6 @@ class World extends Collision {
     );
   }
 
-  characterPushBack(enemy) {
-    keyboard.keyboardReady = false;
-
-    if (this.pushBackInterval) clearInterval(this.pushBackInterval);
-
-    this.pushBackInterval = setInterval(() => {
-      if (enemy.character == "endboss") this.character.x -= 8;
-      else this.character.x -= 4;
-    }, 10);
-
-    this.character.jump(15);
-
-    setTimeout(() => this.resetPushbackState(), 700);
-  }
-
   removeItem(collected, xCoord) {
     this.level[collected] = this.level[collected].filter(
       (item) => item.x !== xCoord
