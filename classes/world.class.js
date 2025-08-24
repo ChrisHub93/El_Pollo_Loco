@@ -3,7 +3,6 @@ class World extends Collision {
   level = level1;
   ctx;
   canvas;
-  keyboard;
   camera_x = 0;
   statusBarHealth = new StatusBar(30, 0, "IMAGES_HEALTH", 100);
   statusBarCoins = new StatusBar(30, 45, "IMAGES_COIN", 0);
@@ -13,11 +12,10 @@ class World extends Collision {
   onHit = false;
   throwableObjects = [];
 
-  constructor(canvas, keyboard) {
+  constructor(canvas) {
     super();
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
-    this.keyboard = keyboard;
     this.draw();
     this.setWorld();
     this.run();
@@ -60,10 +58,10 @@ class World extends Collision {
   characterEndbossPosition() {
     if (this.characterOnBossPosition()) {
       this.character.isOnEndbossPosition = true;
-      this.keyboard.keyboardReady = false;
+      keyboard.keyboardReady = false;
       this.endboss.animateStartFrequency();
     }
-    if (this.endboss.isOnPlace) this.keyboard.keyboardReady = true;
+    if (this.endboss.isOnPlace) keyboard.keyboardReady = true;
   }
 
   characterOnBossPosition() {
@@ -73,7 +71,7 @@ class World extends Collision {
   }
 
   characterPushBack(enemy) {
-    this.keyboard.keyboardReady = false;
+    keyboard.keyboardReady = false;
 
     if (this.pushBackInterval) clearInterval(this.pushBackInterval);
 
@@ -96,15 +94,15 @@ class World extends Collision {
   checkThrowableObjects() {
     if (this.canBottleBeThrown()) {
       this.throwBottles();
-      this.keyboard.SPACE = false;
+      keyboard.SPACE = false;
     }
   }
 
   canBottleBeThrown() {
     return (
-      this.keyboard.SPACE === true &&
+      keyboard.SPACE === true &&
       this.statusBarBottles.percentage > 0 &&
-      this.keyboard.keyboardReady
+      keyboard.keyboardReady
     );
   }
 

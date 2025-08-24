@@ -4,7 +4,7 @@ let keyboard = new Keyboard();
 
 function initIndex() {
   canvas = document.getElementById("canvas");
-  world = new World(canvas, keyboard);
+  world = new World(canvas);
 }
 
 function fullscreen(method) {
