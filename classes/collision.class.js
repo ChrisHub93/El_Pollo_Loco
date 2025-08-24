@@ -72,7 +72,7 @@ class Collision {
   resetPushbackState() {
     clearInterval(this.pushBackInterval);
     this.pushBackInterval = null;
-    this.keyboard.keyboardReady = true;
+    keyboard.keyboardReady = true;
     this.onHit = false;
   }
 
