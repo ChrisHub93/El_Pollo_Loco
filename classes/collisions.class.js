@@ -1,0 +1,3 @@
+class Collision extends World {
+
+}
