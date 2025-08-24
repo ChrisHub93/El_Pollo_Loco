@@ -110,15 +110,15 @@ class Character extends MoveableObject {
     else if (this.isHurt()) this.playAnimation(this.IMAGES_HURT);
     else if (this.isAboveGround()) this.playAnimation(this.IMAGES_JUMPING);
     else if (this.canAnimate()) this.playAnimation(this.IMAGE_WALKING);
-    else if (this.world.keyboard.LONG_IDLE) this.playAnimation(this.IMAGES_LONG_IDLE);
-    else if (this.world.keyboard.IDLE) this.playAnimation(this.IMAGES_IDLE);
+    else if (keyboard.LONG_IDLE) this.playAnimation(this.IMAGES_LONG_IDLE);
+    else if (keyboard.IDLE) this.playAnimation(this.IMAGES_IDLE);
   }
 
   canMoveRight() {
     return (
-      this.world["keyboard"]["D"] &&
+      keyboard["D"] &&
       this.x < this.world["level"]["level_end_x"] &&
-      this.world.keyboard.keyboardReady
+      keyboard.keyboardReady
     );
   }
 
@@ -130,9 +130,9 @@ class Character extends MoveableObject {
 
   canMoveLeft() {
     return (
-      this.world["keyboard"]["A"] &&
+      keyboard["A"] &&
       this.x > 0 &&
-      this.world.keyboard.keyboardReady
+      keyboard.keyboardReady
     );
   }
 
@@ -144,16 +144,16 @@ class Character extends MoveableObject {
 
   canJump() {
     return (
-      this.world["keyboard"]["W"] &&
+      keyboard["W"] &&
       !this.isAboveGround() &&
-      this.world.keyboard.keyboardReady
+      keyboard.keyboardReady
     );
   }
 
   canAnimate() {
     return (
-      (this.world["keyboard"]["D"] || this.world["keyboard"]["A"]) &&
-      this.world.keyboard.keyboardReady
+      (keyboard["D"] || keyboard["A"]) &&
+      keyboard.keyboardReady
     );
   }
 }
