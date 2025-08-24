@@ -5,8 +5,6 @@ let keyboard = new Keyboard();
 function initIndex() {
   canvas = document.getElementById("canvas");
   world = new World(canvas, keyboard);
-
-  console.log("My Character is", world["character"]);
 }
 
 function fullscreen(method) {
