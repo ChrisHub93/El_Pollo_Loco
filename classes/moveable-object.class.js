@@ -46,7 +46,7 @@ class MoveableObject extends DrawableObject {
   }
 
   hitEnemy() {
-    this.energy -= 10;
+    this.energy -= 20;
     if (this.energy <= 0) {
       this.energy = 0;
     } else {
