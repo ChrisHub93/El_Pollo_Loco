@@ -72,4 +72,6 @@ class DrawableObject {
       ctx.beginPath();
     }
   }
+
+  showGameOverScreen(){}
 }

@@ -93,7 +93,7 @@ class Character extends MoveableObject {
     }, 1000 / 60);
 
     setInterval(() => {
-      this.checkLiveStatus()
+      this.checkLiveStatus();
       this.playAnimationsCharacter();
     }, 160);
   }
@@ -107,7 +107,7 @@ class Character extends MoveableObject {
   }
 
   playAnimationsCharacter() {
-    if (this.isDead) this.playAnimation(this.IMAGES_DEAD);
+    if (this.isDead) this.gameOver();
     else if (this.isHurt()) this.playAnimation(this.IMAGES_HURT);
     else if (this.isAboveGround()) this.playAnimation(this.IMAGES_JUMPING);
     else if (this.canAnimate()) this.playAnimation(this.IMAGE_WALKING);
@@ -130,11 +130,7 @@ class Character extends MoveableObject {
   }
 
   canMoveLeft() {
-    return (
-      keyboard["A"] &&
-      this.x > 0 &&
-      keyboard.keyboardReady
-    );
+    return keyboard["A"] && this.x > 0 && keyboard.keyboardReady;
   }
 
   moveLeft() {
@@ -144,17 +140,16 @@ class Character extends MoveableObject {
   }
 
   canJump() {
-    return (
-      keyboard["W"] &&
-      !this.isAboveGround() &&
-      keyboard.keyboardReady
-    );
+    return keyboard["W"] && !this.isAboveGround() && keyboard.keyboardReady;
   }
 
   canAnimate() {
-    return (
-      (keyboard["D"] || keyboard["A"]) &&
-      keyboard.keyboardReady
-    );
+    return (keyboard["D"] || keyboard["A"]) && keyboard.keyboardReady;
+  }
+
+  gameOver() {
+    this.playAnimation(this.IMAGES_DEAD);
+    // nach timeot von 0.5 Sekunden ->
+    this.showGameOverScreen();
   }
 }
