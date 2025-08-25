@@ -32,9 +32,12 @@ class World extends Collision {
 
     // Dadurch wird draw() immer wieder aufgerufen ->
     let self = this;
-    requestAnimationFrame(function () {
-      self.draw();
-    });
+    if (!gameStopped) {
+      requestAnimationFrame(function () {
+        self.draw();
+      });
+    }
+   
   }
 
   // Übergebe alles von der Klasse "World" um funktionen aus World auch in der Klasse "Character"
