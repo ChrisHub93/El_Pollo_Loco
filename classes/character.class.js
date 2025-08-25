@@ -93,6 +93,7 @@ class Character extends MoveableObject {
     }, 1000 / 60);
 
     setInterval(() => {
+      this.checkLiveStatus()
       this.playAnimationsCharacter();
     }, 160);
   }
@@ -106,7 +107,7 @@ class Character extends MoveableObject {
   }
 
   playAnimationsCharacter() {
-    if (this.isDead()) this.playAnimation(this.IMAGES_DEAD);
+    if (this.isDead) this.playAnimation(this.IMAGES_DEAD);
     else if (this.isHurt()) this.playAnimation(this.IMAGES_HURT);
     else if (this.isAboveGround()) this.playAnimation(this.IMAGES_JUMPING);
     else if (this.canAnimate()) this.playAnimation(this.IMAGE_WALKING);

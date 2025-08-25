@@ -3,7 +3,6 @@ class Chicken extends MoveableObject {
   y = 360;
   height = 60;
   width = 80;
-  isDead = false;
   character = "chicken";
 
   offset = {

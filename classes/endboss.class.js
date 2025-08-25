@@ -2,7 +2,6 @@ class Endboss extends MoveableObject {
   height = 400;
   width = 250;
   y = 50;
-  isDead = false;
   isOnPlace = false;
   steps = 0;
   character = "endboss";

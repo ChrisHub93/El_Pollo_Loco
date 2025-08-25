@@ -3,7 +3,6 @@ class ChickenSmall extends MoveableObject {
     y = 365;
     height = 60;
     width = 80;
-    isDead = false;
     moveInterval = null;
     walkInterval = null;
     character = "chicken-small";

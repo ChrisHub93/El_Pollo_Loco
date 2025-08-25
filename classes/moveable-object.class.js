@@ -9,6 +9,7 @@ class MoveableObject extends DrawableObject {
   coins = 0;
   bottles = 0;
   character = "moveableObject";
+  isDead = false;
   // kommt in collidable-object.class.js ->
   offset = {
     top: 0,
@@ -70,8 +71,8 @@ class MoveableObject extends DrawableObject {
     return timePassed < 1;
   }
 
-  isDead() {
-    return this.energy == 0;
+  checkLiveStatus() { 
+    if(this.energy == 0) this.isDead = true;
   }
 
   // Die Bilder des Arrays werden nacheinander abgespielt, um es zu animieren
