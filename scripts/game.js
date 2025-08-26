@@ -2,6 +2,8 @@ let canvas;
 let world;
 let keyboard;
 let gameStopped = false;
+let intervalIds = [];
+let i = 1;
 
 function initIndex() {
   gameStopped = false;
@@ -46,4 +48,13 @@ function restartGame() {
   document.getElementById("end-screen").style.display = "none";
   canvas.style.display = "block";
   initIndex();
+}
+
+function setStoppableInterval(fn, time) {
+  let id = setInterval(fn, time);
+  intervalIds.push(id);
+}
+
+function stopIntervalIDs() {
+  intervalIds.forEach(clearInterval);
 }
