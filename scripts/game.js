@@ -4,6 +4,7 @@ let keyboard = new Keyboard();
 let gameStopped = false;
 
 function initIndex() {
+  initLevelOne();
   canvas = document.getElementById("canvas");
   world = new World(canvas);
 }
