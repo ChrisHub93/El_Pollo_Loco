@@ -73,5 +73,11 @@ class DrawableObject {
     }
   }
 
-  showGameOverScreen(){}
+  showGameOverScreen(){
+    this.loadImage("../assets/img/You won, you lost/Game Over.png")
+    this.height = 300;
+    this.width = 400;
+    this.x += 60;
+    this.y = 82;
+  }
 }

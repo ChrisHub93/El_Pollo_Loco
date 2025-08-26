@@ -2,6 +2,7 @@ class Character extends MoveableObject {
   height = 280;
   y = 147;
   // x = 2800; // Test für Endboss
+  energy = 10; // Für Test Endscreen
   speed = 10;
   isOnEndbossPosition = false;
   world;
@@ -150,7 +151,9 @@ class Character extends MoveableObject {
 
   gameOver() {
     this.playAnimation(this.IMAGES_DEAD);
-    // nach timeot von 0.5 Sekunden ->
-    this.showGameOverScreen();
+    setTimeout(() => {
+      gameStopped = true;
+      this.showGameOverScreen();
+    }, 300);   
   }
 }
