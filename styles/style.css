@@ -25,14 +25,8 @@ h1 {
 
 canvas {
   background-color: black;
-  /* display: block; */
   display: none;
 }
-/* 
-.startScreen {
-  width: "720px";
-  height: "480px";
-} */
 
 .startScreen {
   display: flex;
