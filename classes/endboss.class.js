@@ -90,6 +90,7 @@ class Endboss extends MoveableObject {
     this.stopAllIntervals();
     this.animation();
     if (this.isDead) return;
+    if (gameStopped) return;
 
     this.moveForwardInterval = setInterval(() => {
       this.moveForward();
@@ -105,10 +106,12 @@ class Endboss extends MoveableObject {
   }
 
   moveForward() {
+    if (gameStopped) return 
     clearInterval(this.playAnimationsCharacterInterval);
     this.steps = 0;
 
     this.stepInterval = setInterval(() => {
+      if (gameStopped) return 
       if (this.isHurt()) {
         this.stopAllIntervals();
         this.animate();
