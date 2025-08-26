@@ -35,7 +35,7 @@
       <h1>El pollo loco</h1>
 
       <div id="start-screen" class="startScreen">
-        <button onclick="initIndex()" id="start-button" class="startBtn">Start Game</button>
+        <button onclick="initIndex()" id="start-button" class="btn">Start Game</button>
         <div class="key-description">
           <p>A & D = Walk</p>
           <p>W = Jump</p>
@@ -44,13 +44,8 @@
       </div>
 
       <canvas id="canvas" width="720px" height="480px" class="canvasScreen"> </canvas>
-      <div id="endscreen" style="display: none">
-        <img
-          src="./assets/img/You won, you lost/Game Over.png"
-          width="720px"
-          height="480px"
-          alt=""
-        />
+      <div id="end-screen" class="endscreen">
+        <button onclick="restartGame()" class="btn btnEndscreen">Restart Game</button>
       </div>
     </div>
     <button

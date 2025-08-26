@@ -2,7 +2,7 @@ class Character extends MoveableObject {
   height = 280;
   y = 147;
   // x = 2800; // Test für Endboss
-  //energy = 10; // Für Test Endscreen
+  energy = 10; // Für Test Endscreen
   speed = 10;
   isOnEndbossPosition = false;
   world;

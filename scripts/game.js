@@ -4,11 +4,12 @@ let keyboard;
 let gameStopped = false;
 
 function initIndex() {
+  gameStopped = false;
   keyboard = new Keyboard();
   document.getElementById("start-screen").style.display = "none";
   canvas = document.getElementById("canvas");
   initLevelOne();
-  canvas.style.display = "block"
+  canvas.style.display = "block";
   world = new World(canvas);
 }
 
@@ -31,13 +32,18 @@ function exitFullscreen() {
 }
 
 function stopGame() {
-  if (!gameStopped)  {
+  if (!gameStopped) {
     gameStopped = true;
     keyboard.keyboardReady = false;
-  }
-  else {
+  } else {
     gameStopped = false;
     keyboard.keyboardReady = true;
     world.draw();
   }
+}
+
+function restartGame() {
+  document.getElementById("end-screen").style.display = "none";
+  canvas.style.display = "block";
+  initIndex();
 }
