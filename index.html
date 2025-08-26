@@ -33,12 +33,31 @@
   <body onload="initIndex()">
     <div id="fullscreen">
       <h1>El pollo loco</h1>
-      <div id="endscreen" style="display: none;">
-        <img src="./assets/img/You won, you lost/Game Over.png" width="720px" height="480px" alt="">
+
+      <div id="start-screen" class="startScreen">
+
+          <button id="start-button" class="startBtn">StartGame</button>
+
+
       </div>
-      <canvas id="canvas" width="720px" height="480px"> 
-      </canvas>
+
+      <canvas id="canvas" class="canvasScreen"> </canvas>
+      <div id="endscreen" style="display: none">
+        <img
+          src="./assets/img/You won, you lost/Game Over.png"
+          width="720px"
+          height="480px"
+          alt=""
+        />
+      </div>
+
     </div>
-    <button id="stop-button" style="height: 50px; width: 50px;" onclick="stopGame()">Pause</button>
+    <button
+      id="stop-button"
+      style="height: 50px; width: 50px"
+      onclick="stopGame()"
+    >
+      Pause
+    </button>
   </body>
 </html>
