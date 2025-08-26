@@ -107,7 +107,7 @@ class Endboss extends MoveableObject {
   moveForward() {
     clearInterval(this.playAnimationsCharacterInterval);
     this.steps = 0;
-    
+
     this.stepInterval = setInterval(() => {
       if (this.isHurt()) {
         this.stopAllIntervals();

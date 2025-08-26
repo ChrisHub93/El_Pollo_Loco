@@ -93,7 +93,7 @@ class MoveableObject extends DrawableObject {
   }
 
   moveLeft() {
-    this.x -= this.speed;
+    if (!gameStopped) this.x -= this.speed;
   }
 
   jump(height) {
