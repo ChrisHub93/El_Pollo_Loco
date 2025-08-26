@@ -29,10 +29,11 @@ function exitFullscreen() {
 function stopGame() {
   if (!gameStopped)  {
     gameStopped = true;
-    // Stop moveableObjects moving
+    keyboard.keyboardReady = false;
   }
   else {
     gameStopped = false;
+    keyboard.keyboardReady = true;
     world.draw();
   }
 }
