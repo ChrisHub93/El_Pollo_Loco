@@ -1,11 +1,14 @@
 let canvas;
 let world;
-let keyboard = new Keyboard();
+let keyboard;
 let gameStopped = false;
 
 function initIndex() {
-  initLevelOne();
+  keyboard = new Keyboard();
+  document.getElementById("start-screen").style.display = "none";
   canvas = document.getElementById("canvas");
+  initLevelOne();
+  canvas.style.display = "block"
   world = new World(canvas);
 }
 
