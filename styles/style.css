@@ -28,34 +28,45 @@ canvas {
   /* display: block; */
   display: none;
 }
-
+/* 
 .startScreen {
   width: "720px";
   height: "480px";
-}
+} */
 
 .startScreen {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   height: 480px;
   width: 720px;
   background-image: url("../assets/img/9_intro_outro_screens/start/startscreen_1.png");
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
-  justify-content: center;
-  align-items: flex-start;
 }
 
 .startBtn {
-  display: flex;
   height: 30px;
   width: 150px;
+  border-radius: 21px;
+  margin-top: 40px;
+  border: none;
+  background-color: #FBA900;
 }
 
-.startScreen__img {
-  width: 100%;
-  height: 100%;
+.startBtn:hover {
+  cursor: pointer;
+  background-color: #F4DC00;
 }
+
+.key-description {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
 /* Smartphones */
 @media (max-width: 720px) {
   canvas {

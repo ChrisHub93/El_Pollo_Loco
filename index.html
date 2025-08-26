@@ -30,18 +30,20 @@
 
     <title>El pollo loco</title>
   </head>
-  <body onload="initIndex()">
+  <body onload="">
     <div id="fullscreen">
       <h1>El pollo loco</h1>
 
       <div id="start-screen" class="startScreen">
-
-          <button id="start-button" class="startBtn">StartGame</button>
-
-
+        <button onclick="initIndex()" id="start-button" class="startBtn">StartGame</button>
+        <div class="key-description">
+          <p>A & D = Walk</p>
+          <p>W = Jump</p>
+          <p>Space = Throw bottles</p>
+        </div>
       </div>
 
-      <canvas id="canvas" class="canvasScreen"> </canvas>
+      <canvas id="canvas" width="720px" height="480px" class="canvasScreen"> </canvas>
       <div id="endscreen" style="display: none">
         <img
           src="./assets/img/You won, you lost/Game Over.png"
@@ -50,7 +52,6 @@
           alt=""
         />
       </div>
-
     </div>
     <button
       id="stop-button"
