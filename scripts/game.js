@@ -51,23 +51,13 @@ function restartGame() {
   initIndex();
 }
 
-function setStoppableInterval(fn, time) {
-  let id = setInterval(fn, time);
-  intervalIds.push(id);
+function clearAllIntervalls() {
+  for (let index = 0; index < 999999; index++) window.clearInterval(index);
 }
 
-function stopIntervalIDs() {
-  intervalIds.forEach(clearInterval);
+function resetItemCounts() {
+  Coin.itemCount = 0;
+  Bottle.itemCount = 0;
+  Chicken.itemCount = 0;
+  ChickenSmall.itemCount = 0;
 }
-
-function clearAllIntervalls(){
-  for (let index = 0; index < 999999; index++) window.clearInterval(index)}
-
-  function resetItemCounts() {
-    Coin.itemCount = 0;
-    Bottle.itemCount = 0;
-    Chicken.itemCount = 0;
-    ChickenSmall.itemCount = 0;
-    Endboss.itemCount = 0;     // falls Clouds das auch nutzen
-    BackgroundObject.itemCount = 0; // falls nötig
-  }
