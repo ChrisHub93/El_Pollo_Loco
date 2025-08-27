@@ -45,6 +45,7 @@ function stopGame() {
 }
 
 function restartGame() {
+  clearAllIntervalls();
   document.getElementById("end-screen").style.display = "none";
   canvas.style.display = "block";
   initIndex();
@@ -58,3 +59,6 @@ function setStoppableInterval(fn, time) {
 function stopIntervalIDs() {
   intervalIds.forEach(clearInterval);
 }
+
+function clearAllIntervalls(){
+  for (let index = 0; index < 999999; index++) window.clearInterval(index)}
