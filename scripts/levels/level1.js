@@ -1,6 +1,8 @@
 let level1;
 
 function initLevelOne() {
+  resetItemCounts();
+
   level1 = new Level(
     [
       new Chicken(),
