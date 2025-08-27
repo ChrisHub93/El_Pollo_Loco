@@ -99,7 +99,7 @@ class Endboss extends MoveableObject {
 
   animation() {
     this.playAnimationsCharacterInterval = setInterval(() => {
-      if (this.isDead) this.playAnimation(this.IMAGES_DEAD);
+      if (this.isDead) this.gameOver();
       else if (this.isHurt()) this.playAnimation(this.IMAGES_HURT);
       else this.playAnimation(this.IMAGES_ATTACK);
     }, 160);
@@ -138,5 +138,13 @@ class Endboss extends MoveableObject {
       this.x + this.offset.left < mO.x + mO.width - mO.offset.right &&
       this.y + this.offset.top < mO.y + mO.height - mO.offset.bottom
     );
+  }
+
+  gameOver() {
+    this.playAnimation(this.IMAGES_DEAD);
+    setTimeout(() => {
+      gameStopped = true;
+      this.showYouWonScreen();
+    }, 500);   
   }
 }

@@ -47,6 +47,7 @@ function stopGame() {
 function restartGame() {
   clearAllIntervalls();
   document.getElementById("end-screen").style.display = "none";
+  document.getElementById("won-screen").style.display = "none";
   canvas.style.display = "block";
   initIndex();
 }
