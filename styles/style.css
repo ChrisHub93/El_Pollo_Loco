@@ -22,10 +22,15 @@ h1 {
   font-size: 68px;
   text-shadow: 4px 4px #100f0f35;
 }
+.canvasWrapper {
+  display: none;
+  position: relative;
+  width: 720px;
+  height: 480px;
+}
 
 canvas {
   background-color: black;
-  display: none;
 }
 
 .startScreen {

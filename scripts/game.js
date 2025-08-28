@@ -11,7 +11,7 @@ function initIndex() {
   document.getElementById("start-screen").style.display = "none";
   canvas = document.getElementById("canvas");
   initLevelOne();
-  canvas.style.display = "block";
+  document.getElementById("canvas-wrapper").style.display = "block";
   world = new World(canvas);
 }
 

@@ -74,12 +74,12 @@ class DrawableObject {
   }
 
   showGameOverScreen(){
-    document.getElementById("canvas").style.display = "none";
+    document.getElementById("canvas-wrapper").style.display = "none";
     document.getElementById("end-screen").style.display = "flex";
   }
 
   showYouWonScreen(){
-    document.getElementById("canvas").style.display = "none";
+    document.getElementById("canvas-wrapper").style.display = "none";
     document.getElementById("won-screen").style.display = "flex";
   }
 }

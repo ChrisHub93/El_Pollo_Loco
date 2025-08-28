@@ -35,7 +35,9 @@
       <h1>El pollo loco</h1>
 
       <div id="start-screen" class="startScreen">
-        <button onclick="initIndex()" id="start-button" class="btn">Start Game</button>
+        <button onclick="initIndex()" id="start-button" class="btn">
+          Start Game
+        </button>
         <div class="key-description">
           <p>A & D = Walk</p>
           <p>W = Jump</p>
@@ -43,14 +45,31 @@
         </div>
       </div>
 
-      <canvas id="canvas" width="720px" height="480px" class="canvasScreen"> </canvas>
+      <!-- Wrapper für Canvas + Buttons -->
+      <div id="canvas-wrapper" class="canvasWrapper">
+        <canvas
+          id="canvas"
+          width="720"
+          height="480"
+          class="canvasScreen"
+        ></canvas>
+
+        <!-- Button über dem Canvas -->
+        <button class="btn" style="position: absolute; top: 20px; left: 20px">
+          Test
+        </button>
+      </div>
 
       <div id="end-screen" class="endScreen gameOverImg">
-        <button onclick="restartGame()" class="btn btnEndscreen">Restart Game</button>
+        <button onclick="restartGame()" class="btn btnEndscreen">
+          Restart Game
+        </button>
       </div>
 
       <div id="won-screen" class="endScreen youWinImg">
-        <button onclick="restartGame()" class="btn btnEndscreen">Restart Game</button>
+        <button onclick="restartGame()" class="btn btnEndscreen">
+          Restart Game
+        </button>
       </div>
     </div>
     <button
