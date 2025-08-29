@@ -61,4 +61,5 @@ function resetItemCounts() {
   Bottle.itemCount = 0;
   Chicken.itemCount = 0;
   ChickenSmall.itemCount = 0;
+  Cloud.itemCount = 0;
 }
