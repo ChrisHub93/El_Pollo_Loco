@@ -54,8 +54,15 @@
           class="canvasScreen"
         ></canvas>
         <!-- Button über dem Canvas -->
-        <button onclick="stopGame()" class="btnCanvas btnCanvasStop">
-        </button>
+        <button
+          id="touchBtnStop"
+          onclick="stopGame()"
+          class="btnCanvas btnCanvasStop"
+        ></button>
+        <button id="touchBtnLeft" class="btnCanvas btnCanvasLeft"></button>
+        <button id="touchBtnRight" class="btnCanvas btnCanvasRight"></button>
+        <button id="touchBtnUp" class="btnCanvas btnCanvasUp"></button>
+        <button id="touchBtnThrow" class="btnCanvas btnCanvasThrow"></button>
       </div>
 
       <div id="end-screen" class="endScreen gameOverImg">

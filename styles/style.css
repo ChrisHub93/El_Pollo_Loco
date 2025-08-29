@@ -75,6 +75,31 @@ canvas {
   background-image: url("../assets/icons/play_pause.png");
 }
 
+.btnCanvasLeft{
+  top: 87%;
+  left: 5%;
+  background-image: url("../assets/icons/left.png");
+}
+
+.btnCanvasRight{
+  top: 87%;
+  left: 17%;
+  background-image: url("../assets/icons/right.png");
+}
+
+.btnCanvasUp{
+  top: 87%;
+  left: 72%;
+  background-image: url("../assets/icons/up.png");
+}
+
+.btnCanvasThrow{
+  top: 87%;
+  left:84%;
+  transform: rotate(90deg);
+  background-image: url("../assets/icons/throw.png");
+}
+
 .btnEndscreen {
   margin-top: 30px;
 }
