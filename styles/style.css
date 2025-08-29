@@ -78,8 +78,10 @@ canvas {
 }
 
 .btnCanvasStop {
-  top: 5%;
-  left: 90%;
+  height: 40px;
+  width: 40px;
+  top: 4%;
+  left: 93%;
   background-image: url("../assets/icons/play_pause.png");
 }
 
