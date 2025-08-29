@@ -19,7 +19,6 @@ class Keyboard {
   }
 
   handleKey(e, isPressed) {
-    console.log(e);
     if (e.keyCode == 87 || e.target.id === "touchBtnUp") this.setKey("W", isPressed);
     if (e.keyCode == 65 || e.target.id === "touchBtnLeft" ) this.setKey("A", isPressed);
     if (e.keyCode == 68 || e.target.id === "touchBtnRight") this.setKey("D", isPressed);
