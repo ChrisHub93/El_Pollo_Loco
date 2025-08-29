@@ -35,7 +35,7 @@ class DrawableObject {
     }
   }
 
-  drawFrame(ctx) {
+  devToolDrawFrame(ctx) {
     // Wird nur bei den Classen Character, Chicken, oder Endboss ausgeführt.
     if (
       this instanceof Character ||
@@ -51,7 +51,7 @@ class DrawableObject {
     }
   }
 
-  drawHitbox(ctx) {
+  devToolDrawHitbox(ctx) {
     if (
       this instanceof Character ||
       this instanceof Chicken ||

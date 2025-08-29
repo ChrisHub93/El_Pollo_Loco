@@ -140,8 +140,8 @@ class World extends Collision {
       this.flipImage(mO);
     }
     mO.draw(this.ctx);
-    //mO.drawFrame(this.ctx);
-    mO.drawHitbox(this.ctx);
+    //mO.devToolDrawFrame(this.ctx);
+    mO.devToolDrawHitbox(this.ctx);
     if (mO.otherDirection) {
       this.flipImageBack(mO);
     }
