@@ -82,13 +82,13 @@ class World extends Collision {
   checkThrowableObjects() {
     if (this.canBottleBeThrown()) {
       this.throwBottles();
-      keyboard.SPACE = false;
+      keyboard.B = false;
     }
   }
 
   canBottleBeThrown() {
     return (
-      keyboard.SPACE === true &&
+      keyboard.B === true &&
       this.statusBarBottles.percentage > 0 &&
       keyboard.keyboardReady
     );

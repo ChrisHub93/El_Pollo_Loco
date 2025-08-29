@@ -4,7 +4,7 @@ class Keyboard {
     this.W = false;
     this.A = false;
     this.D = false;
-    this.SPACE = false;
+    this.B = false;
     this.IDLE = false;
     this.LONG_IDLE = false;
 
@@ -19,11 +19,11 @@ class Keyboard {
   }
 
   handleKey(e, isPressed) {
-    console.log(e.target.id);
+    console.log(e);
     if (e.keyCode == 87 || e.target.id === "touchBtnUp") this.setKey("W", isPressed);
     if (e.keyCode == 65 || e.target.id === "touchBtnLeft" ) this.setKey("A", isPressed);
     if (e.keyCode == 68 || e.target.id === "touchBtnRight") this.setKey("D", isPressed);
-    if (e.keyCode === 32 || e.target.id === "touchBtnThrow") this.setKey("SPACE", isPressed);
+    if (e.keyCode === 66 || e.target.id === "touchBtnThrow") this.setKey("B", isPressed);
   }
 
   setKey(key, isPressed) {
