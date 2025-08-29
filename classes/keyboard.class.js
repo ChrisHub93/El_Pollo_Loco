@@ -13,14 +13,17 @@ class Keyboard {
 
     window.addEventListener("keydown", (e) => this.handleKey(e, true));
     window.addEventListener("keyup", (e) => this.handleKey(e, false));
+    window.addEventListener("touchstart", (e) => this.handleKey(e, true));
+    window.addEventListener("touchend", (e) => this.handleKey(e, false));
     this.setKey(this.D, true);
   }
 
   handleKey(e, isPressed) {
-    if (e.keyCode == 87) this.setKey("W", isPressed);
-    if (e.keyCode == 65) this.setKey("A", isPressed);
-    if (e.keyCode == 68) this.setKey("D", isPressed);
-    if (e.keyCode === 32) this.setKey("SPACE", isPressed);
+    console.log(e.target.id);
+    if (e.keyCode == 87 || e.target.id === "touchBtnUp") this.setKey("W", isPressed);
+    if (e.keyCode == 65 || e.target.id === "touchBtnLeft" ) this.setKey("A", isPressed);
+    if (e.keyCode == 68 || e.target.id === "touchBtnRight") this.setKey("D", isPressed);
+    if (e.keyCode === 32 || e.target.id === "touchBtnThrow") this.setKey("SPACE", isPressed);
   }
 
   setKey(key, isPressed) {
