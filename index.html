@@ -35,8 +35,9 @@
       <h1>El pollo loco</h1>
 
       <div id="start-screen" class="startScreen">
-        <button onclick="initIndex()" id="start-button" class="btn">
+        <button onclick="initIndex()" id="start-button" class="btn btnStart">
           Start Game
+          <img src="./assets/icons/play.png" alt="Play icon">
         </button>
         <div class="key-description">
           <p>A & D = Walk</p>
@@ -68,12 +69,14 @@
       <div id="end-screen" class="endScreen gameOverImg">
         <button onclick="restartGame()" class="btn btnEndscreen">
           Restart Game
+          <img src="./assets/icons/renew.png" alt="Restart icon">
         </button>
       </div>
 
       <div id="won-screen" class="endScreen youWinImg">
         <button onclick="restartGame()" class="btn btnEndscreen">
           Restart Game
+          <img src="./assets/icons/renew.png" alt="Restart icon">
         </button>
       </div>
     </div>

@@ -53,6 +53,14 @@ canvas {
   background-color: #fba900;
 }
 
+.btnStart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 1px;
+}
+
 .btnCanvas {
   background-color: #fba900;
   height: 45px;
@@ -102,6 +110,11 @@ canvas {
 
 .btnEndscreen {
   margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 1px;
 }
 
 .btn:hover {
