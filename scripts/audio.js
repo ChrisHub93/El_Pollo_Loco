@@ -16,12 +16,13 @@ let AUDIO_HIT_ENEMY = new Audio("./assets/audio/hitEnemy.mp3");
 AUDIO_HOME.loop = true;
 AUDIO_GAME.loop = true;
 
-AUDIO_GAME.volume = 0.5;
+AUDIO_GAME.volume = 0.4;
 AUDIO_JUMP.volume = 0.5;
-AUDIO_COIN_HIT.volume = 0.5;
+AUDIO_COIN_HIT.volume = 0.3;
 AUDIO_JUMP.volume = 0.5;
 AUDIO_BOTTLE_HIT.volume = 0.2;
 AUDIO_HIT_ENEMY.volume = 0.3;
+AUDIO_THROW.volume = 0.3;
 
 function playHomeAudio() {
   AUDIO_HOME.play();
