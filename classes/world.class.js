@@ -59,7 +59,9 @@ class World extends Collision {
   }
 
   characterEndbossPosition() {
+   
     if (this.characterOnBossPosition()) {
+      playNextAudio(AUDIO_GAME, AUDIO_ENDBOSS)
       this.character.isOnEndbossPosition = true;
       keyboard.keyboardReady = false;
       this.endboss.animateStartFrequency();

@@ -47,6 +47,7 @@ function stopGame() {
 
 function restartGame() {
   clearAllIntervalls();
+  resetEndScreenAudio();
   document.getElementById("end-screen").style.display = "none";
   document.getElementById("won-screen").style.display = "none";
   canvas.style.display = "block";
@@ -63,4 +64,11 @@ function resetItemCounts() {
   Chicken.itemCount = 0;
   ChickenSmall.itemCount = 0;
   Cloud.itemCount = 0;
+}
+
+function resetEndScreenAudio() {
+  AUDIO_LOST.pause();
+  AUDIO_WIN.pause();
+  AUDIO_LOST.currentTime = 0;
+  AUDIO_WIN.currentTime = 0;
 }

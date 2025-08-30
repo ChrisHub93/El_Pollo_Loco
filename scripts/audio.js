@@ -11,11 +11,14 @@ let AUDIO_COIN_HIT = new Audio("./assets/audio/coinHit.mp3");
 let AUDIO_PUNCH = new Audio("./assets/audio/punch.mp3");
 let AUDIO_JUMP = new Audio("./assets/audio/jump.mp3");
 let AUDIO_HIT_ENEMY = new Audio("./assets/audio/hitEnemy.mp3");
-
+let AUDIO_ENDBOSS = new Audio("./assets/audio/endbossSound.mp3");
 
 AUDIO_HOME.loop = true;
 AUDIO_GAME.loop = true;
+AUDIO_ENDBOSS.loop = true;
+AUDIO_WIN.loop = false;
 
+AUDIO_HOME.volume = 0.4;
 AUDIO_GAME.volume = 0.4;
 AUDIO_JUMP.volume = 0.5;
 AUDIO_COIN_HIT.volume = 0.3;
@@ -23,6 +26,7 @@ AUDIO_JUMP.volume = 0.5;
 AUDIO_BOTTLE_HIT.volume = 0.2;
 AUDIO_HIT_ENEMY.volume = 0.3;
 AUDIO_THROW.volume = 0.3;
+AUDIO_ENDBOSS.volume = 0.5;
 
 function playHomeAudio() {
   AUDIO_HOME.play();
