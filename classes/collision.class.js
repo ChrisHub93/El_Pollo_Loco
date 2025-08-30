@@ -65,6 +65,7 @@ class Collision {
   }
 
   characterGetsHurt(enemy) {
+    AUDIO_HIT.currentTime = 0;
     this.onHit = true;
     this.character.hitEnemy();
     this.statusBarHealth.setPercentage(this.character.energy);
