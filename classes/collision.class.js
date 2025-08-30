@@ -103,6 +103,8 @@ class Collision {
         this.character.hitItem(itemType);
         statusBar.setPercentage(this.character[itemType]);
         this.removeItem(itemType, item.x);
+        if (itemType === "bottles") AUDIO_BOTTLE_HIT.play();
+        if (itemType === "coins") AUDIO_COIN_HIT.play();
       }
     });
   }
