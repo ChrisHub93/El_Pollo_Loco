@@ -71,4 +71,5 @@ function resetEndScreenAudio() {
   AUDIO_WIN.pause();
   AUDIO_LOST.currentTime = 0;
   AUDIO_WIN.currentTime = 0;
+  AUDIO_GAME.currentTime = 0;
 }
