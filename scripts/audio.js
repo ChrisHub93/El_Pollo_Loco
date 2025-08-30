@@ -26,7 +26,8 @@ AUDIO_JUMP.volume = 0.5;
 AUDIO_BOTTLE_HIT.volume = 0.2;
 AUDIO_HIT_ENEMY.volume = 0.3;
 AUDIO_THROW.volume = 0.3;
-AUDIO_ENDBOSS.volume = 0.5;
+AUDIO_PUNCH.volume = 0.5;
+AUDIO_ENDBOSS.volume = 0.3;
 
 function playHomeAudio() {
   AUDIO_HOME.play();
