@@ -13,6 +13,7 @@ function initIndex() {
   initLevelOne();
   document.getElementById("canvas-wrapper").style.display = "block";
   world = new World(canvas);
+  playNextAudio(AUDIO_HOME, AUDIO_GAME);
 }
 
 function fullscreen(method) {
