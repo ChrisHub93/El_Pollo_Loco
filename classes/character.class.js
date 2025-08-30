@@ -102,10 +102,13 @@ class Character extends MoveableObject {
   }
 
   moveCharacter() {
-    // sound pause()
     if (this.canMoveRight()) this.moveRight();
     if (this.canMoveLeft()) this.moveLeft();
-    if (this.canJump()) this.jump(30);
+    if (this.canJump()) {
+      this.jump(30);
+      AUDIO_STEP.pause();
+      AUDIO_JUMP.play();
+    }
     this.world["camera_x"] = -this.x + 100;
   }
 
@@ -129,7 +132,7 @@ class Character extends MoveableObject {
   moveRight() {
     super.moveRight();
     this.otherDirection = false;
-    // walking sound play()
+    AUDIO_STEP.play();
   }
 
   canMoveLeft() {
@@ -139,7 +142,7 @@ class Character extends MoveableObject {
   moveLeft() {
     super.moveLeft();
     this.otherDirection = true;
-    // walking sound play()
+    AUDIO_STEP.play();
   }
 
   canJump() {
@@ -155,6 +158,6 @@ class Character extends MoveableObject {
     setTimeout(() => {
       gameStopped = true;
       this.showGameOverScreen();
-    }, 300);   
+    }, 300);
   }
 }

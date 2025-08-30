@@ -56,6 +56,7 @@ class Collision {
   resolveEnemyStomp(enemy) {
     enemy.onHit();
     this.character.jump(15);
+    AUDIO_HIT_ENEMY.play();
 
     setTimeout(() => {
       this.removeItem("enemies", enemy.x);
