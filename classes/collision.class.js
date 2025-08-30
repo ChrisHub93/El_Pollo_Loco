@@ -8,8 +8,10 @@ class Collision {
   checkBottleHit() {
     this.throwableObjects.forEach((bottle, index) => {
       if (this.canBossHit(bottle)) {
+        AUDIO_PUNCH.currentTime = 0;
         bottle.hasHit = true;
         bottle.splashAnimation(bottle.y);
+        AUDIO_PUNCH.play();
 
         setTimeout(() => {
           this.throwableObjects.splice(index, 1); // Flasche verschwindet
