@@ -76,10 +76,12 @@ class DrawableObject {
   showGameOverScreen(){
     document.getElementById("canvas-wrapper").style.display = "none";
     document.getElementById("end-screen").style.display = "flex";
+    playNextAudio(AUDIO_GAME, AUDIO_LOST);
   }
 
   showYouWonScreen(){
     document.getElementById("canvas-wrapper").style.display = "none";
     document.getElementById("won-screen").style.display = "flex";
+    playNextAudio(AUDIO_GAME, AUDIO_WIN);
   }
 }
