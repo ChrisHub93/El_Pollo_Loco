@@ -12,8 +12,8 @@ class Coin extends MoveableObject {
   };
 
   IMAGE_COINS = [
-    "../assets/img/8_coin/coin_1.png",
-    "../assets/img/8_coin/coin_2.png",
+    "./assets/img/8_coin/coin_1.png",
+    "./assets/img/8_coin/coin_2.png",
   ];
 
   constructor() {
