@@ -54,6 +54,7 @@ class Collision {
   }
 
   resolveEnemyStomp(enemy) {
+    AUDIO_HIT_ENEMY.currentTime = 0;
     enemy.onHit();
     this.character.jump(15);
     AUDIO_HIT_ENEMY.play();
