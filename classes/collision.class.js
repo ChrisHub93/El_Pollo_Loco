@@ -67,6 +67,7 @@ class Collision {
     this.character.hitEnemy();
     this.statusBarHealth.setPercentage(this.character.energy);
     this.characterPushBack(enemy);
+    AUDIO_HIT.play();
   }
 
   characterPushBack(enemy) {
