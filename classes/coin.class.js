@@ -21,7 +21,7 @@ class Coin extends MoveableObject {
   ];
 
    /**
-   * Creates a new coinobject.
+   * Creates a new coin object.
    *
    * - Loads the coin images.
    * - Randomly calculates the initial X position within the given parameters.
