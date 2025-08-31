@@ -92,6 +92,15 @@ canvas {
   background-image: url("../assets/icons/play_pause.png");
 }
 
+.btnCanvasMute{
+  height: 40px;
+  width: 40px;
+  top: 14%;
+  left: 93%;
+  background-size: 80% 80%;
+  background-image: url("../assets/icons/mute.png");
+}
+
 .btnCanvasLeft{
   top: 87%;
   left: 5%;
