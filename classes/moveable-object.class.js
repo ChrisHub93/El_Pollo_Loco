@@ -10,7 +10,7 @@ class MoveableObject extends DrawableObject {
   bottles = 0;
   character = "moveableObject";
   isDead = false;
-  // kommt in collidable-object.class.js ->
+
   offset = {
     top: 0,
     left: 0,
@@ -29,14 +29,12 @@ class MoveableObject extends DrawableObject {
 
   isAboveGround() {
     if (this instanceof ThrowableObject) {
-      // Throwable should always fall
       return true;
     } else {
       return this.y < 147;
     }
   }
 
-  // isColliding function aus Video 12->
   isColliding(mO) {
     return (
       this.x + this.width - this.offset.right > mO.x + mO.offset.left &&
@@ -66,8 +64,8 @@ class MoveableObject extends DrawableObject {
   }
 
   isHurt() {
-    let timePassed = new Date().getTime() - this.lastHit; // Difference in ms
-    timePassed = timePassed / 1000; // Difference in s
+    let timePassed = new Date().getTime() - this.lastHit; 
+    timePassed = timePassed / 1000; 
     return timePassed < 1;
   }
 
@@ -75,19 +73,13 @@ class MoveableObject extends DrawableObject {
     if(this.energy == 0) this.isDead = true;
   }
 
-  // Die Bilder des Arrays werden nacheinander abgespielt, um es zu animieren
   playAnimation(images) {
-    let i = this.currentImage % images.length; // Modulo-Operator (git den Restwert zurück) -> *1
+    let i = this.currentImage % images.length; 
     let path = images[i];
     this.img = this.imageCache[path];
     this.currentImage++;
   }
-  // *1:
-  // Bsp.: 20 % 7(länge Array) = 7 passt 2 mal ganz in 20
-  // 7 * 2 = 14; Der Rest von 14 bis 20 = 6;
-  // Also: 20 % 7 = 6
-  // 0%7= 0; 1%7= 1; 2%7= 2; 3%7= 3;...6%7= 6; 7%7= 0; 8%7= 1; 9%7= 2;....
-
+  
   moveRight() {
     this.x += this.speed;
   }

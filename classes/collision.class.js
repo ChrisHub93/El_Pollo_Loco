@@ -8,13 +8,13 @@ class Collision {
   checkBottleHit() {
     this.throwableObjects.forEach((bottle, index) => {
       if (this.canBossHit(bottle)) {
-        AUDIO_PUNCH.currentTime = 0;
+        resetAudio(AUDIO_PUNCH);
         bottle.hasHit = true;
         bottle.splashAnimation(bottle.y);
         if (soundOn) AUDIO_PUNCH.play();
 
         setTimeout(() => {
-          this.throwableObjects.splice(index, 1); // Flasche verschwindet
+          this.throwableObjects.splice(index, 1);
         }, 80);
         this.endboss.energy -= 25;
         this.statusBarEnboss.setPercentage(this.endboss.energy);
@@ -26,8 +26,16 @@ class Collision {
     });
   }
 
-  canBossHit(bottle) {
-    return !bottle.hasHit && this.endboss.bottleIsColliding(bottle);
+  collisionItems(itemType, statusBar) {
+    this.level[itemType].forEach((item) => {
+      if (this.character.isColliding(item)) {
+        this.character.hitItem(itemType);
+        statusBar.setPercentage(this.character[itemType]);
+        this.removeItem(itemType, item.x);
+        if (itemType === "bottles" && soundOn) AUDIO_BOTTLE_HIT.play();
+        if (itemType === "coins" && soundOn) AUDIO_COIN_HIT.play();
+      }
+    });
   }
 
   collisionEnemys() {
@@ -41,6 +49,10 @@ class Collision {
     });
   }
 
+  canBossHit(bottle) {
+    return !bottle.hasHit && this.endboss.bottleIsColliding(bottle);
+  }
+
   isFromAbove(enemy) {
     if (enemy instanceof Endboss) return false;
 
@@ -51,12 +63,12 @@ class Collision {
     return (
       charBottom >= enemyTop &&
       charBottom <= enemy.y + enemy.height - enemy.offset.bottom &&
-      this.character.speedY < 0 // bei dir: fallen = speedY < 0
+      this.character.speedY < 0
     );
   }
 
   resolveEnemyStomp(enemy) {
-    AUDIO_HIT_ENEMY.currentTime = 0;
+    resetAudio(AUDIO_HIT_ENEMY);
     enemy.onHit();
     this.character.jump(15);
     if (soundOn) AUDIO_HIT_ENEMY.play();
@@ -67,7 +79,7 @@ class Collision {
   }
 
   characterGetsHurt(enemy) {
-    AUDIO_HIT.currentTime = 0;
+    resetAudio(AUDIO_HIT);
     this.onHit = true;
     this.character.hitEnemy();
     this.statusBarHealth.setPercentage(this.character.energy);
@@ -99,17 +111,5 @@ class Collision {
     this.pushBackInterval = null;
     keyboard.keyboardReady = true;
     this.onHit = false;
-  }
-
-  collisionItems(itemType, statusBar) {
-    this.level[itemType].forEach((item) => {
-      if (this.character.isColliding(item)) {
-        this.character.hitItem(itemType);
-        statusBar.setPercentage(this.character[itemType]);
-        this.removeItem(itemType, item.x);
-        if (itemType === "bottles" && soundOn) AUDIO_BOTTLE_HIT.play();
-        if (itemType === "coins" && soundOn) AUDIO_COIN_HIT.play();
-      }
-    });
   }
 }

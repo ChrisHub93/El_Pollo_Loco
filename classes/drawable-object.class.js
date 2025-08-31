@@ -8,7 +8,7 @@ class DrawableObject {
   width = 100;
 
   loadImage(path) {
-    this.img = new Image(); //this.img = document.getElementById('image') <img id="image" src>
+    this.img = new Image();
     this.img.src = path;
   }
 
@@ -36,7 +36,6 @@ class DrawableObject {
   }
 
   devToolDrawFrame(ctx) {
-    // Wird nur bei den Classen Character, Chicken, oder Endboss ausgeführt.
     if (
       this instanceof Character ||
       this instanceof Chicken ||

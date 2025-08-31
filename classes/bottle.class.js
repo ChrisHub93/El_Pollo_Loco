@@ -15,8 +15,6 @@ class Bottle extends MoveableObject {
 
   constructor() {
     super().loadImage(this.IMAGE_BOTTLE[0]);
-  
-
     this.calculatePlacementX(300, 420, 70);
   }
 }

@@ -19,13 +19,13 @@ class Keyboard {
   }
 
   handleKey(e, isPressed) {
-    if (e.keyCode == 87 || e.target.id === "touchBtnUp") this.setKey("W", isPressed);
-    if (e.keyCode == 65 || e.target.id === "touchBtnLeft" ) this.setKey("A", isPressed);
-    if (e.keyCode == 68 || e.target.id === "touchBtnRight") this.setKey("D", isPressed);
-    if (e.keyCode === 66 || e.target.id === "touchBtnThrow") this.setKey("B", isPressed);
+    if (e.keyCode == 87 || e.target.id === "touchBtnUp") this.setIdle("W", isPressed);
+    if (e.keyCode == 65 || e.target.id === "touchBtnLeft" ) this.setIdle("A", isPressed);
+    if (e.keyCode == 68 || e.target.id === "touchBtnRight") this.setIdle("D", isPressed);
+    if (e.keyCode === 66 || e.target.id === "touchBtnThrow") this.setIdle("B", isPressed);
   }
 
-  setKey(key, isPressed) {
+  setIdle(key, isPressed) {
     this[key] = isPressed;
 
     if (isPressed) {

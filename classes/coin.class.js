@@ -1,5 +1,5 @@
 class Coin extends MoveableObject {
-  static itemCount = 0; // static, gehört zur classe selbst und nicht nur dem einzelnen Objekt
+  static itemCount = 0;
   y = 150;
   height = 120;
   width = 120;
