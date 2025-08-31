@@ -1,3 +1,7 @@
+/**
+ * Represents a character object that can be rendered in the game world.
+ * Inherits movement behavior from {@link MoveableObject}.
+ */
 class Character extends MoveableObject {
   height = 280;
   y = 147;
@@ -75,6 +79,9 @@ class Character extends MoveableObject {
     bottom: 15,
   };
 
+  /**
+   *  Creates a new character object.
+   */
   constructor() {
     super().loadImage("./assets/img/2_character_pepe/1_idle/idle/I-1.png");
     this.loadImages(this.IMAGE_WALKING);
@@ -87,6 +94,14 @@ class Character extends MoveableObject {
     this.animate();
   }
 
+  /**
+   * Animates the character by updating its movement and animations at regular intervals.
+   * Also checks whether the character is alive or dead.
+   *
+   * @remarks
+   * - Movement is updated at 60 FPS (`1000/60 ms`).
+   * - Character animations and live status checks are updated every 160 ms.
+   */
   animate() {
     setInterval(() => {
       this.moveCharacter();
@@ -98,6 +113,15 @@ class Character extends MoveableObject {
     }, 160);
   }
 
+  /**
+   * Checks if the character can execute movements and performs them if possible.
+   *
+   * - Moves the character right if `canMoveRight()` returns true.
+   * - Moves the character left if `canMoveLeft()` returns true.
+   * - Makes the character jump if `canJump()` returns true, and handles jump sounds.
+   * - Updates the camera position in the world relative to the character's X position.
+   *
+   */
   moveCharacter() {
     if (this.canMoveRight()) this.moveRight();
     if (this.canMoveLeft()) this.moveLeft();
@@ -109,6 +133,17 @@ class Character extends MoveableObject {
     this.world["camera_x"] = -this.x + 100;
   }
 
+  /**
+   * Checks the current state of the character and executes the appropriate animation.
+   *
+   * The function handles the following states:
+   * - Dead: calls {@link gameOver()}.
+   * - Hurt: plays the hurt animation (`IMAGES_HURT`).
+   * - Jumping / above ground: plays the jumping animation (`IMAGES_JUMPING`).
+   * - Walking: plays the walking animation (`IMAGE_WALKING`) if the character can animate.
+   * - Idle: plays the long idle (`IMAGES_LONG_IDLE`) or normal idle (`IMAGES_IDLE`) animations based on keyboard input.
+   *
+   */
   playAnimationsCharacter() {
     if (this.isDead) this.gameOver();
     else if (this.isHurt()) this.playAnimation(this.IMAGES_HURT);
@@ -118,6 +153,16 @@ class Character extends MoveableObject {
     else if (keyboard.IDLE) this.playAnimation(this.IMAGES_IDLE);
   }
 
+  /**
+   * Checks whether the character can move to the right.
+   *
+   * The character can move right if:
+   * - The "D" key is pressed.
+   * - The character's X position is less than the level's end X coordinate.
+   * - The keyboard is ready to accept input.
+   *
+   * @returns {boolean} True if the character can move right, otherwise false.
+   */
   canMoveRight() {
     return (
       keyboard["D"] &&
@@ -126,30 +171,81 @@ class Character extends MoveableObject {
     );
   }
 
+  /**
+   * Moves the character to the right.
+   *
+   * - Calls the parent class's {@link MoveableObject.moveRight} method.
+   * - Sets `otherDirection` to false to ensure correct image loading.
+   * - Plays the walking sound if sound is enabled.
+   *
+   */
   moveRight() {
     super.moveRight();
     this.otherDirection = false;
     if (soundOn) AUDIO_STEP.play();
   }
 
+  /**
+   * Checks whether the character can move to the left.
+   *
+   * The character can move left if:
+   * - The "A" key is pressed.
+   * - The character's X position is more than 0.
+   * - The keyboard is ready to accept input.
+   *
+   * @returns {boolean} True if the character can move left, otherwise false.
+   */
   canMoveLeft() {
     return keyboard["A"] && this.x > 0 && keyboard.keyboardReady;
   }
 
+  /**
+   * Moves the character to the left.
+   *
+   * - Calls the parent class's {@link MoveableObject.moveLeft} method.
+   * - Sets `otherDirection` to false to ensure correct image loading.
+   * - Plays the walking sound if sound is enabled.
+   *
+   */
   moveLeft() {
     super.moveLeft();
     this.otherDirection = true;
     if (soundOn) AUDIO_STEP.play();
   }
 
+  /**
+   * Checks whether the character can jump.
+   *
+   * The character can jump if:
+   * - The "W" key is pressed.
+   * - The character is above ground.
+   * - The keyboard is ready to accept input.
+   *
+   * @returns {boolean} True if the character can jump, otherwise false.
+   */
   canJump() {
     return keyboard["W"] && !this.isAboveGround() && keyboard.keyboardReady;
   }
 
+  /**
+   * Checks whether the character can animate.
+   *
+   * The character can animate if:
+   * - The "D" or "A" key is pressed.
+   * - The keyboard is ready to accept input.
+   *
+   * @returns {boolean} True if the character can animate, otherwise false.
+   */
   canAnimate() {
     return (keyboard["D"] || keyboard["A"]) && keyboard.keyboardReady;
   }
 
+ /**
+ * Plays the death animation for the character and triggers the game over sequence.
+ *
+ * - Plays the dead animation (`IMAGES_DEAD`).
+ * - After 300 ms, sets `gameStopped` to true and displays the game over screen.
+ */
   gameOver() {
     this.playAnimation(this.IMAGES_DEAD);
     setTimeout(() => {
