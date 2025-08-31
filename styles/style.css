@@ -22,6 +22,12 @@ h1 {
   font-size: 68px;
   text-shadow: 4px 4px #100f0f35;
 }
+
+#fullscreen {
+  display: flex;
+  justify-content: center;
+}
+
 .canvasWrapper {
   display: none;
   position: relative;
