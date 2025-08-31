@@ -15,7 +15,7 @@ class Keyboard {
     window.addEventListener("keyup", (e) => this.handleKey(e, false));
     window.addEventListener("touchstart", (e) => this.handleKey(e, true));
     window.addEventListener("touchend", (e) => this.handleKey(e, false));
-    this.setKey(this.D, true);
+    this.setIdle(this.D, true);
   }
 
   handleKey(e, isPressed) {
