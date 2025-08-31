@@ -107,7 +107,7 @@ class Character extends MoveableObject {
     if (this.canJump()) {
       this.jump(30);
       AUDIO_STEP.pause();
-      AUDIO_JUMP.play();
+      if (soundOn) AUDIO_JUMP.play();
     }
     this.world["camera_x"] = -this.x + 100;
   }
@@ -132,7 +132,7 @@ class Character extends MoveableObject {
   moveRight() {
     super.moveRight();
     this.otherDirection = false;
-    AUDIO_STEP.play();
+    if (soundOn) AUDIO_STEP.play();
   }
 
   canMoveLeft() {
@@ -142,7 +142,7 @@ class Character extends MoveableObject {
   moveLeft() {
     super.moveLeft();
     this.otherDirection = true;
-    AUDIO_STEP.play();
+    if (soundOn) AUDIO_STEP.play();
   }
 
   canJump() {

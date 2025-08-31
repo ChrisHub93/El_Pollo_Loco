@@ -39,7 +39,7 @@ class ThrowableObject extends MoveableObject {
     this.rotationInterval = setInterval(() => {
       this.x += 10;
       this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
-      AUDIO_THROW.play();
+      if (soundOn) AUDIO_THROW.play();
   
       if (this.groundHit()) {
         this.splashAnimation(370);

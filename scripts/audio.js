@@ -13,6 +13,7 @@ let AUDIO_PUNCH = new Audio("./assets/audio/punch.mp3");
 let AUDIO_JUMP = new Audio("./assets/audio/jump.mp3");
 let AUDIO_HIT_ENEMY = new Audio("./assets/audio/hitEnemy.mp3");
 let AUDIO_ENDBOSS = new Audio("./assets/audio/endbossSound.mp3");
+let AUDIO_CURRENT_SONG;
 
 AUDIO_HOME.loop = true;
 AUDIO_GAME.loop = true;
@@ -31,16 +32,26 @@ AUDIO_PUNCH.volume = 0.5;
 AUDIO_ENDBOSS.volume = 0.3;
 
 function playHomeAudio() {
-  if (soundOn) AUDIO_HOME.play();
-  else AUDIO_HOME.pause();
+  AUDIO_CURRENT_SONG = AUDIO_HOME;
+  if (soundOn) {
+    AUDIO_HOME.play();
+  } else AUDIO_HOME.pause();
 }
 
 function playNextAudio(currentAudio, nextAudio) {
+  AUDIO_CURRENT_SONG = nextAudio;
   currentAudio.pause();
-  nextAudio.play();
+  if (soundOn) nextAudio.play();
 }
 
 function switchMute() {
-  if (!soundOn) soundOn = true;
-  else soundOn = false;
+  if (!soundOn) {
+    soundOn = true;
+    AUDIO_CURRENT_SONG.play();
+    // hintergrundbild ändern
+  } else {
+    soundOn = false;
+    AUDIO_CURRENT_SONG.pause();
+    // hintergrundbild ändern
+  }
 }

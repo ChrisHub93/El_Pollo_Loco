@@ -11,7 +11,7 @@ class Collision {
         AUDIO_PUNCH.currentTime = 0;
         bottle.hasHit = true;
         bottle.splashAnimation(bottle.y);
-        AUDIO_PUNCH.play();
+        if (soundOn) AUDIO_PUNCH.play();
 
         setTimeout(() => {
           this.throwableObjects.splice(index, 1); // Flasche verschwindet
@@ -59,7 +59,7 @@ class Collision {
     AUDIO_HIT_ENEMY.currentTime = 0;
     enemy.onHit();
     this.character.jump(15);
-    AUDIO_HIT_ENEMY.play();
+    if (soundOn) AUDIO_HIT_ENEMY.play();
 
     setTimeout(() => {
       this.removeItem("enemies", enemy.x);
@@ -72,7 +72,7 @@ class Collision {
     this.character.hitEnemy();
     this.statusBarHealth.setPercentage(this.character.energy);
     this.characterPushBack(enemy);
-    AUDIO_HIT.play();
+    if (soundOn) AUDIO_HIT.play();
   }
 
   characterPushBack(enemy) {
@@ -107,8 +107,8 @@ class Collision {
         this.character.hitItem(itemType);
         statusBar.setPercentage(this.character[itemType]);
         this.removeItem(itemType, item.x);
-        if (itemType === "bottles") AUDIO_BOTTLE_HIT.play();
-        if (itemType === "coins") AUDIO_COIN_HIT.play();
+        if (itemType === "bottles" && soundOn) AUDIO_BOTTLE_HIT.play();
+        if (itemType === "coins" && soundOn) AUDIO_COIN_HIT.play();
       }
     });
   }
