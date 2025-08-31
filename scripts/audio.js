@@ -1,3 +1,4 @@
+let soundOn = false;
 let AUDIO_HOME = new Audio("./assets/audio/flamenco-loop.mp3");
 let AUDIO_GAME = new Audio("./assets/audio/guitar-spanish.mp3");
 let AUDIO_HIT = new Audio("./assets/audio/boing.mp3");
@@ -30,10 +31,16 @@ AUDIO_PUNCH.volume = 0.5;
 AUDIO_ENDBOSS.volume = 0.3;
 
 function playHomeAudio() {
-  AUDIO_HOME.play();
+  if (soundOn) AUDIO_HOME.play();
+  else AUDIO_HOME.pause();
 }
 
 function playNextAudio(currentAudio, nextAudio) {
   currentAudio.pause();
   nextAudio.play();
+}
+
+function switchMute() {
+  if (!soundOn) soundOn = true;
+  else soundOn = false;
 }

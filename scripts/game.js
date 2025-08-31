@@ -3,7 +3,6 @@ let world;
 let keyboard;
 let gameStopped = false;
 let intervalIds = [];
-let i = 1;
 
 window.addEventListener("load", checkFullscreenCondition);
 window.addEventListener("resize", checkFullscreenCondition);
