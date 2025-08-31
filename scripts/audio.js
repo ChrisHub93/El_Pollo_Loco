@@ -48,10 +48,10 @@ function switchMute() {
   if (!soundOn) {
     soundOn = true;
     AUDIO_CURRENT_SONG.play();
-    // hintergrundbild ändern
+    document.getElementById("touchBtnMute").style.backgroundImage = 'url("../assets/icons/mute.png")';
   } else {
     soundOn = false;
     AUDIO_CURRENT_SONG.pause();
-    // hintergrundbild ändern
+    document.getElementById("touchBtnMute").style.backgroundImage = 'url("../assets/icons/mute_off.png")';
   }
 }
