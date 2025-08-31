@@ -34,8 +34,13 @@ AUDIO_ENDBOSS.volume = 0.3;
 function playHomeAudio() {
   AUDIO_CURRENT_SONG = AUDIO_HOME;
   if (soundOn) {
+    document.getElementById("start-button-mute").style.backgroundImage =
+      'url("../assets/icons/mute_off.png")';
     AUDIO_HOME.play();
-  } else AUDIO_HOME.pause();
+  } else {
+    document.getElementById("start-button-mute").style.backgroundImage = 'url("../assets/icons/mute.png")';
+    AUDIO_HOME.pause();
+  }
 }
 
 function playNextAudio(currentAudio, nextAudio) {
@@ -48,10 +53,12 @@ function switchMute() {
   if (!soundOn) {
     soundOn = true;
     AUDIO_CURRENT_SONG.play();
-    document.getElementById("touchBtnMute").style.backgroundImage = 'url("../assets/icons/mute.png")';
+    document.getElementById("touchBtnMute").style.backgroundImage =
+      'url("../assets/icons/mute.png")';
   } else {
     soundOn = false;
     AUDIO_CURRENT_SONG.pause();
-    document.getElementById("touchBtnMute").style.backgroundImage = 'url("../assets/icons/mute_off.png")';
+    document.getElementById("touchBtnMute").style.backgroundImage =
+      'url("../assets/icons/mute_off.png")';
   }
 }

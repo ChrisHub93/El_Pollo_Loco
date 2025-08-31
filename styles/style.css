@@ -55,17 +55,27 @@ canvas {
   height: 30px;
   width: 150px;
   border-radius: 21px;
-  margin-top: 40px;
   border: none;
   background-color: #fba900;
 }
 
 .btnStart {
+  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 7px;
   padding: 1px;
+}
+
+.btnStartMute {
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 80% 80%;
+  background-image: url("../assets/icons/mute_off.png");
 }
 
 .btnCanvas {
