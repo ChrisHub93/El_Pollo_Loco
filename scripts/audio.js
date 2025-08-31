@@ -33,12 +33,12 @@ AUDIO_ENDBOSS.volume = 0.3;
 
 function playHomeAudio() {
   AUDIO_CURRENT_SONG = AUDIO_HOME;
+  const muteBtnRef = document.getElementById("start-button-mute");
   if (soundOn) {
-    document.getElementById("start-button-mute").style.backgroundImage =
-      'url("../assets/icons/mute_off.png")';
+    muteBtnRef.style.backgroundImage = 'url("../assets/icons/mute_off.png")';
     AUDIO_HOME.play();
   } else {
-    document.getElementById("start-button-mute").style.backgroundImage = 'url("../assets/icons/mute.png")';
+    muteBtnRef.style.backgroundImage = 'url("../assets/icons/mute.png")';
     AUDIO_HOME.pause();
   }
 }
@@ -53,12 +53,26 @@ function switchMute() {
   if (!soundOn) {
     soundOn = true;
     AUDIO_CURRENT_SONG.play();
-    document.getElementById("touchBtnMute").style.backgroundImage =
-      'url("../assets/icons/mute.png")';
+    setMuteIcon();
   } else {
     soundOn = false;
     AUDIO_CURRENT_SONG.pause();
-    document.getElementById("touchBtnMute").style.backgroundImage =
-      'url("../assets/icons/mute_off.png")';
+    setMuteIcon();
   }
+}
+
+function setMuteIcon() {
+  const muteIconRef = document.getElementById("touchBtnMute");
+  if (!soundOn)
+    muteIconRef.style.backgroundImage = 'url("../assets/icons/mute.png")';
+  else
+    muteIconRef.style.backgroundImage = 'url("../assets/icons/mute_off.png")';
+}
+
+function resetEndScreenAudio() {
+  AUDIO_LOST.pause();
+  AUDIO_WIN.pause();
+  AUDIO_LOST.currentTime = 0;
+  AUDIO_WIN.currentTime = 0;
+  AUDIO_GAME.currentTime = 0;
 }

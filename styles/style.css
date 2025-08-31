@@ -108,7 +108,7 @@ canvas {
   top: 14%;
   left: 93%;
   background-size: 80% 80%;
-  background-image: url("../assets/icons/mute.png");
+  /* background-image: url("../assets/icons/mute.png"); */
 }
 
 .btnCanvasLeft{

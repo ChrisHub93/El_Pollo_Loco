@@ -16,7 +16,7 @@ function initIndex() {
   document.getElementById("canvas-wrapper").style.display = "block";
   world = new World(canvas);
   playNextAudio(AUDIO_HOME, AUDIO_GAME);
-  
+  setMuteIcon();
 }
 
 function fullscreen(method) {
@@ -84,12 +84,4 @@ function resetItemCounts() {
   Chicken.itemCount = 0;
   ChickenSmall.itemCount = 0;
   Cloud.itemCount = 0;
-}
-
-function resetEndScreenAudio() {
-  AUDIO_LOST.pause();
-  AUDIO_WIN.pause();
-  AUDIO_LOST.currentTime = 0;
-  AUDIO_WIN.currentTime = 0;
-  AUDIO_GAME.currentTime = 0;
 }
