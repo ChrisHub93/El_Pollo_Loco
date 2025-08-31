@@ -1,3 +1,7 @@
+/**
+ * Represents a coin object that can be rendered in the game world.
+ * Inherits movement behavior from {@link MoveableObject}.
+ */
 class Coin extends MoveableObject {
   static itemCount = 0;
   y = 150;
@@ -16,6 +20,14 @@ class Coin extends MoveableObject {
     "./assets/img/8_coin/coin_2.png",
   ];
 
+   /**
+   * Creates a new coinobject.
+   *
+   * - Loads the coin images.
+   * - Randomly calculates the initial X position within the given parameters.
+   * - Randomly calculates the initial Y between 50 and 150.
+   * - Starts the animation cycle.
+   */
   constructor() {
     super().loadImage(this.IMAGE_COINS[0]);
     this.loadImages(this.IMAGE_COINS);
@@ -23,9 +35,11 @@ class Coin extends MoveableObject {
     this.calculatePlacementX(400, 400, 50);
     this.y = this.randomNumber50to150();
     this.animate();
-    
   }
 
+  /**
+   * Animate the coin animation.
+   */
   animate() {
     setInterval(() => {
       this.playAnimation(this.IMAGE_COINS);
