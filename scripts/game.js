@@ -5,6 +5,9 @@ let gameStopped = false;
 let intervalIds = [];
 let i = 1;
 
+window.addEventListener("load", checkFullscreenCondition);
+window.addEventListener("resize", checkFullscreenCondition);
+
 function initIndex() {
   gameStopped = false;
   keyboard = new Keyboard();
@@ -20,7 +23,9 @@ function fullscreen(method) {
   if (method === "enter") {
     let fullscreenRef = document.getElementById("fullscreen");
     enterFullscreen(fullscreenRef);
-  } else if (method === "exit") exitFullscreen();
+  } else if (method === "exit") {
+    exitFullscreen();
+  }
 }
 
 function enterFullscreen(element) {
@@ -32,6 +37,21 @@ function enterFullscreen(element) {
 function exitFullscreen() {
   if (document.exitFullscreen) document.exitFullscreen();
   else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+}
+
+function checkFullscreenCondition() {
+  const maxHeight = 480;
+  const maxWidth = 720;
+
+  if (window.innerHeight <= maxHeight && window.innerWidth <= maxWidth) {
+    if (!document.fullscreenElement) {
+      fullscreen("enter");
+    }
+  } else {
+    if (document.fullscreenElement) {
+      fullscreen("exit");
+    }
+  }
 }
 
 function stopGame() {
