@@ -1,4 +1,12 @@
+/**
+ * Represents the keyboard input handler for the game.
+ * Tracks key states for controlling the character and other actions.
+ */
 class Keyboard {
+  /**
+   * Initializes a new instance of the Keyboard class.
+   * Sets up default key states, idle timers, and event listeners for keyboard and touch input.
+   */
   constructor() {
     this.keyboardReady = true;
     this.W = false;
@@ -18,13 +26,29 @@ class Keyboard {
     this.setIdle(this.D, true);
   }
 
+  /**
+   * Handles key or touch input and updates the corresponding key state.
+   *
+   * @param {KeyboardEvent|TouchEvent} e - The event triggered by keyboard or touch input.
+   * @param {boolean} isPressed - True if the key or touch is pressed, false if released.
+   */
   handleKey(e, isPressed) {
-    if (e.keyCode == 87 || e.target.id === "touchBtnUp") this.setIdle("W", isPressed);
-    if (e.keyCode == 65 || e.target.id === "touchBtnLeft" ) this.setIdle("A", isPressed);
-    if (e.keyCode == 68 || e.target.id === "touchBtnRight") this.setIdle("D", isPressed);
-    if (e.keyCode === 66 || e.target.id === "touchBtnThrow") this.setIdle("B", isPressed);
+    if (e.keyCode == 87 || e.target.id === "touchBtnUp")
+      this.setIdle("W", isPressed);
+    if (e.keyCode == 65 || e.target.id === "touchBtnLeft")
+      this.setIdle("A", isPressed);
+    if (e.keyCode == 68 || e.target.id === "touchBtnRight")
+      this.setIdle("D", isPressed);
+    if (e.keyCode === 66 || e.target.id === "touchBtnThrow")
+      this.setIdle("B", isPressed);
   }
 
+  /**
+   * Updates the state of a key and manages idle timers.
+   *
+   * @param {"W" | "A" | "D" | "B"} key - The key to update.
+   * @param {boolean} isPressed - True if the key is pressed, false if released.
+   */
   setIdle(key, isPressed) {
     this[key] = isPressed;
 
