@@ -1,3 +1,7 @@
+/**
+ * Represents the game world.
+ * Inherits collision detection capabilities from {@link Collision}.
+ */
 class World extends Collision {
   character = new Character();
   level = level1;
@@ -12,6 +16,11 @@ class World extends Collision {
   onHit = false;
   throwableObjects = [];
 
+  /**
+   * Creates a new instance of the game canvas manager.
+   *
+   * @param {HTMLCanvasElement} canvas - The canvas element where the game is rendered.
+   */
   constructor(canvas) {
     super();
     this.ctx = canvas.getContext("2d");
@@ -21,8 +30,13 @@ class World extends Collision {
     this.run();
   }
 
-  // Alles, was gerendert werden soll und wird in einer endlosschleife aktualisiert.
-  // Wie oft, hängt von der Performance der Grafikkarte ab.
+  /**
+   * Draws the entire game world on the canvas.
+   *
+   * This method clears the canvas, renders the background, HUD elements,
+   * and all level objects. It continuously updates itself using
+   * requestAnimationFrame for smooth animations.
+   */
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -37,16 +51,26 @@ class World extends Collision {
         self.draw();
       });
     }
-   
   }
 
-  // Übergebe alles von der Klasse "World" um funktionen aus World auch in der Klasse "Character"
-  // anwenden zu können.
+  /**
+   * Assigns the current world instance to the character.
+   *
+   * This allows the character to access world properties and methods,
+   * such as collision detection, item interactions, and level information.
+   */
   setWorld() {
     this.character.world = this;
   }
 
-  // Überprüft, ob der Charakter mit einem Gegner kollidiert.
+  /**
+   * Starts the game loops for collision detection and throwable object handling.
+   *
+   * - Checks collisions between the character and enemies/items every 10ms.
+   * - Checks interactions with throwable objects and bottle hits every 80ms.
+   *
+   * @returns {void}
+   */
   run() {
     setInterval(() => {
       this.checkCollisions();
@@ -58,10 +82,20 @@ class World extends Collision {
     }, 80);
   }
 
+  /**
+   * Checks if the character has reached the Endboss position and triggers related events.
+   *
+   * - Plays the next audio track if the character reaches the Endboss.
+   * - Sets `isOnEndbossPosition` on the character to true.
+   * - Disables keyboard input while the Endboss animation starts.
+   * - Starts the Endboss start frequency animation.
+   * - Re-enables keyboard input once the Endboss is in position.
+   *
+   * @returns {void}
+   */
   characterEndbossPosition() {
-   
     if (this.characterOnBossPosition()) {
-      playNextAudio(AUDIO_GAME, AUDIO_ENDBOSS)
+      playNextAudio(AUDIO_GAME, AUDIO_ENDBOSS);
       this.character.isOnEndbossPosition = true;
       keyboard.keyboardReady = false;
       this.endboss.animateStartFrequency();
@@ -69,12 +103,28 @@ class World extends Collision {
     if (this.endboss.isOnPlace) keyboard.keyboardReady = true;
   }
 
+  /**
+   * Checks if the character has reached the Endboss trigger position for the first time.
+   *
+   * - Returns `true` if the character's X position is past the trigger point
+   *   and they were not already flagged as being in Endboss position.
+   * - Returns `false` otherwise.
+   *
+   * @returns {boolean} True if the character just reached the Endboss position, false otherwise.
+   */
   characterOnBossPosition() {
     return (
       this.character.x >= 2900 && this.character.isOnEndbossPosition == false
     );
   }
 
+  /**
+   * Checks if the character can throw a bottle and triggers the throw action.
+   *
+   * - Calls `canBottleBeThrown()` to determine if throwing is allowed.
+   * - If true, calls `throwBottles()` to throw the bottle.
+   * - Resets the `keyboard.B` flag to prevent repeated throws.
+   */
   checkThrowableObjects() {
     if (this.canBottleBeThrown()) {
       this.throwBottles();
@@ -82,6 +132,16 @@ class World extends Collision {
     }
   }
 
+  /**
+   * Determines if the character can throw a bottle.
+   *
+   * Conditions:
+   * - The "B" key is pressed (`keyboard.B === true`).
+   * - The character has at least one bottle (`statusBarBottles.percentage > 0`).
+   * - Keyboard input is currently allowed (`keyboard.keyboardReady`).
+   *
+   * @returns {boolean} True if a bottle can be thrown, false otherwise.
+   */
   canBottleBeThrown() {
     return (
       keyboard.B === true &&
@@ -90,16 +150,31 @@ class World extends Collision {
     );
   }
 
+  /**
+   * Throws a bottle from the character's current position.
+   *
+   * - Creates a new `ThrowableObject` at an offset from the character.
+   * - Adds the bottle to the `throwableObjects` array.
+   * - Reduces the character's bottle count by 20.
+   * - Updates the status bar to reflect the remaining bottles.
+   */
   throwBottles() {
     let bottle = new ThrowableObject(
       this.character.x + 100,
       this.character.y + 100
     );
     this.throwableObjects.push(bottle);
-    this.character.reduceStatus("bottles", 20); // movable-object. bottles wird verrringert
+    this.character.reduceStatus("bottles", 20);
     this.statusBarBottles.setPercentage(this.character.bottles);
   }
 
+  /**
+   * Renders the background elements of the level.
+   *
+   * - Translates the canvas context by `camera_x` to simulate camera movement.
+   * - Draws all objects in `backgroundObjects` and `clouds` arrays of the level.
+   * - Resets the canvas translation after rendering.
+   */
   backgroundObjects() {
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.level["backgroundObjects"]);
@@ -107,6 +182,13 @@ class World extends Collision {
     this.ctx.translate(-this.camera_x, 0);
   }
 
+  /**
+   * Renders the HUD (Heads-Up Display) elements on the canvas.
+   *
+   * - Draws the character's health, coin count, and bottle count.
+   * - Draws the Endboss status bar if the Endboss is present on the level.
+   * - Translates the canvas context by `camera_x` for camera movement.
+   */
   hudElements() {
     this.addToMap(this.statusBarHealth);
     this.addToMap(this.statusBarCoins);
@@ -115,6 +197,14 @@ class World extends Collision {
     this.ctx.translate(this.camera_x, 0);
   }
 
+  /**
+   * Renders all level objects on the canvas.
+   *
+   * - Draws enemies, coins, and bottles from the current level.
+   * - Draws throwable objects (e.g., thrown bottles).
+   * - Draws the main character.
+   * - Resets the canvas translation after drawing to account for camera movement.
+   */
   levelObjects() {
     this.addObjectsToMap(this.level["enemies"]);
     this.addObjectsToMap(this.level["coins"]);
@@ -124,32 +214,70 @@ class World extends Collision {
     this.ctx.translate(-this.camera_x, 0);
   }
 
+  /**
+   * Adds multiple objects to the canvas map.
+   *
+   * Iterates over an array of drawable objects and renders each one using `addToMap`.
+   *
+   * @param {Array<Object>} objects - An array of objects to be drawn on the canvas.
+   */
   addObjectsToMap(object) {
     object.forEach((o) => {
       this.addToMap(o);
     });
   }
 
+  /**
+   * Draws a single object onto the canvas.
+   *
+   * Handles the object's orientation (mirroring) if `otherDirection` is true,
+   * draws the object, and optionally renders debug frames if `devTools` is enabled.
+   *
+   * @param {Object} mO - The movable or drawable object to render.
+   *                       Must have a `draw(ctx)` method and optional `otherDirection` boolean.
+   */
   addToMap(mO) {
-    // Speiegeln des Characters
-    if (mO.otherDirection) {
-      this.flipImage(mO);
-    }
+    if (mO.otherDirection) this.flipImage(mO);
     mO.draw(this.ctx);
-    //mO.devToolDrawFrame(this.ctx);
-    //mO.devToolDrawHitbox(this.ctx);
-    if (mO.otherDirection) {
-      this.flipImageBack(mO);
-    }
+    if (devTools) this.drawFrames(mO);
+    if (mO.otherDirection) this.flipImageBack(mO);
   }
 
+  /**
+   * Draws debug frames for calibration and collision testing.
+   *
+   * Calls the object's development tool methods to draw its frame and hitbox on the canvas.
+   *
+   * @param {Object} mO - The object to render debug frames for.
+   *                       Must have `devToolDrawFrame(ctx)` and `devToolDrawHitbox(ctx)` methods.
+   */
+  drawFrames(mO) {
+    mO.devToolDrawFrame(this.ctx);
+    mO.devToolDrawHitbox(this.ctx);
+  }
+  /**
+   * Flips an object horizontally on the canvas.
+   *
+   * Saves the current canvas state, translates the context by the object's width,
+   * scales the context horizontally to mirror the image, and adjusts the object's x-coordinate.
+   *
+   * @param {Object} mO - The object to flip. Must have a `width` property and `x` coordinate.
+   */
   flipImage(mO) {
-    this.ctx.save(); // der aktuelle status wird gespeichert (wie ein Screenshot)
-    this.ctx.translate(mO["width"], 0); // Ursprung des Kontexts nach rechts verschieben (um Breite des Objekts)
-    this.ctx.scale(-1, 1); // Horizontale Spiegelung (Spiegelung an der y-Achse)
-    mO.x = mO.x * -1; // Die X-Koordinate wird angepasst, da nach dem Spiegeln negative Koordinaten nötig sind
+    this.ctx.save();
+    this.ctx.translate(mO["width"], 0);
+    this.ctx.scale(-1, 1);
+    mO.x = mO.x * -1;
   }
 
+  /**
+   * Restores the canvas state after a horizontal flip and resets the object's x-coordinate.
+   *
+   * This should be called after `flipImage` to return the canvas to its original state
+   * and undo the x-coordinate adjustment.
+   *
+   * @param {Object} mO - The object that was previously flipped. Must have an `x` property.
+   */
   flipImageBack(mO) {
     this.ctx.restore();
     mO.x = mO.x * -1;
