@@ -1,5 +1,16 @@
 let level1;
 
+/**
+ * Initializes the first level of the game.
+ *
+ * This function:
+ * 1. Resets the collectible item counts.
+ * 2. Creates a new Level instance (`level1`) with:
+ *    - Multiple enemies (Chickens, Small Chickens, Endboss).
+ *    - Clouds with different images.
+ *    - Background layers repeated across several positions.
+ *    - Coins and bottles as collectible items.
+ */
 function initLevelOne() {
   resetItemCounts();
 
