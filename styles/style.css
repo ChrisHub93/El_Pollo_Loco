@@ -102,7 +102,7 @@ canvas {
   background-image: url("../assets/icons/play_pause.png");
 }
 
-.btnCanvasMute{
+.btnCanvasMute {
   height: 40px;
   width: 40px;
   top: 14%;
@@ -111,27 +111,27 @@ canvas {
   /* background-image: url("../assets/icons/mute.png"); */
 }
 
-.btnCanvasLeft{
+.btnCanvasLeft {
   top: 87%;
   left: 5%;
   background-image: url("../assets/icons/left.png");
 }
 
-.btnCanvasRight{
+.btnCanvasRight {
   top: 87%;
   left: 17%;
   background-image: url("../assets/icons/right.png");
 }
 
-.btnCanvasUp{
+.btnCanvasUp {
   top: 87%;
   left: 72%;
   background-image: url("../assets/icons/up.png");
 }
 
-.btnCanvasThrow{
+.btnCanvasThrow {
   top: 87%;
-  left:84%;
+  left: 84%;
   transform: rotate(90deg);
   background-image: url("../assets/icons/throw.png");
 }
@@ -180,11 +180,19 @@ canvas {
 
 /* Smartphones */
 @media (max-width: 720px) {
+  #fullscreen {
+    height: 100%;
+    width: 100vw;
+  }
   canvas {
     width: 100%;
   }
 }
 @media (max-height: 480px) {
+  #fullscreen {
+    height: 100%;
+    width: 100vw;
+  }
   canvas {
     height: 100vh;
   }
