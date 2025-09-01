@@ -75,12 +75,6 @@ class World extends Collision {
     );
   }
 
-  removeItem(collected, xCoord) {
-    this.level[collected] = this.level[collected].filter(
-      (item) => item.x !== xCoord
-    );
-  }
-
   checkThrowableObjects() {
     if (this.canBottleBeThrown()) {
       this.throwBottles();
