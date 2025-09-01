@@ -37,9 +37,13 @@
       <div id="start-screen" class="startScreen">
         <button onclick="initIndex()" id="start-button" class="btn btnStart">
           Start Game
-          <img src="./assets/icons/play.png" alt="Play icon">
+          <img src="./assets/icons/play.png" alt="Play icon" />
         </button>
-        <button id="start-button-mute" class="btn btnStartMute" onclick=" playHomeAudio(); switchMute(); "></button>
+        <button
+          id="start-button-mute"
+          class="btn btnStartMute"
+          onclick=" playHomeAudio(); switchMute(); "
+        ></button>
         <div class="key-description">
           <p>A & D = Walk</p>
           <p>W = Jump</p>
@@ -61,25 +65,28 @@
           onclick="stopGame()"
           class="btnCanvas btnCanvasStop"
         ></button>
-        <button id="touchBtnMute" class="btnCanvas btnCanvasMute" onclick="switchMute()"></button>
+        <button
+          id="touchBtnMute"
+          class="btnCanvas btnCanvasMute"
+          onclick="switchMute()"
+        ></button>
         <button id="touchBtnLeft" class="btnCanvas btnCanvasLeft"></button>
         <button id="touchBtnRight" class="btnCanvas btnCanvasRight"></button>
         <button id="touchBtnUp" class="btnCanvas btnCanvasUp"></button>
         <button id="touchBtnThrow" class="btnCanvas btnCanvasThrow"></button>
       </div>
 
-
       <div id="end-screen" class="endScreen gameOverImg">
         <button onclick="restartGame()" class="btn btnEndscreen">
           Restart Game
-          <img src="./assets/icons/renew.png" alt="Restart icon">
+          <img src="./assets/icons/renew.png" alt="Restart icon" />
         </button>
       </div>
 
       <div id="won-screen" class="endScreen youWinImg">
         <button onclick="restartGame()" class="btn btnEndscreen">
           Restart Game
-          <img src="./assets/icons/renew.png" alt="Restart icon">
+          <img src="./assets/icons/renew.png" alt="Restart icon" />
         </button>
       </div>
     </div>
