@@ -31,6 +31,10 @@ AUDIO_THROW.volume = 0.3;
 AUDIO_PUNCH.volume = 0.5;
 AUDIO_ENDBOSS.volume = 0.3;
 
+/**
+ * Plays or pauses the home screen audio depending on the sound state.
+ * Updates the mute button icon accordingly.
+ */
 function playHomeAudio() {
   AUDIO_CURRENT_SONG = AUDIO_HOME;
   const muteBtnRef = document.getElementById("start-button-mute");
@@ -43,12 +47,25 @@ function playHomeAudio() {
   }
 }
 
+/**
+ * Pauses the current audio and plays the next audio if sound is on.
+ * Also updates the global AUDIO_CURRENT_SONG reference.
+ *
+ * @param {HTMLAudioElement} currentAudio - The audio that should be paused.
+ * @param {HTMLAudioElement} nextAudio - The audio that should be played next.
+ */
 function playNextAudio(currentAudio, nextAudio) {
   AUDIO_CURRENT_SONG = nextAudio;
   currentAudio.pause();
   if (soundOn) nextAudio.play();
 }
 
+/**
+ * Toggles the mute state of the game.
+ * If sound is off, it turns it on and plays the current audio.
+ * If sound is on, it pauses the current audio.
+ * Updates the mute icon accordingly.
+ */
 function switchMute() {
   if (!soundOn) {
     soundOn = true;
@@ -61,14 +78,20 @@ function switchMute() {
   }
 }
 
+/**
+ * Updates the mute button icon based on the current sound state.
+ * Shows the "mute" icon when sound is off and "mute_off" icon when sound is on.
+ */
 function setMuteIcon() {
   const muteIconRef = document.getElementById("touchBtnMute");
   if (!soundOn)
     muteIconRef.style.backgroundImage = 'url("./assets/icons/mute.png")';
-  else
-    muteIconRef.style.backgroundImage = 'url("./assets/icons/mute_off.png")';
+  else muteIconRef.style.backgroundImage = 'url("./assets/icons/mute_off.png")';
 }
 
+/**
+ * Stops all end-screen and game audio and resets their playback position to the beginning.
+ */
 function resetEndScreenAudio() {
   AUDIO_LOST.pause();
   AUDIO_WIN.pause();
@@ -77,6 +100,10 @@ function resetEndScreenAudio() {
   AUDIO_GAME.currentTime = 0;
 }
 
+/**
+ * Resets the given audio track to the beginning without pausing or playing it.
+ * @param {HTMLAudioElement} audio - The audio element to reset.
+ */
 function resetAudio(audio) {
-    audio.currentTime = 0;
+  audio.currentTime = 0;
 }
