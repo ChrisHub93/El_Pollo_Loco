@@ -12,10 +12,10 @@ class ChickenSmall extends MoveableObject {
   character = "chicken-small";
 
   offset = {
-    top: 20,
+    top: 10,
     left: 15,
     right: 15,
-    bottom: 10,
+    bottom: 20,
   };
 
   IMAGE_WALKING = [

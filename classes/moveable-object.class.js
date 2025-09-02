@@ -149,10 +149,12 @@ class MoveableObject extends DrawableObject {
   }
 
   /**
-   * Moves the character to the up.
+   * Makes the character jump by setting its vertical speed and position.
+   * @param {number} height - The initial upward speed of the jump.
    */
   jump(height) {
     this.speedY = height;
+    this.y = 147;
   }
 
   /**
