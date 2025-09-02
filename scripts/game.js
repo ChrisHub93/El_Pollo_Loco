@@ -13,7 +13,7 @@ window.addEventListener("resize", toggleRotationHint);
  * initializes the first level, creates the game world, starts background audio,
  * and sets the mute icon state.
  */
-function initIndex() {
+function startGame() {
   gameStopped = false;
   keyboard = new Keyboard();
   document.getElementById("start-screen").style.display = "none";
