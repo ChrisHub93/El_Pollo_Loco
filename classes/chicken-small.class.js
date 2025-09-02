@@ -12,7 +12,7 @@ class ChickenSmall extends MoveableObject {
   character = "chicken-small";
 
   offset = {
-    top: 10,
+    top: -5,
     left: 15,
     right: 15,
     bottom: 20,
