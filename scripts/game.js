@@ -21,7 +21,7 @@ function initIndex() {
   world = new World(canvas);
   playNextAudio(AUDIO_HOME, AUDIO_GAME);
   setMuteIcon();  
-  checkFullscreenCondition();
+  //checkFullscreenCondition();
 }
 
 /**
@@ -70,7 +70,27 @@ function checkFullscreenCondition() {
     if (!document.fullscreenElement) fullscreen("enter");
   } else if (document.fullscreenElement) fullscreen("exit");
 }
+window.addEventListener("resize", toggleVideo);
+/**
+ * Toggles the visibility of the "turnYourDevice" video element
+ * based on the current viewport width.
+ *
+ * - Shows the video when the viewport width is 768px or smaller.
+ * - Hides the video when the viewport width is larger than 768px.
+ *
+ * @function toggleVideo
+ * @returns {void}
+ */
+function toggleVideo() {
+  let hint = document.getElementById("rotateHint");
+  if (window.innerWidth <= 768) {
+    hint.style.display = "flex";
+  }
+  if (window.innerWidth > 768) {
+    hint.style.display = "none";  
 
+  }
+}
 /**
  * Toggles the game state between stopped and running.
  * When stopped, keyboard input is disabled.
