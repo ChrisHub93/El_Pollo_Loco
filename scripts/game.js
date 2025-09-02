@@ -5,6 +5,8 @@ let gameStopped = false;
 let intervalIds = [];
 let devTools = false;
 
+window.addEventListener("resize", toggleVideo);
+
 /**
  * Initializes the main index/game setup.
  * Sets up keyboard input, hides the start screen, shows the game canvas,
@@ -20,7 +22,7 @@ function initIndex() {
   document.getElementById("canvas-wrapper").style.display = "block";
   world = new World(canvas);
   playNextAudio(AUDIO_HOME, AUDIO_GAME);
-  setMuteIcon();  
+  setMuteIcon();
   //checkFullscreenCondition();
 }
 
@@ -70,7 +72,7 @@ function checkFullscreenCondition() {
     if (!document.fullscreenElement) fullscreen("enter");
   } else if (document.fullscreenElement) fullscreen("exit");
 }
-window.addEventListener("resize", toggleVideo);
+
 /**
  * Toggles the visibility of the "turnYourDevice" video element
  * based on the current viewport width.
@@ -85,12 +87,13 @@ function toggleVideo() {
   let hint = document.getElementById("rotateHint");
   if (window.innerWidth <= 768) {
     hint.style.display = "flex";
+    gameStopped = true;
   }
   if (window.innerWidth > 768) {
-    hint.style.display = "none";  
-
+    hint.style.display = "none";
   }
 }
+
 /**
  * Toggles the game state between stopped and running.
  * When stopped, keyboard input is disabled.

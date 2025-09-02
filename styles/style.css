@@ -39,6 +39,11 @@ h1 {
   text-align: center;
 }
 
+.rotateIcon{
+  height: 80%;
+  width: 80px;
+}
+
 #fullscreen {
   display: flex;
   justify-content: center;
