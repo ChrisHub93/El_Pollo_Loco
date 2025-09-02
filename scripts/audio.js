@@ -1,4 +1,5 @@
 let soundOn = false;
+let doSoundcheck = true;
 let AUDIO_HOME = new Audio("./assets/audio/flamenco-loop.mp3");
 let AUDIO_GAME = new Audio("./assets/audio/guitar-spanish.mp3");
 let AUDIO_HIT = new Audio("./assets/audio/boing.mp3");
@@ -45,6 +46,7 @@ function playHomeAudio() {
     muteBtnRef.style.backgroundImage = 'url("./assets/icons/mute.png")';
     AUDIO_HOME.pause();
   }
+  doSoundcheck = false;
 }
 
 /**
@@ -70,12 +72,12 @@ function switchMute() {
   if (!soundOn) {
     soundOn = true;
     AUDIO_CURRENT_SONG.play();
-    setMuteIcon();
   } else {
     soundOn = false;
     AUDIO_CURRENT_SONG.pause();
-    setMuteIcon();
   }
+  localStorage.setItem("soundOn", JSON.stringify(soundOn));
+  setMuteIcon();
 }
 
 /**
@@ -106,4 +108,13 @@ function resetEndScreenAudio() {
  */
 function resetAudio(audio) {
   audio.currentTime = 0;
+}
+
+function soundCheck() {
+  const savedSound = localStorage.getItem("soundOn");
+  if (savedSound == null) {
+    soundOn = false;
+  } else {
+    soundOn = JSON.parse(savedSound);
+  }
 }

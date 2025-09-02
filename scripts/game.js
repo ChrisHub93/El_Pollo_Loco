@@ -14,6 +14,7 @@ window.addEventListener("resize", toggleRotationHint);
  * and sets the mute icon state.
  */
 function startGame() {
+  if (doSoundcheck) soundCheck();
   gameStopped = false;
   keyboard = new Keyboard();
   document.getElementById("start-screen").style.display = "none";
@@ -22,7 +23,7 @@ function startGame() {
   document.getElementById("canvas-wrapper").style.display = "block";
   world = new World(canvas);
   playNextAudio(AUDIO_HOME, AUDIO_GAME);
-  setMuteIcon();
+  setMuteIcon()
 }
 
 /**
@@ -72,7 +73,7 @@ function restartGame() {
   document.getElementById("won-screen").style.display = "none";
   canvas.style.display = "block";
   resetEndScreenAudio();
-  initIndex();
+  startGame();
 }
 
 /**
