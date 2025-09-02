@@ -86,7 +86,7 @@ function switchMute() {
  */
 function setMuteIcon() {
   const muteIconRef = document.getElementById("touchBtnMute");
-  if (!soundOn)
+  if (soundOn)
     muteIconRef.style.backgroundImage = 'url("./assets/icons/mute.png")';
   else muteIconRef.style.backgroundImage = 'url("./assets/icons/mute_off.png")';
 }
