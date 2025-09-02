@@ -14,7 +14,7 @@ window.addEventListener("resize", toggleRotationHint);
  * and sets the mute icon state.
  */
 function startGame() {
-  if (doSoundcheck) soundCheck();
+  if (doSoundcheck) soundCheckLocalStorage();
   gameStopped = false;
   keyboard = new Keyboard();
   document.getElementById("start-screen").style.display = "none";

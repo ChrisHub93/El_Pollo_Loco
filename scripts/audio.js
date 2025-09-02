@@ -110,11 +110,8 @@ function resetAudio(audio) {
   audio.currentTime = 0;
 }
 
-function soundCheck() {
+function soundCheckLocalStorage() {
   const savedSound = localStorage.getItem("soundOn");
-  if (savedSound == null) {
-    soundOn = false;
-  } else {
-    soundOn = JSON.parse(savedSound);
-  }
+  if (savedSound == null) soundOn = false;
+  else soundOn = JSON.parse(savedSound);
 }
