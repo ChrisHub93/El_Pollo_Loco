@@ -12,34 +12,37 @@ class Bottle extends MoveableObject {
   /**
    * @type {number} - The Y position where the bottle is rendered.
    */
-  y = 330;
+  y = 360;
 
   /**
    * @type {number} - The height of the bottle in pixels.
    */
-  height = 120;
+  height = 80;
 
   /**
    * @type {number} - The width of the bottle in pixels.
    */
-  width = 120;
+  width = 80;
 
   /**
    * The hitbox offset values for collision detection.
    * @type {{top: number, left: number, right: number, bottom: number}}
    */
   offset = {
-    top: 35,
+    top: 15,
     left: 35,
     right: 35,
-    bottom: 35,
+    bottom: 0,
   };
 
-  /**
+   /**
    * 
    * @type {string[]} - Path(s) to the bottle image(s).
    */
-  IMAGE_BOTTLE = ["./assets/img/6_salsa_bottle/2_salsa_bottle_on_ground.png"];
+  IMAGE_BOTTLE = [
+    "./assets/img/6_salsa_bottle/1_salsa_bottle_on_ground.png",
+    "./assets/img/6_salsa_bottle/2_salsa_bottle_on_ground.png"
+  ];
 
   /**
    * Creates a new bottle object and places it randomly within the given parameters.
@@ -47,7 +50,15 @@ class Bottle extends MoveableObject {
    */
   constructor() {
     super().loadImage(this.IMAGE_BOTTLE[0]);
+    this.loadImages(this.IMAGE_BOTTLE);
     this.calculatePlacementX(300, 420, 70);
+    this.animate();
+  }
+
+  animate() {
+    setInterval(() => {
+      this.playAnimation(this.IMAGE_BOTTLE);
+    }, 300);
   }
 }
 
