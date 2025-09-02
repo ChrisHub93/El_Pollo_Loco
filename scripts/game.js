@@ -5,7 +5,7 @@ let gameStopped = false;
 let intervalIds = [];
 let devTools = false;
 
-window.addEventListener("resize", toggleVideo);
+window.addEventListener("resize", toggleRotationHint);
 
 /**
  * Initializes the main index/game setup.
@@ -74,16 +74,16 @@ function checkFullscreenCondition() {
 }
 
 /**
- * Toggles the visibility of the "turnYourDevice" video element
+ * Toggles the visibility of the "turnYourDevice" hint element
  * based on the current viewport width.
  *
- * - Shows the video when the viewport width is 768px or smaller.
- * - Hides the video when the viewport width is larger than 768px.
+ * - Shows the hint when the viewport width is 768px or smaller.
+ * - Hides the hint when the viewport width is larger than 768px.
  *
  * @function toggleVideo
  * @returns {void}
  */
-function toggleVideo() {
+function toggleRotationHint() {
   let hint = document.getElementById("rotateHint");
   if (window.innerWidth <= 768) {
     hint.style.display = "flex";
