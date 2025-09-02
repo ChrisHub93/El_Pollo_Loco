@@ -23,54 +23,6 @@ function initIndex() {
   world = new World(canvas);
   playNextAudio(AUDIO_HOME, AUDIO_GAME);
   setMuteIcon();
-  //checkFullscreenCondition();
-}
-
-/**
- * Toggles fullscreen mode for the game.
- *
- * @param {string} method - "enter" to activate fullscreen, "exit" to leave fullscreen.
- */
-function fullscreen(method) {
-  if (method === "enter") {
-    let fullscreenRef = document.getElementById("fullscreen");
-    enterFullscreen(fullscreenRef);
-  } else if (method === "exit") {
-    exitFullscreen();
-  }
-}
-
-/**
- * Requests fullscreen mode for a given HTML element.
- *
- * @param {HTMLElement} element - The element to display in fullscreen.
- */
-function enterFullscreen(element) {
-  if (element.requestFullscreen) element.requestFullscreen();
-  else if (element.msRequestFullscreen) element.msRequestFullscreen();
-  else if (element.webkitRequestFullscreen) element.webkitRequestFullscreen();
-}
-
-/**
- * Exits fullscreen mode if the browser is currently in fullscreen.
- */
-function exitFullscreen() {
-  if (document.exitFullscreen) document.exitFullscreen();
-  else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-}
-
-/**
- * Checks the fullscreen condition based on the window size and toggles fullscreen mode.
- * If the window's height and width are below the defined maximums, it enters fullscreen.
- * If the window exceeds the maximums while in fullscreen, it exits fullscreen.
- */
-function checkFullscreenCondition() {
-  const maxHeight = 480;
-  const maxWidth = 720;
-
-  if (window.innerHeight <= maxHeight && window.innerWidth <= maxWidth) {
-    if (!document.fullscreenElement) fullscreen("enter");
-  } else if (document.fullscreenElement) fullscreen("exit");
 }
 
 /**
