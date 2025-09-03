@@ -132,7 +132,7 @@ class Endboss extends MoveableObject {
 
     this.moveForwardInterval = setInterval(() => {
       this.moveForward();
-    }, 1000);
+    }, 3000);
   }
 
   /**
@@ -177,7 +177,7 @@ class Endboss extends MoveableObject {
         return;
       }
       this.walk();
-      if (this.steps >= 12) {
+      if (this.steps >= 30) {
         clearInterval(this.stepInterval);
         this.animation();
       }
@@ -193,7 +193,7 @@ class Endboss extends MoveableObject {
    */
   walk() {
     this.playAnimation(this.IMAGES_WALK);
-    this.x -= 10;
+    this.x -= 20;
     this.steps++;
   }
 
