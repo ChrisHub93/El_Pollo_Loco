@@ -33,13 +33,18 @@ class Keyboard {
    * @param {boolean} isPressed - True if the key or touch is pressed, false if released.
    */
   handleKey(e, isPressed) {
-    if (e.keyCode == 87 || e.target.id === "touchBtnUp")
+    const key = e.key; 
+  
+    if (key === "w" || key === "W" || e.target.id === "touchBtnUp")
       this.setIdle("W", isPressed);
-    if (e.keyCode == 65 || e.target.id === "touchBtnLeft")
+  
+    if (key === "a" || key === "A" || e.target.id === "touchBtnLeft")
       this.setIdle("A", isPressed);
-    if (e.keyCode == 68 || e.target.id === "touchBtnRight")
+  
+    if (key === "d" || key === "D" || e.target.id === "touchBtnRight")
       this.setIdle("D", isPressed);
-    if (e.keyCode === 66 || e.target.id === "touchBtnThrow")
+  
+    if (key === "b" || key === "B" || e.target.id === "touchBtnThrow")
       this.setIdle("B", isPressed);
   }
 
