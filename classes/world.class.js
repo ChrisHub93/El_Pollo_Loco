@@ -15,6 +15,7 @@ class World extends Collision {
   endboss = this.level.enemies.find((enemy) => enemy instanceof Endboss);
   onHit = false;
   throwableObjects = [];
+  throwableTimeout = false;
 
   /**
    * Creates a new instance of the game canvas manager.
@@ -124,11 +125,15 @@ class World extends Collision {
    * - Calls `canBottleBeThrown()` to determine if throwing is allowed.
    * - If true, calls `throwBottles()` to throw the bottle.
    * - Resets the `keyboard.B` flag to prevent repeated throws.
+   * - Sets a throwable timeout for 0.5 secounds
    */
   checkThrowableObjects() {
     if (this.canBottleBeThrown()) {
       this.throwBottles();
       keyboard.B = false;
+      setTimeout(() => {
+        this.throwableTimeout = false;
+      }, 600);
     }
   }
 
@@ -139,6 +144,7 @@ class World extends Collision {
    * - The "B" key is pressed (`keyboard.B === true`).
    * - The character has at least one bottle (`statusBarBottles.percentage > 0`).
    * - Keyboard input is currently allowed (`keyboard.keyboardReady`).
+   * - Throwable timeout is done.
    *
    * @returns {boolean} True if a bottle can be thrown, false otherwise.
    */
@@ -146,7 +152,7 @@ class World extends Collision {
     return (
       keyboard.B === true &&
       this.statusBarBottles.percentage > 0 &&
-      keyboard.keyboardReady
+      keyboard.keyboardReady && !this.throwableTimeout
     );
   }
 
@@ -159,6 +165,7 @@ class World extends Collision {
    * - Updates the status bar to reflect the remaining bottles.
    */
   throwBottles() {
+    this.throwableTimeout = true;
     let bottle = new ThrowableObject(
       this.character.x + 100,
       this.character.y + 100
