@@ -72,7 +72,7 @@ function restartGame() {
   startGame();
 }
 
-function resetGame(params) {
+function resetGame() {
   clearAllIntervalls();
   document.getElementById("end-screen").style.display = "none";
   document.getElementById("won-screen").style.display = "none";
@@ -100,6 +100,8 @@ function resetItemCounts() {
 }
 
 function backToHome() {
+  resetGame();
   document.getElementById("end-screen").style.display = "none";
   document.getElementById("won-screen").style.display = "none";
+  document.getElementById("start-screen").style.display = "flex";
 }

@@ -167,6 +167,10 @@ canvas {
   padding: 1px;
 }
 
+.btnHome{
+  margin-top: 10px;
+}
+
 .btn:hover {
   cursor: pointer;
   background-color: #f4dc00;
