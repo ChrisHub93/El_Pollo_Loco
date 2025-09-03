@@ -20,16 +20,18 @@ AUDIO_GAME.loop = true;
 AUDIO_ENDBOSS.loop = true;
 AUDIO_WIN.loop = false;
 
-AUDIO_HOME.volume = 0.4;
-AUDIO_GAME.volume = 0.4;
-AUDIO_JUMP.volume = 0.5;
-AUDIO_COIN_HIT.volume = 0.3;
-AUDIO_JUMP.volume = 0.5;
-AUDIO_BOTTLE_HIT.volume = 0.2;
-AUDIO_HIT_ENEMY.volume = 0.3;
-AUDIO_THROW.volume = 0.3;
-AUDIO_PUNCH.volume = 0.5;
-AUDIO_ENDBOSS.volume = 0.3;
+AUDIO_HOME.volume = 0.05;
+AUDIO_GAME.volume = 0.05;
+AUDIO_JUMP.volume = 0.1;
+AUDIO_COIN_HIT.volume = 0.1;
+AUDIO_JUMP.volume = 0.1;
+AUDIO_BOTTLE_HIT.volume = 0.1;
+AUDIO_HIT_ENEMY.volume = 0.1;
+AUDIO_THROW.volume = 0.1;
+AUDIO_PUNCH.volume = 0.1;
+AUDIO_ENDBOSS.volume = 0.1;
+AUDIO_LOST.volume = 0.1;
+AUDIO_WIN.volume = 0.1;
 
 /**
  * Plays or pauses the home screen audio depending on the sound state.

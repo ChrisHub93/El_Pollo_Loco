@@ -5,7 +5,6 @@
 class Character extends MoveableObject {
   height = 280;
   y = 147;
-  x = 2800;
   speed = 10;
   isOnEndbossPosition = false;
   world;
@@ -75,7 +74,7 @@ class Character extends MoveableObject {
 
   offset = {
     top: 120,
-    left: 30,
+    left: 25,
     right: 40,
     bottom: 15,
   };
