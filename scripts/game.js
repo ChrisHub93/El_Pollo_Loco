@@ -23,7 +23,7 @@ function startGame() {
   document.getElementById("canvas-wrapper").style.display = "block";
   world = new World(canvas);
   playNextAudio(AUDIO_HOME, AUDIO_GAME);
-  setMuteIcon()
+  setMuteIcon();
 }
 
 /**
@@ -72,6 +72,10 @@ function restartGame() {
   startGame();
 }
 
+/**
+ * Resets the game state by clearing all intervals, hiding end/win screens,
+ * showing the main game canvas, and resetting any end-screen audio.
+ */
 function resetGame() {
   clearAllIntervalls();
   document.getElementById("end-screen").style.display = "none";
@@ -99,6 +103,11 @@ function resetItemCounts() {
   Cloud.itemCount = 0;
 }
 
+/**
+ * Returns the game to the home/start screen.
+ * Resets the game state and hides any end or win screens.
+ * Displays the start screen.
+ */
 function backToHome() {
   resetGame();
   document.getElementById("end-screen").style.display = "none";
@@ -106,11 +115,17 @@ function backToHome() {
   document.getElementById("start-screen").style.display = "flex";
 }
 
+/**
+ * Hides the start screen and displays the impressum screen.
+ */
 function openImpressum() {
   document.getElementById("impressum").style.display = "flex";
   document.getElementById("start-screen").style.display = "none";
 }
 
+/**
+ * Hides the impressum screen and displays the start screen.
+ */
 function leaveImpressum() {
   document.getElementById("impressum").style.display = "none";
   document.getElementById("start-screen").style.display = "flex";
