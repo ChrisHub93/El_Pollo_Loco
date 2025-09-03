@@ -8,7 +8,7 @@ class Level {
   coins;
   bottles;
   hints;
-  level_end_x = 2900;
+  level_end_x = 4000;
 
   /**
    * Creates a new Level instance.
