@@ -110,8 +110,9 @@ class DrawableObject {
    * the end screen overlay. Also plays the game over audio and transitions
    * to the "lost" audio track.
    */
-  showGameOverScreen() {
+  showGameOverScreen() {    
     document.getElementById("canvas-wrapper").style.display = "none";
+    document.getElementById("mobile-buttons").style.display = "none";
     document.getElementById("end-screen").style.display = "flex";
     playNextAudio(AUDIO_GAME, AUDIO_LOST);
     resetGameAudio();
@@ -124,6 +125,7 @@ class DrawableObject {
    */
   showYouWonScreen() {
     document.getElementById("canvas-wrapper").style.display = "none";
+    document.getElementById("mobile-buttons").style.display = "none";
     document.getElementById("won-screen").style.display = "flex";
     playNextAudio(AUDIO_ENDBOSS, AUDIO_WIN);
     resetGameAudio();

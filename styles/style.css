@@ -57,6 +57,10 @@ h1 {
   position: relative;
 }
 
+#mobile-buttons{
+  display: none;
+}
+
 canvas {
   background-color: black;
 }

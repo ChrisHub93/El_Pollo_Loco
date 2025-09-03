@@ -21,6 +21,7 @@ function startGame() {
   canvas = document.getElementById("canvas");
   initLevelOne();
   document.getElementById("canvas-wrapper").style.display = "block";
+  document.getElementById("mobile-buttons").style.display = "block";
   world = new World(canvas);
   playNextAudio(AUDIO_HOME, AUDIO_GAME);
   setMuteIcon();
