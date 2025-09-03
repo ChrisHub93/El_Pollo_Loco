@@ -44,7 +44,7 @@ class World extends Collision {
     this.backgroundObjects();
     this.hudElements();
     this.levelObjects();
-    
+
     let self = this;
     if (!gameStopped) {
       requestAnimationFrame(function () {
@@ -132,7 +132,7 @@ class World extends Collision {
       keyboard.B = false;
       setTimeout(() => {
         this.throwableTimeout = false;
-      }, 600);
+      }, 1000);
     }
   }
 

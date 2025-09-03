@@ -130,9 +130,8 @@ class Endboss extends MoveableObject {
     if (this.isDead) return;
     if (gameStopped) return;
 
-    this.moveForwardInterval = setInterval(() => {
-      this.moveForward();
-    }, 3000);
+    // Startet kontinuierliches Vorwärtslaufen
+    this.moveForward();
   }
 
   /**
@@ -166,21 +165,14 @@ class Endboss extends MoveableObject {
    */
   moveForward() {
     if (gameStopped) return;
-    clearInterval(this.playAnimationsCharacterInterval);
-    this.steps = 0;
+    clearInterval(this.stepInterval);
 
     this.stepInterval = setInterval(() => {
       if (gameStopped) return;
-      if (this.isHurt()) {
-        this.stopAllIntervals();
-        this.animate();
-        return;
-      }
+      if (this.isHurt()) return;
+
       this.walk();
-      if (this.steps >= 30) {
-        clearInterval(this.stepInterval);
-        this.animation();
-      }
+      this.steps++;
     }, 80);
   }
 
