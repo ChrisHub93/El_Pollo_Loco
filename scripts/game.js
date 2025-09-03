@@ -3,7 +3,7 @@ let world;
 let keyboard;
 let gameStopped = false;
 let intervalIds = [];
-let devTools = true;
+let devTools = false;
 let doSoundcheck = true;
 
 window.addEventListener("resize", toggleRotationHint);
