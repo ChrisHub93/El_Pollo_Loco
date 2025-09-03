@@ -81,7 +81,7 @@ canvas {
   gap: 3px;
   height: 480px;
   width: 720px;
-  background-color: #FAA53E;
+  background-color: #faa53e;
 }
 
 .btn {
@@ -92,7 +92,7 @@ canvas {
   background-color: #fba900;
 }
 
-.btnBack{
+.btnBack {
   margin-top: 20px;
   display: flex;
   align-items: center;
@@ -229,6 +229,36 @@ canvas {
 .youWinImg {
   background-size: 70% 70%;
   background-image: url("../assets/img/You won, you lost/You Win A.png");
+}
+
+#touchBtnLeft {
+  display: none;
+}
+#touchBtnRight {
+  display: none;
+}
+
+#touchBtnUp {
+  display: none;
+}
+
+#touchBtnThrow {
+  display: none;
+}
+
+@media (pointer: coarse) {
+  #touchBtnLeft {
+    display: block;
+  }
+  #touchBtnRight {
+    display: block;
+  }
+  #touchBtnUp {
+    display: block;
+  }
+  #touchBtnThrow {
+    display: block;
+  }
 }
 
 /* Smartphones */
