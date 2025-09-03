@@ -40,7 +40,7 @@ class MoveableObject extends DrawableObject {
           this.speedY = 0;
         }
       }
-    }, 1000 / 25);
+    }, 1000 / 30);
   }
 
   /**
