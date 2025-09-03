@@ -115,3 +115,15 @@ function soundCheckLocalStorage() {
   if (savedSound == null) soundOn = false;
   else soundOn = JSON.parse(savedSound);
 }
+
+function resetGameAudio() {
+  AUDIO_HOME.loop = false;
+  AUDIO_GAME.loop = false;
+  AUDIO_ENDBOSS.loop = false;
+  AUDIO_HOME.pause();
+  AUDIO_GAME.pause();
+  AUDIO_ENDBOSS.pause();
+  resetAudio(AUDIO_HOME);
+  resetAudio(AUDIO_GAME);
+  resetAudio(AUDIO_ENDBOSS);  
+}

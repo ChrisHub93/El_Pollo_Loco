@@ -113,8 +113,8 @@ class DrawableObject {
   showGameOverScreen() {
     document.getElementById("canvas-wrapper").style.display = "none";
     document.getElementById("end-screen").style.display = "flex";
-    AUDIO_GAME.play();
     playNextAudio(AUDIO_GAME, AUDIO_LOST);
+    resetGameAudio();
   }
 
   /**
@@ -126,5 +126,6 @@ class DrawableObject {
     document.getElementById("canvas-wrapper").style.display = "none";
     document.getElementById("won-screen").style.display = "flex";
     playNextAudio(AUDIO_ENDBOSS, AUDIO_WIN);
+    resetGameAudio();
   }
 }
