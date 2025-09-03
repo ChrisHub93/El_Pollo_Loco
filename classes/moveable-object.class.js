@@ -21,19 +21,24 @@ class MoveableObject extends DrawableObject {
     bottom: 0,
   };
 
-  /**
-   * Applies gravity to the object by updating its vertical position and speed.
-   *
-   * The object's `y` position is decreased by `speedY` and `speedY` is reduced
-   * by `acceleration` every frame, simulating falling motion.
-   * Gravity is only applied if the object is above the ground or moving upwards,
-   * and the game is not stopped.
-   */
+/**
+ * Applies gravity to the object by updating its vertical position (`y`) and vertical speed (`speedY`).
+ *
+ * - Decreases `y` by the current `speedY` value each frame, simulating upward or downward motion.
+ * - Reduces `speedY` by the `acceleration` value each frame, simulating gravity pulling the object down.
+ * - Stops falling when the object reaches the ground level (`y = 147`).
+ * - Only runs if the object is above ground or moving upward, and if the game is not stopped.
+ */
   applyGravity() {
     setInterval(() => {
       if ((this.isAboveGround() || this.speedY > 0) && !gameStopped) {
         this.y -= this.speedY;
         this.speedY -= this.acceleration;
+
+        if (this.y > 147) {
+          this.y = 147;
+          this.speedY = 0;
+        }
       }
     }, 1000 / 25);
   }
