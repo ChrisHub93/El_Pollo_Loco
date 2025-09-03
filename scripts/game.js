@@ -68,12 +68,16 @@ function stopGame() {
  * showing the game canvas, resetting audio, and reinitializing the game.
  */
 function restartGame() {
+  resetGame();
+  startGame();
+}
+
+function resetGame(params) {
   clearAllIntervalls();
   document.getElementById("end-screen").style.display = "none";
   document.getElementById("won-screen").style.display = "none";
   canvas.style.display = "block";
   resetEndScreenAudio();
-  startGame();
 }
 
 /**
@@ -93,4 +97,9 @@ function resetItemCounts() {
   Chicken.itemCount = 0;
   ChickenSmall.itemCount = 0;
   Cloud.itemCount = 0;
+}
+
+function backToHome() {
+  document.getElementById("end-screen").style.display = "none";
+  document.getElementById("won-screen").style.display = "none";
 }
