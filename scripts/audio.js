@@ -1,5 +1,4 @@
 let soundOn = false;
-let doSoundcheck = true;
 let AUDIO_HOME = new Audio("./assets/audio/flamenco-loop.mp3");
 let AUDIO_GAME = new Audio("./assets/audio/guitar-spanish.mp3");
 let AUDIO_HIT = new Audio("./assets/audio/boing.mp3");
@@ -110,12 +109,20 @@ function resetAudio(audio) {
   audio.currentTime = 0;
 }
 
+/**
+ * Loads the sound preference from localStorage and sets the global `soundOn` variable.
+ * If no preference is saved, sound is turned off by default.
+ */
 function soundCheckLocalStorage() {
   const savedSound = localStorage.getItem("soundOn");
   if (savedSound == null) soundOn = false;
   else soundOn = JSON.parse(savedSound);
 }
 
+/**
+ * Stops and resets all main game audio tracks.
+ * Turns off looping, pauses playback, and resets the current time to 0.
+ */
 function resetGameAudio() {
   AUDIO_HOME.loop = false;
   AUDIO_GAME.loop = false;
@@ -125,5 +132,14 @@ function resetGameAudio() {
   AUDIO_ENDBOSS.pause();
   resetAudio(AUDIO_HOME);
   resetAudio(AUDIO_GAME);
-  resetAudio(AUDIO_ENDBOSS);  
+  resetAudio(AUDIO_ENDBOSS);
+}
+
+/**
+ * Enables looping for all main game audio tracks so they play continuously.
+ */
+function loopSounds() {
+  AUDIO_HOME.loop = true;
+  AUDIO_GAME.loop = true;
+  AUDIO_ENDBOSS.loop = true;
 }

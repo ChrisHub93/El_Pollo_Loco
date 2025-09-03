@@ -4,6 +4,7 @@ let keyboard;
 let gameStopped = false;
 let intervalIds = [];
 let devTools = false;
+let doSoundcheck = true;
 
 window.addEventListener("resize", toggleRotationHint);
 
@@ -24,6 +25,7 @@ function startGame() {
   world = new World(canvas);
   playNextAudio(AUDIO_HOME, AUDIO_GAME);
   setMuteIcon();
+  loopSounds();
 }
 
 /**
