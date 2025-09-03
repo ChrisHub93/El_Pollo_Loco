@@ -186,6 +186,7 @@ class World extends Collision {
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.level["backgroundObjects"]);
     this.addObjectsToMap(this.level["clouds"]);
+    this.addObjectsToMap(this.level["hints"]);
     this.ctx.translate(-this.camera_x, 0);
   }
 

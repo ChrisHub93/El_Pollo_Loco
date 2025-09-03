@@ -72,6 +72,7 @@ function initLevelOne() {
     
           ],
     [new Coin(), new Coin(), new Coin(), new Coin(), new Coin()],
-    [new Bottle(), new Bottle(), new Bottle(), new Bottle(), new Bottle()]
+    [new Bottle(), new Bottle(), new Bottle(), new Bottle(), new Bottle()],
+    [new Hint("./assets/img/10_hints/hint_jump.png", 50), new Hint("./assets/img/10_hints/hint_throw.png", 3200),]
   );
 }

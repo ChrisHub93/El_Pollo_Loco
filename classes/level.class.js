@@ -7,6 +7,7 @@ class Level {
   backgroundObjects;
   coins;
   bottles;
+  hints;
   level_end_x = 2900;
 
   /**
@@ -18,11 +19,12 @@ class Level {
    * @param {Array<Coin>} coins - The collectible coins in the level.
    * @param {Array<Bottle>} bottles - The collectible bottles in the level.
    */
-  constructor(enemies, clouds, backgroundObjects, coins, bottles) {
+  constructor(enemies, clouds, backgroundObjects, coins, bottles, hints) {
     this.enemies = enemies;
     this.clouds = clouds;
     this.backgroundObjects = backgroundObjects;
     this.coins = coins;
     this.bottles = bottles;
+    this.hints = hints;
   }
 }
