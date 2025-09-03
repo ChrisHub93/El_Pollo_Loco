@@ -39,11 +39,11 @@ function startGame() {
  */
 function toggleRotationHint() {
   let hint = document.getElementById("rotateHint");
-  if (window.innerWidth <= 768) {
+  if (window.innerWidth <= 666) {
     hint.style.display = "flex";
     gameStopped = true;
   }
-  if (window.innerWidth > 768) {
+  if (window.innerWidth > 666) {
     hint.style.display = "none";
   }
 }
