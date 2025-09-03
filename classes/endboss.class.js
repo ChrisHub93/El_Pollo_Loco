@@ -132,7 +132,7 @@ class Endboss extends MoveableObject {
 
     this.moveForwardInterval = setInterval(() => {
       this.moveForward();
-    }, 3000);
+    }, 1000);
   }
 
   /**
