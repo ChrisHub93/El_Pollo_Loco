@@ -44,8 +44,7 @@ class World extends Collision {
     this.backgroundObjects();
     this.hudElements();
     this.levelObjects();
-
-    // Dadurch wird draw() immer wieder aufgerufen ->
+    
     let self = this;
     if (!gameStopped) {
       requestAnimationFrame(function () {
