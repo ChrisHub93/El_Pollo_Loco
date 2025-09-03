@@ -105,3 +105,13 @@ function backToHome() {
   document.getElementById("won-screen").style.display = "none";
   document.getElementById("start-screen").style.display = "flex";
 }
+
+function openImpressum() {
+  document.getElementById("impressum").style.display = "flex";
+  document.getElementById("start-screen").style.display = "none";
+}
+
+function leaveImpressum() {
+  document.getElementById("impressum").style.display = "none";
+  document.getElementById("start-screen").style.display = "flex";
+}
