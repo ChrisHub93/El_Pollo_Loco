@@ -167,8 +167,8 @@ class World extends Collision {
   throwBottles() {
     this.throwableTimeout = true;
     let bottle = new ThrowableObject(
-      this.character.x + 100,
-      this.character.y + 100
+      this.character.x + 40,
+      this.character.y + 120
     );
     this.throwableObjects.push(bottle);
     this.character.reduceStatus("bottles", 20);
