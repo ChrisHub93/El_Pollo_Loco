@@ -4,6 +4,7 @@
   scroll-behavior: smooth;
   overflow: hidden;
 }
+
 d-none {
   display: none !important;
 }
@@ -184,7 +185,6 @@ canvas {
   top: 17%;
   left: 92%;
   background-size: 80% 80%;
-  /* background-image: url("../assets/icons/mute.png"); */
 }
 
 .btnCanvasLeft {
@@ -262,12 +262,11 @@ canvas {
   .btnCanvasMobile {
     display: block;
   }
-  .key-description{
+  .key-description {
     display: none;
   }
 }
 
-/* Smartphones */
 @media (max-width: 720px) {
   #fullscreen {
     height: 100%;
