@@ -5,6 +5,7 @@
 class Character extends MoveableObject {
   height = 280;
   y = 147;
+  x = 2800;
   speed = 10;
   isOnEndbossPosition = false;
   world;

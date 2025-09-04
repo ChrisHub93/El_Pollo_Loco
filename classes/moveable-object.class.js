@@ -118,6 +118,18 @@ class MoveableObject extends DrawableObject {
     return timePassed < 1;
   }
 
+   /**
+   * Checks if the endboss is currently in a "hurt" state.
+   * A endboss is considered hurt if less than 0.3 second has passed since the last hit.
+   *
+   * @returns {boolean} True if the endboss is hurt, false otherwise.
+   */
+   isHurtEndboss() {
+    let timePassed = new Date().getTime() - this.lastHit;
+    timePassed = timePassed / 1000;
+    return timePassed < 0.3;
+  }
+
   /**
    * Checks if the character's energy has reached 0 or less.
    * If so, sets the character's `isDead` property to true.
