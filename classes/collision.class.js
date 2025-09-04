@@ -53,7 +53,7 @@ class Collision {
    * - Resets the `lastHit` timestamp to the current time.
    */
   updateEndbossStatus() {
-    this.endboss.energy -= 25;
+    this.endboss.energy -= 20;
     this.statusBarEnboss.setPercentage(this.endboss.energy);
     this.endboss.lastHit = new Date().getTime();
   }
