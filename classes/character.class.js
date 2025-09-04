@@ -224,7 +224,11 @@ class Character extends MoveableObject {
    * @returns {boolean} True if the character can jump, otherwise false.
    */
   canJump() {
-    return keyboard["W"] && !this.isAboveGround() && keyboard.keyboardReady;
+    if (keyboard["W"] && !this.isAboveGround() && keyboard.keyboardReady) {
+      this.currentImage = 0;
+      return true;
+    }
+    return false;
   }
 
   /**
