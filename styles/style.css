@@ -262,6 +262,9 @@ canvas {
   .btnCanvasMobile {
     display: block;
   }
+  .key-description{
+    display: none;
+  }
 }
 
 /* Smartphones */
