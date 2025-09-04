@@ -225,7 +225,7 @@ class Character extends MoveableObject {
    */
   canJump() {
     if (keyboard["W"] && !this.isAboveGround() && keyboard.keyboardReady) {
-      this.currentImage = 0;
+      this.currentImage = 2;
       return true;
     }
     return false;
