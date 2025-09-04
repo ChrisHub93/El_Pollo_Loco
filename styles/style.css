@@ -57,7 +57,7 @@ h1 {
   position: relative;
 }
 
-#mobile-buttons{
+#mobile-buttons {
   display: none;
 }
 
@@ -86,6 +86,15 @@ canvas {
   height: 480px;
   width: 720px;
   background-color: #faa53e;
+  border-radius: 21px;
+  opacity: 0.9;
+}
+
+.impressumContent {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .btn {
@@ -97,7 +106,7 @@ canvas {
 }
 
 .btnBack {
-  margin-top: 20px;
+  margin-top: 29px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,7 +116,7 @@ canvas {
 }
 
 .btnStart {
-  margin-top: 20px;
+  margin-top: 29px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,15 +174,15 @@ canvas {
   height: 40px;
   width: 40px;
   top: 4%;
-  left: 93%;
+  left: 92%;
   background-image: url("../assets/icons/play_pause.png");
 }
 
 .btnCanvasMute {
   height: 40px;
   width: 40px;
-  top: 14%;
-  left: 93%;
+  top: 17%;
+  left: 92%;
   background-size: 80% 80%;
   /* background-image: url("../assets/icons/mute.png"); */
 }
