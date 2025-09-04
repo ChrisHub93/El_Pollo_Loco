@@ -4,8 +4,8 @@
  */
 class Chicken extends MoveableObject {
   static itemCount = 0;
-  y = 355;
-  height = 60;
+  y = 345;
+  height = 80;
   width = 80;
   character = "chicken";
 
