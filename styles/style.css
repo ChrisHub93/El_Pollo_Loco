@@ -132,6 +132,18 @@ canvas {
 }
 
 .btnCanvas {
+  background-color: #fba900;
+  height: 45px;
+  width: 45px;
+  border-radius: 50px;
+  position: absolute;
+  background-size: 90% 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid white;
+}
+
+.btnCanvasMobile {
   display: none;
   background-color: #fba900;
   height: 45px;
@@ -238,7 +250,7 @@ canvas {
 }
 
 @media (pointer: coarse) {
-  .btnCanvas {
+  .btnCanvasMobile {
     display: block;
   }
 }
