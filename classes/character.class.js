@@ -120,7 +120,6 @@ class Character extends MoveableObject {
    * - Moves the character left if `canMoveLeft()` returns true.
    * - Makes the character jump if `canJump()` returns true, and handles jump sounds.
    * - Updates the camera position in the world relative to the character's X position.
-   *
    */
   moveCharacter() {
     if (this.canMoveRight()) this.moveRight();
@@ -142,7 +141,6 @@ class Character extends MoveableObject {
    * - Jumping / above ground: plays the jumping animation (`IMAGES_JUMPING`).
    * - Walking: plays the walking animation (`IMAGE_WALKING`) if the character can animate.
    * - Idle: plays the long idle (`IMAGES_LONG_IDLE`) or normal idle (`IMAGES_IDLE`) animations based on keyboard input.
-   *
    */
   playAnimationsCharacter() {
     if (this.isDead) this.gameOver();
@@ -177,7 +175,6 @@ class Character extends MoveableObject {
    * - Calls the parent class's {@link MoveableObject.moveRight} method.
    * - Sets `otherDirection` to false to ensure correct image loading.
    * - Plays the walking sound if sound is enabled.
-   *
    */
   moveRight() {
     super.moveRight();
@@ -205,7 +202,6 @@ class Character extends MoveableObject {
    * - Calls the parent class's {@link MoveableObject.moveLeft} method.
    * - Sets `otherDirection` to false to ensure correct image loading.
    * - Plays the walking sound if sound is enabled.
-   *
    */
   moveLeft() {
     super.moveLeft();
@@ -218,10 +214,8 @@ class Character extends MoveableObject {
    *
    * The character can jump if:
    * - The "W" key is pressed.
-   * - The character is above ground.
+   * - The character is on ground.
    * - The keyboard is ready to accept input.
-   *
-   * @returns {boolean} True if the character can jump, otherwise false.
    */
   canJump() {
     if (keyboard["W"] && !this.isAboveGround() && keyboard.keyboardReady) {
