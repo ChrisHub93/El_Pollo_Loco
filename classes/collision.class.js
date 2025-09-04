@@ -48,7 +48,7 @@ class Collision {
   /**
    * Updates the end boss's energy status after being hit.
    *
-   * - Reduces the end boss's energy by 25.
+   * - Reduces the end boss's energy by 20.
    * - Updates the end boss status bar with the new energy percentage.
    * - Resets the `lastHit` timestamp to the current time.
    */
