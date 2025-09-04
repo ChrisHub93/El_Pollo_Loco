@@ -215,6 +215,6 @@ class Endboss extends MoveableObject {
     setTimeout(() => {
       gameStopped = true;
       this.showYouWonScreen();
-    }, 500);
+    }, 280);
   }
 }
