@@ -26,7 +26,7 @@ class MoveableObject extends DrawableObject {
  *
  * - Decreases `y` by the current `speedY` value each frame, simulating upward or downward motion.
  * - Reduces `speedY` by the `acceleration` value each frame, simulating gravity pulling the object down.
- * - Stops falling when the object reaches the ground level (`y = 147`).
+ * - Stops falling when the object reaches the ground level (`y = 149`).
  * - Only runs if the object is above ground or moving upward, and if the game is not stopped.
  */
   applyGravity() {
@@ -35,8 +35,8 @@ class MoveableObject extends DrawableObject {
         this.y -= this.speedY;
         this.speedY -= this.acceleration;
 
-        if ( this instanceof Character && this.y > 147) {
-          this.y = 147;
+        if ( this instanceof Character && this.y > 149) {
+          this.y = 149;
           this.speedY = 0;
         }
       }
@@ -47,13 +47,13 @@ class MoveableObject extends DrawableObject {
    * Checks if the object is above the ground.
    *
    * - Always returns `true` for throwable objects.
-   * - For other objects, returns `true` if `y` is less than the ground level (147).
+   * - For other objects, returns `true` if `y` is less than the ground level (149).
    *
    * @returns {boolean} `true` if the object is above the ground, `false` otherwise
    */
   isAboveGround() {
     if (this instanceof ThrowableObject) return true;
-    else return this.y < 147;
+    else return this.y < 149;
   }
 
   /**
