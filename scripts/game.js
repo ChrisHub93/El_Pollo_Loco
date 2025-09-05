@@ -4,6 +4,7 @@ let keyboard;
 let gameStopped = false;
 let devTools = false;
 let doSoundcheck = true;
+let fullscreen = false;
 
 window.addEventListener("resize", toggleRotationHint);
 
@@ -131,4 +132,47 @@ function openImpressum() {
 function leaveImpressum() {
   document.getElementById("impressum").style.display = "none";
   document.getElementById("start-screen").style.display = "flex";
+}
+
+
+/**
+ * Opens the game in fullscreen mode using the relative container.
+ *
+ * @function getFullScreen
+ * @returns {void}
+ */
+function getFullScreen() {
+  let divRef = document.getElementById("fullscreen");
+  if (fullscreen) openFullscreen(divRef);
+  else closeFullscreen()
+}
+
+/**
+ * Requests fullscreen mode for a given element.
+ * Handles compatibility for different browsers (standard, Safari, IE11).
+ *
+ * @function openFullscreen
+ * @param {HTMLElement} elem - The DOM element to display in fullscreen.
+ * @returns {void}
+ */
+function openFullscreen(elem) {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+    /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+    /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE11 */
+    document.msExitFullscreen();
+  }
 }
