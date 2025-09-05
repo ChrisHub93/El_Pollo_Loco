@@ -143,8 +143,8 @@ function leaveImpressum() {
  */
 function getFullScreen() {
   let divRef = document.getElementById("fullscreen");
-  if (fullscreen) openFullscreen(divRef);
-  else closeFullscreen()
+  if (!fullscreen) openFullscreen(divRef);
+  else if (fullscreen) closeFullscreen(divRef)
 }
 
 /**
@@ -156,6 +156,7 @@ function getFullScreen() {
  * @returns {void}
  */
 function openFullscreen(elem) {
+  fullscreen = true;
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
   } else if (elem.webkitRequestFullscreen) {
@@ -167,7 +168,8 @@ function openFullscreen(elem) {
   }
 }
 
-function closeFullscreen() {
+function closeFullscreen(elem) {
+  fullscreen = false;
   if (document.exitFullscreen) {
     document.exitFullscreen();
   } else if (document.webkitExitFullscreen) { /* Safari */

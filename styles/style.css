@@ -187,6 +187,12 @@ canvas {
   background-size: 80% 80%;
 }
 
+.btnCanvasFullscreen {
+  top: 5%;
+  left: 50%;
+  background-image: url("../assets/icons/left.png");
+}
+
 .btnCanvasLeft {
   top: 87%;
   left: 5%;
