@@ -134,26 +134,31 @@ function leaveImpressum() {
   document.getElementById("start-screen").style.display = "flex";
 }
 
-
 /**
  * Opens the game in fullscreen mode using the relative container.
+ * Changes the icons.
  *
  * @function getFullScreen
  * @returns {void}
  */
 function getFullScreen() {
   let divRef = document.getElementById("fullscreen");
-  if (!fullscreen) openFullscreen(divRef);
-  else if (fullscreen) closeFullscreen(divRef)
+  if (!fullscreen) {
+    openFullscreen(divRef);
+    document.getElementById("touchBtnFullscreen").style.backgroundImage =
+      "url('../assets/icons/fullscreen_exit.png')";
+  } else if (fullscreen) {
+    closeFullscreen(divRef);
+    document.getElementById("touchBtnFullscreen").style.backgroundImage =
+      "url('../assets/icons/fullscreen.png')";
+  }
 }
 
 /**
  * Requests fullscreen mode for a given element.
  * Handles compatibility for different browsers (standard, Safari, IE11).
  *
- * @function openFullscreen
  * @param {HTMLElement} elem - The DOM element to display in fullscreen.
- * @returns {void}
  */
 function openFullscreen(elem) {
   fullscreen = true;
@@ -168,13 +173,21 @@ function openFullscreen(elem) {
   }
 }
 
+/**
+ * Exit fullscreen
+ * Handles compatibility for different browsers (standard, Safari, IE11).
+ *
+ * @param {HTMLElement} elem - The DOM element to display in fullscreen.
+ */
 function closeFullscreen(elem) {
   fullscreen = false;
   if (document.exitFullscreen) {
     document.exitFullscreen();
-  } else if (document.webkitExitFullscreen) { /* Safari */
+  } else if (document.webkitExitFullscreen) {
+    /* Safari */
     document.webkitExitFullscreen();
-  } else if (document.msExitFullscreen) { /* IE11 */
+  } else if (document.msExitFullscreen) {
+    /* IE11 */
     document.msExitFullscreen();
   }
 }
