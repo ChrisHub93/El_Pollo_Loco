@@ -45,10 +45,15 @@
       <h1>El pollo loco</h1>
 
       <div id="start-screen" class="startScreen">
-        <button onclick="startGame()" id="start-button" class="btn btnStart">
-          Start Game
-          <img src="./assets/icons/play.png" alt="Play icon" />
-        </button>
+        <div class="startScreenPlayContainer">
+          <button onclick="startGame()" id="start-button" class="btn btnStart">
+            Start Game
+            <img src="./assets/icons/play.png" alt="Play icon" />
+          </button>
+          <button onclick="fullScreenMode('start-button-fullscreen')" id="start-button-fullscreen" class="btn btnStart btnFullscreen">
+          </button>
+        </div>
+       
         <button
           id="start-button-mute"
           class="btn btnStartMute"
@@ -100,7 +105,7 @@
       
       </div>
       <div id="mobile-buttons" class="mobileButtons">
-        <button onclick="getFullScreen()" id="touchBtnFullscreen" class="btnCanvasMobile btnCanvasFullscreen"></button>
+        <button onclick="fullScreenMode('touchBtnFullscreen')" id="touchBtnFullscreen" class="btnCanvasMobile btnCanvasFullscreen"></button>
         <button id="touchBtnLeft" class="btnCanvasMobile btnCanvasLeft"></button>
         <button id="touchBtnRight" class="btnCanvasMobile btnCanvasRight"></button>
         <button id="touchBtnUp" class="btnCanvasMobile btnCanvasUp"></button>

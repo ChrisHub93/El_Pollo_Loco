@@ -79,6 +79,10 @@ canvas {
   background-repeat: no-repeat;
 }
 
+.startScreenPlayContainer {
+  display: flex;
+}
+
 .impressum {
   display: none;
   flex-direction: column;
@@ -123,6 +127,17 @@ canvas {
   justify-content: center;
   gap: 7px;
   padding: 1px;
+}
+
+.btnFullscreen {
+  display: none;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0;
+  background-color: unset;
+  width: 30px;
+  margin-left: 5px;
+  background-image: url("../assets/icons/fullscreen.png");
 }
 
 .btnImpressum {
@@ -277,6 +292,9 @@ canvas {
   }
   .key-description {
     display: none;
+  }
+  .btnFullscreen {
+    display: block;
   }
 }
 

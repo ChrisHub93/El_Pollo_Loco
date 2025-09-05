@@ -141,16 +141,15 @@ function leaveImpressum() {
  * @function getFullScreen
  * @returns {void}
  */
-function getFullScreen() {
+function fullScreenMode(idBtn) {
   let divRef = document.getElementById("fullscreen");
+  let btnRef = document.getElementById(idBtn);
   if (!fullscreen) {
     openFullscreen(divRef);
-    document.getElementById("touchBtnFullscreen").style.backgroundImage =
-      "url('../assets/icons/fullscreen_exit.png')";
+    btnRef.style.backgroundImage = "url('./assets/icons/fullscreen_exit.png')";
   } else if (fullscreen) {
     closeFullscreen(divRef);
-    document.getElementById("touchBtnFullscreen").style.backgroundImage =
-      "url('../assets/icons/fullscreen.png')";
+    btnRef.style.backgroundImage = "url('./assets/icons/fullscreen.png')";
   }
 }
 
