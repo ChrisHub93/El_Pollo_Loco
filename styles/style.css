@@ -10,7 +10,7 @@ d-none {
 }
 
 body {
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,6 +64,8 @@ h1 {
 
 canvas {
   background-color: black;
+  height: min(480px, 100dvh);
+  width: min(720px, 100%);
 }
 
 .startScreen {
@@ -71,8 +73,8 @@ canvas {
   flex-direction: column;
   align-items: center;
   gap: 3px;
-  height: 480px;
-  width: 720px;
+  height: min(480px, 100dvh);
+  width: min(720px, 100vw);
   background-image: url("../assets/img/9_intro_outro_screens/start/startscreen_1.png");
   background-size: 100% 100%;
   background-position: center;
@@ -88,8 +90,8 @@ canvas {
   flex-direction: column;
   align-items: center;
   gap: 3px;
-  height: 480px;
-  width: 720px;
+  height: min(480px, 100dvh);
+  width: min(720px, 100%);
   background-color: #faa53e;
   border-radius: 21px;
   opacity: 0.9;
@@ -303,18 +305,12 @@ canvas {
     height: 100%;
     width: 100vw;
   }
-  canvas {
-    width: 100%;
-  }
 }
 
 @media (max-height: 480px) {
   #fullscreen {
     height: 100%;
     width: 100vw;
-  }
-  canvas {
-    height: 100vh;
   }
   h1 {
     display: none;
